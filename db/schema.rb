@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 20160505124908) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "carts_product_variants", id: false, force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "product_variant_id"
-  end
-
-  add_index "carts_product_variants", ["cart_id"], name: "index_carts_product_variants_on_cart_id", using: :btree
-  add_index "carts_product_variants", ["product_variant_id"], name: "index_carts_product_variants_on_product_variant_id", using: :btree
-
   create_table "categories", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -89,6 +81,4 @@ ActiveRecord::Schema.define(version: 20160505124908) do
     t.string   "role",            default: "basic"
   end
 
-  add_foreign_key "carts_product_variants", "carts"
-  add_foreign_key "carts_product_variants", "product_variants"
 end
