@@ -1,3 +1,3 @@
 class Color < ActiveRecord::Base
-	has_many :product_variants
+  has_many :product_variants
 end
