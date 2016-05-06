@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505124908) do
+ActiveRecord::Schema.define(version: 20160506085242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20160505124908) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "product_variant_id"
+    t.integer  "quantity"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "carts", force: :cascade do |t|
@@ -33,6 +41,14 @@ ActiveRecord::Schema.define(version: 20160505124908) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "categories_products", id: false, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "product_id"
+  end
+
+  add_index "categories_products", ["category_id"], name: "index_categories_products_on_category_id", using: :btree
+  add_index "categories_products", ["product_id"], name: "index_categories_products_on_product_id", using: :btree
 
   create_table "colors", force: :cascade do |t|
     t.string   "product_color"
@@ -49,7 +65,6 @@ ActiveRecord::Schema.define(version: 20160505124908) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer  "category_id"
     t.integer  "brand_id"
     t.string   "title"
     t.integer  "price"
@@ -81,4 +96,6 @@ ActiveRecord::Schema.define(version: 20160505124908) do
     t.string   "role",            default: "basic"
   end
 
+  add_foreign_key "categories_products", "categories"
+  add_foreign_key "categories_products", "products"
 end
