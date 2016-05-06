@@ -1,0 +1,22 @@
+<div class='row'>
+  <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-8 col-md-offset-2">
+      <h1>Sign in</h1>
+      <%= form_for :session, url: { action: 'create' } do |f|%>
+        <div class='form-background'>
+          <div class='form-group'>
+            <%= f.label(:email).upcase.html_safe %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+          <div class='form-group'>
+            <%= f.label(:password).upcase.html_safe %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.submit 'LOG IN', class: 'btn btn-default' %>
+        </div> 
+      <% end %>
+    </div>
+  </div>
+</div>

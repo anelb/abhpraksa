@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <ul class="nav navbar-nav">
+    <li><%= link_to 'abhShoes', root_path %></li>
+    <% Category.all.each do |category| %>
+      <li><%= link_to category.title, '#' %></li>
+    <% end %>
+    <% if current_user %>
+      <li><%= link_to 'LOG OUT', logout_path, method: 'delete' %></li>
+    <% else %>
+      <li><%= link_to 'LOGIN', sign_in_path %></li>
+      <li><%= link_to 'REG', sign_up_path %></li>
+    <% end %>
+  </ul>
+</nav>
+

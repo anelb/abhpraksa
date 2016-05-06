@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :categories
 
+  get  '/sign_up' => 'users#new'
+  post '/sign_up' => 'users#create'
+
+  get    '/sign_in' => 'sessions#new'
+  post   '/sign_in' => 'sessions#create'
+  delete '/logout'  => 'sessions#destroy'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
