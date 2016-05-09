@@ -5,10 +5,8 @@ class Admin::UsersController < AdminController
   end
   
   def promote
-    
   end
-  
+
   def demote
-    
   end
 end

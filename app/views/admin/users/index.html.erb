@@ -3,8 +3,11 @@
 <% @users.each do |user| %>
 <ul>
   <li><%= user.first_name %>
-    <span><%= button_to "Promote", admin_promote_path  %></span>
-    <span><%= button_to "Demote", '#'  %></span>
+    <%= form_for @promote, url:  { action: 'create', controller: 'users'}, 
+                html: { :style => 'display: inline-block;' } do |f| %>
+      <%= f.hidden_field :user_id, :value => user.id %>
+      <%= f.submit 'Promote', name: nil, class: 'btn btn-primary btn-xs' %>
+    <% end %>
   </li>
 </ul>
 <% end %>

@@ -1,7 +1,7 @@
 
 <div class='row'>
   <div class="col-md-4 col-md-offset-4">
-    <div>
+    <div class='col-md-12'>
       <div style='margin: 50px 0px 20px 0px'>
         <h4 style='display: inline'>Create your account</h4>
         <%= link_to 'Login to your account', sign_in_path, style: 'display: inline; float: right; font-size: 12px' %>
@@ -12,7 +12,7 @@
             <p style='font-size: 14px; color: #b30000'><%= message %></p>
           <% end %>
         <% end %>
-        <div class='form-background'>
+        <div>
           <div class='form-group'>
             <%= f.label(:first_name).upcase.html_safe %>
             <%= f.text_field :first_name, class: 'form-control' %>
