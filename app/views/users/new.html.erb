@@ -4,12 +4,12 @@
     <div>
       <div style='margin: 50px 0px 20px 0px'>
         <h4 style='display: inline'>Create your account</h4>
-        <%= link_to 'Login to your account', sign_in_path, style: 'display: inline; float: right' %>
+        <%= link_to 'Login to your account', sign_in_path, style: 'display: inline; float: right; font-size: 12px' %>
       </div> 
       <%= form_for @user, url: { action: 'create' }, html: { class: 'form-signin'} do |f| %>
         <% if @user.errors.any? %>
           <% @user.errors.full_messages.each do |message| %>
-            <p><%= message %></p>
+            <p style='font-size: 14px; color: #b30000'><%= message %></p>
           <% end %>
         <% end %>
         <div class='form-background'>
