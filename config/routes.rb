@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  
   resources :categories
 
   get  '/sign_up' => 'users#new'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [ :index ]
+    post '/promote' => 'users#promote'
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

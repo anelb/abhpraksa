@@ -4,4 +4,11 @@ class Admin::UsersController < AdminController
     @users = User.all
   end
   
+  def promote
+    
+  end
+  
+  def demote
+    
+  end
 end
