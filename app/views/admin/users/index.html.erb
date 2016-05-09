@@ -1,13 +1,23 @@
-<h1>Users</h1>
+<h4>Users menagement</h4>
 
 <% @users.each do |user| %>
-  <%= user.first_name %>
-    <%= form_tag(controller: 'admin/users', action: 'promote',  method: "post") do %>
-      <%= hidden_field_tag :user_id, user.id %>
-      <%= submit_tag 'Promote' %>
+    <% if user.role == 'admin' %>
+     <p><%= user.first_name %> is already an admin. Take his power?</p>
+     <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
+        <%= hidden_field_tag :user_id, user.id %>
+        <%= button_tag(type: "submit", class: "btn btn-default") do %>
+          <span class='glyphicon glyphicon-arrow-down'></span>
+        <% end %>
+      <% end %>
+      <br>
+    <% else %>
+      <p>Promote <%= user.first_name %> to admin? </p>
+      <%= form_tag(controller: 'admin/users', action: 'promote',  method: "post") do %>
+        <%= hidden_field_tag :user_id, user.id %>
+        <%= button_tag(type: "submit", class: "btn btn-default") do %>
+          <span class='glyphicon glyphicon-arrow-up'></span>
+        <% end %>
+      <% end %>
     <% end %>
-    <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
-      <%= hidden_field_tag :user_id, user.id %>
-      <%= submit_tag 'Demote' %>
-    <% end %><br>
 <% end %>
+
