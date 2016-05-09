@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [ :index ]
     post '/promote' => 'users#promote'
+    post '/demote'  => 'users#demote'
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

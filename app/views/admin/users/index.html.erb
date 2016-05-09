@@ -1,13 +1,13 @@
 <h1>Users</h1>
 
 <% @users.each do |user| %>
-<ul>
-  <li><%= user.first_name %>
-    <%= form_for @promote, url:  { action: 'create', controller: 'users'}, 
-                html: { :style => 'display: inline-block;' } do |f| %>
-      <%= f.hidden_field :user_id, :value => user.id %>
-      <%= f.submit 'Promote', name: nil, class: 'btn btn-primary btn-xs' %>
+  <%= user.first_name %>
+    <%= form_tag(controller: 'admin/users', action: 'promote',  method: "post") do %>
+      <%= hidden_field_tag :user_id, user.id %>
+      <%= submit_tag 'Promote' %>
     <% end %>
-  </li>
-</ul>
+    <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
+      <%= hidden_field_tag :user_id, user.id %>
+      <%= submit_tag 'Demote' %>
+    <% end %><br>
 <% end %>
