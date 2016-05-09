@@ -30,9 +30,7 @@ body {
   }
   > li a:hover {
     background-color: transparent;
-  }
-  > li a:active {
-    outline: none;
+    border-bottom:3px solid red;
   }
   > li a:focus {
     color: white;
@@ -69,5 +67,7 @@ body {
   color: red;
   border-color: yellow;
 }
+
+
 
 
