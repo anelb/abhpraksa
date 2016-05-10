@@ -1,24 +1,38 @@
-<h4><strong>Users menagement</strong></h4>
-<br>
-<% @users.each do |user| %>
-  <% if user.role == 'admin' %>
-   <p style='font-size: 13px'><%= user.first_name.capitalize %> is already an admin. Take his power?</p>
-   <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
-      <%= hidden_field_tag :user_id, user.id %>
-      <%= button_tag(type: "submit", class: "btn btn-danger") do %>
-        <span class='glyphicon glyphicon-arrow-down'></span>
-      <% end %>
-    <% end %>
-    <br>
-  <% else %>
-    <p style='font-size: 13px'>Promote <%= user.first_name.capitalize %> to admin? </p>
-    <%= form_tag(controller: 'admin/users', action: 'promote',  method: "post") do %>
-      <%= hidden_field_tag :user_id, user.id %>
-      <%= button_tag(type: "submit", class: "btn btn-success") do %>
-        <span class='glyphicon glyphicon-arrow-up'></span>
-      <% end %>
-    <% end %>
-    <br>
-  <% end %>
-<% end %>
 
+<ul class="list-group">
+  <li class="list-group-item" id='user'>Admins</li>
+  <% @users.each do |user| %>
+  <% if user.role == 'admin' %>
+      <li class="list-group-item clearfix"><%= user.first_name.capitalize%>
+        <span class='pull-right'>
+          <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
+            <%= hidden_field_tag :user_id, user.id %>
+            <%= button_tag(type: "submit", class: "btn btn-danger") do %>
+              <span class='glyphicon glyphicon-arrow-down'></span>
+            <% end %>
+          <% end %>
+        <span>
+      </li>
+    <% end %>  
+  <% end %>
+</ul>
+
+
+
+<ul class="list-group">
+  <li class="list-group-item" id='user'>Users</li>
+  <% @users.each do |user| %>
+  <% if user.role == 'basic' %>
+      <li class="list-group-item clearfix"><%= user.first_name.capitalize%>
+        <span class='pull-right'>
+          <%= form_tag(controller: 'users', action: 'promote', method: "post") do %>
+            <%= hidden_field_tag :user_id, user.id %>
+            <%= button_tag(type: "submit", class: "btn btn-success") do %>
+              <span class='glyphicon glyphicon-arrow-up'></span>
+            <% end %>
+          <% end %>
+        <span>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
