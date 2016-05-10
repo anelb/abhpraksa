@@ -1,8 +1,8 @@
 <h4><strong>Users menagement</strong></h4>
-
+<br>
 <% @users.each do |user| %>
   <% if user.role == 'admin' %>
-   <p style='font-size: 13px'><%= user.first_name %> is already an admin. Take his power?</p>
+   <p style='font-size: 13px'><%= user.first_name.capitalize %> is already an admin. Take his power?</p>
    <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
       <%= hidden_field_tag :user_id, user.id %>
       <%= button_tag(type: "submit", class: "btn btn-danger") do %>
@@ -11,13 +11,14 @@
     <% end %>
     <br>
   <% else %>
-    <p>Promote <%= user.first_name %> to admin? </p>
+    <p style='font-size: 13px'>Promote <%= user.first_name.capitalize %> to admin? </p>
     <%= form_tag(controller: 'admin/users', action: 'promote',  method: "post") do %>
       <%= hidden_field_tag :user_id, user.id %>
       <%= button_tag(type: "submit", class: "btn btn-success") do %>
         <span class='glyphicon glyphicon-arrow-up'></span>
       <% end %>
     <% end %>
+    <br>
   <% end %>
 <% end %>
 
