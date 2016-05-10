@@ -1,26 +1,23 @@
-<div class='row'>
-  <div  class='col-md-4 col-md-offset-4'>
-    <h4>User menagement</h4>
-    <% @users.each do |user| %>
-        <% if user.role == 'admin' %>
-         <p><%= user.first_name %> is already an admin. Take his power?</p>
-         <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
-            <%= hidden_field_tag :user_id, user.id %>
-            <%= button_tag(type: "submit", class: "btn btn-default") do %>
-              <span class='glyphicon glyphicon-arrow-down'></span>
-            <% end %>
-          <% end %>
-          <br>
-        <% else %>
-          <p>Promote <%= user.first_name %> to admin? </p>
-          <%= form_tag(controller: 'admin/users', action: 'promote',  method: "post") do %>
-            <%= hidden_field_tag :user_id, user.id %>
-            <%= button_tag(type: "submit", class: "btn btn-default") do %>
-              <span class='glyphicon glyphicon-arrow-up'></span>
-            <% end %>
-          <% end %>
-        <% end %>
+<h4><strong>Users menagement</strong></h4>
+
+<% @users.each do |user| %>
+  <% if user.role == 'admin' %>
+   <p style='font-size: 13px'><%= user.first_name %> is already an admin. Take his power?</p>
+   <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
+      <%= hidden_field_tag :user_id, user.id %>
+      <%= button_tag(type: "submit", class: "btn btn-danger") do %>
+        <span class='glyphicon glyphicon-arrow-down'></span>
+      <% end %>
     <% end %>
-  </div>
-</div>
+    <br>
+  <% else %>
+    <p>Promote <%= user.first_name %> to admin? </p>
+    <%= form_tag(controller: 'admin/users', action: 'promote',  method: "post") do %>
+      <%= hidden_field_tag :user_id, user.id %>
+      <%= button_tag(type: "submit", class: "btn btn-success") do %>
+        <span class='glyphicon glyphicon-arrow-up'></span>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
 

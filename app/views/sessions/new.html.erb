@@ -1,9 +1,9 @@
 <div class='row'>
   <div class="col-md-4 col-md-offset-4">
     <div class='col-md-12'>
-      <h4 style='margin-top: 50px'>Sign in</h4>
+      <h4 style='margin: 50px 0px 20px 0px'>Sign in</h4>
       <%= form_for :session, url: { action: 'create' } do |f|%>
-        <div>
+        <div class='form-border'>
           <div class='form-group'>
             <%= f.label(:email).upcase.html_safe %>
             <%= f.email_field :email, class: 'form-control' %>
