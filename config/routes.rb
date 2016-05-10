@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'categories/show'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  
   resources :categories
 
   get  '/sign_up' => 'users#new'
@@ -15,6 +14,12 @@ Rails.application.routes.draw do
   get    '/sign_in' => 'sessions#new'
   post   '/sign_in' => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
+
+  namespace :admin do
+    resources :users, only: [ :index ]
+    post '/promote' => 'users#promote'
+    post '/demote'  => 'users#demote'
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

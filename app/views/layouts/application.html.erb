@@ -2,16 +2,18 @@
 <html>
 <head>
   <title>Abhshoes</title>
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <%= render 'layouts/navbar' %>
+    <%= render 'layouts/navbar' %>
+    <div class='container'>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %> col-md-4 col-md-offset-4"><h4><%= value %></h4></div>
+      <% end %> 
+      <%= yield %>
     </div>
-    <%= yield %>
-  </div>
 </body>
 </html>
