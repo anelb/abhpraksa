@@ -3,7 +3,7 @@
     <div class='col-md-12'>
       <h4 style='margin: 50px 0px 20px 0px'>Sign in</h4>
       <%= form_for :session, url: { action: 'create' } do |f|%>
-        <div class='form-background'>
+        <div class='form-border'>
           <div class='form-group'>
             <%= f.label(:email).upcase.html_safe %>
             <%= f.email_field :email, class: 'form-control' %>
