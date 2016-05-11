@@ -1,7 +1,7 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users = User.find_without_ordering
+    @users = User.order(:id)
   end
   
   def promote
