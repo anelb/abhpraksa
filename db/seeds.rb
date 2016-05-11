@@ -38,6 +38,28 @@ Product.create(title: 'Chuck Taylor All Star II InfTdlr', brand_id: 1, price: 75
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/750143C_shot1_small.jpg')
 
+
+
+Product.create(title: 'Chuck TaylorAll Star II Yth/Jr', brand_id: 1, price: 50, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/350148C_standard.jpg')
+
+Product.create(title: 'Chuck TaylorAll Star II Knit', brand_id: 1, price: 80, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/grey_.jpg')
+
+Product.create(title: 'Chuck Taylor All Star II InfTdlr', brand_id: 1, price: 75, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/750143C_shot1_small.jpg')
+
+Product.create(title: 'Chuck Taylor All Star II InfTdlr', brand_id: 1, price: 75, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/750143C_shot1_small.jpg')
+
 # create_table "products", force: :cascade do |t|
 #   t.integer  "brand_id"
 #   t.string   "title"

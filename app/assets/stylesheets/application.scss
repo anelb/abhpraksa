@@ -125,6 +125,30 @@ body {
   }
 }
 
+.carousel-control {
+  opacity: 0.7;
+  text-shadow: none;
+  color: #bdbdbd;
+}
+
+.carousel-control.right {
+  background-image: none;
+  right: -50px;
+}
+
+.carousel-control.left {
+  background-image: none;
+  left: -85px;
+}
+
+.glyphicon-chevron-right {
+  color: #bdbdbd;
+}
+.glyphicon-chevron-left {
+  color: #bdbdbd;
+}
+
+
 
 
 
