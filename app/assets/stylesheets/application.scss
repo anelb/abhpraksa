@@ -13,6 +13,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 body {
   font-family: Lato;
   font-size: 11px;
@@ -117,6 +118,11 @@ body {
   border: 0px;
   margin: 30px;
   height: 100px;
+  width: 200px;
+  > img {
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
 
 
