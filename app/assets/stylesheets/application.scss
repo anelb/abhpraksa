@@ -36,12 +36,16 @@ body {
 }
 
 .navbar-nav {
+  > li {
+    height: 53px;
+  }
   > li a {
     color: white;
     position: relative;
   }
   > li a:hover {
-    background-color: transparent; 
+    background-color: transparent;
+    border-bottom: 3px solid red; 
   }
   > li a:focus {
     color: white;
