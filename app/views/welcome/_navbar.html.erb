@@ -1,5 +1,5 @@
-<div style='width: 100%; height: 400px; background-image: url(https://s3.eu-central-1.amazonaws.com/imagesrandom/Black-Background-Shoes-HD-Wallpapers.jpg)'>
-  <nav class="navbar">
+<div style='width: 100%; height: 400px;' class='cover-image'>
+  <nav class="navbar navbar-cover">
     <div class="container">
       <div class="navbar-header">
         <%= link_to 'abhShoes', root_path, class: "navbar-brand" %>
@@ -20,7 +20,7 @@
           <% else %>
             <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#' %>
             <li><%= link_to 'LOGIN', sign_in_path %></li>
-            <li><%= link_to 'REG', sign_up_path %></li>
+            <li><%= link_to 'REGISTER', sign_up_path %></li>
           <% end %>
         </ul>
       </div>

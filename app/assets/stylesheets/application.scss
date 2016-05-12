@@ -23,7 +23,6 @@ body {
 }
 
 .navbar {
-  background-color:  black;
   border-radius: 0px;
 }
 
@@ -32,27 +31,18 @@ body {
   outline: none;
 }
 
-.navbar-midle {
-  margin-left: 100px;
-}
-
 .navbar-nav {
-  > li {
-    height: 53px;
-  }
   > li a {
     color: white;
     position: relative;
   }
   > li a:hover {
     background-color: transparent;
-    border-bottom: 3px solid red; 
+    color: #E3AC98;
   }
   > li a:focus {
-    color: white;
-    background-color: black;
-    border-color: black;
     outline: none;
+    background-color: transparent;
   }
 }
 .admin-button {
@@ -63,6 +53,7 @@ body {
   border-style: solid;
   border-width: thin;
   border-color: #d3d3d3;
+  background-color: #F7F6F7;
 }
 
 .form-button-margin  {
@@ -104,11 +95,12 @@ body {
 #home-screen {
   position:absolute;
   z-index:1;
-  top: 350px;
+  top: 370px;
   right: 125px;
   left: 125px;
   background-color: white;
-  padding: 30px;
+  padding: 30px 70px;
+  border-radius: 15px;
   > .row {
     margin: 0px;
   }
@@ -141,11 +133,11 @@ body {
 
 span.glyphicon.glyphicon-chevron-right {
   color: #bdbdbd;
-  right: 10%;
+  right: 5%;
 }
 span.glyphicon.glyphicon-chevron-left {
   color: #bdbdbd;
-  left: 10%;
+  left: 5%;
 }
 
 #popularno {
@@ -154,6 +146,24 @@ span.glyphicon.glyphicon-chevron-left {
   margin-top: 100px;
 }
 
+.cover-image {
+  background-image: url(https://s3.eu-central-1.amazonaws.com/imagesrandom/alll_cover_1.JPG);
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.navbar-cover {
+  background-color: transparent;
+}
+.navbar-regular {
+  background: -moz-linear-gradient(269deg, rgba(34,45,56,1) 0%, rgba(34,45,56,1) 3%, rgba(0,128,128,1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(34,45,56,1)), color-stop(3%, rgba(34,45,56,1)), color-stop(100%, rgba(0,128,128,1))); /* safari4+,chrome */
+  background: -webkit-linear-gradient(269deg, rgba(34,45,56,1) 0%, rgba(34,45,56,1) 3%, rgba(0,128,128,1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(269deg, rgba(34,45,56,1) 0%, rgba(34,45,56,1) 3%, rgba(0,128,128,1) 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient(269deg, rgba(34,45,56,1) 0%, rgba(34,45,56,1) 3%, rgba(0,128,128,1) 100%); /* ie10+ */
+  background-image: linear-gradient(-180deg, #46424D  0%, #675E66  100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222D38', endColorstr='#008080',GradientType=0 ); /* ie6-9 */
+}
 
 
 
