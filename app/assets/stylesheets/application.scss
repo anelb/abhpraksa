@@ -133,20 +133,27 @@ body {
 
 .carousel-control.right {
   background-image: none;
-  right: -50px;
 }
 
 .carousel-control.left {
   background-image: none;
-  left: -85px;
 }
 
-.glyphicon-chevron-right {
+span.glyphicon.glyphicon-chevron-right {
   color: #bdbdbd;
+  right: 10%;
 }
-.glyphicon-chevron-left {
+span.glyphicon.glyphicon-chevron-left {
   color: #bdbdbd;
+  left: 10%;
 }
+
+#popularno {
+}
+#sale {
+  margin-top: 100px;
+}
+
 
 
 
