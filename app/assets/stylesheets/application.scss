@@ -105,6 +105,7 @@ body {
   background-color: white;
   padding: 30px 50px;
   border-radius: 15px;
+  margin-bottom: 15px;
   > .row {
     margin: 0px;
   }
@@ -172,6 +173,10 @@ span.glyphicon.glyphicon-chevron-left {
 
 .alert {
   text-align: center;
+}
+
+#footer {
+  font-size: 14px;
 }
 
 
