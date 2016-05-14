@@ -17,6 +17,9 @@
 body {
   font-family: Lato;
   font-size: 11px;
+  > .container {
+    margin-bottom: 15px;
+  }
 }
 .container-fluid {
   padding: 0px;
@@ -105,7 +108,6 @@ body {
   background-color: white;
   padding: 30px 50px;
   border-radius: 15px;
-  margin-bottom: 15px;
   > .row {
     margin: 0px;
   }
