@@ -44,6 +44,23 @@ product_4 = Product.create!(title: 'Chuck Taylor All Star II product_4', brand_i
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
 
+product_5 = Product.create!(title: 'Chuck Taylor All Star II product_1', brand_id: 1, price: 70, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
+product_6 = Product.create!(title: 'Chuck Taylor All Star II product_2', brand_id: 1, price: 70, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
+product_7 = Product.create!(title: 'Chuck Taylor All Star II product_3', brand_id: 1, price: 70, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
+product_8 = Product.create!(title: 'Chuck Taylor All Star II product_4', brand_id: 1, price: 70, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
+
 green  = Color.create!(product_color: 'Green')
 black  = Color.create!(product_color: 'Black')
 red    = Color.create!(product_color: 'Red')
