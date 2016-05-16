@@ -20,6 +20,36 @@ Brand.create(title: 'Converse')
 Brand.create(title: 'Nike')
 Brand.create(title: 'Adidas')
 
+
+category_1 = Category.create!(title: 'Test katorija 1')
+
+category_2 = Category.create!(title: 'Test katorija 2')
+
+category_3 = Category.create!(title: 'Test katorija 3')
+
+product_1 = Product.create!(title: 'Test product 1', brand_id: 1, price: 70, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
+
+product_2 = Product.create!(title: 'Test product 2', brand_id: 1, price: 70, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
+
+product_3 = Product.create!(title: 'Test product 3', brand_id: 1, price: 70, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
+
+
+category_1.products.create(product_id: product_1)
+category_1.products.create(product_id: product_2)
+
+category_2.products.create(product_id: product_1)
+category_2.products.create(product_id: product_2)
+category_2.products.create(product_id: product_3)
+
 Product.create(title: 'Chuck Taylor All Star II', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
@@ -59,14 +89,3 @@ Product.create(title: 'Chuck Taylor All Star II InfTdlr', brand_id: 1, price: 75
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/750143C_shot1_small.jpg')
-
-# create_table "products", force: :cascade do |t|
-#   t.integer  "brand_id"
-#   t.string   "title"
-#   t.integer  "price"
-#   t.string   "style"
-#   t.datetime "created_at",  null: false
-#   t.datetime "updated_at",  null: false
-#   t.text     "description"
-#   t.text     "photo_url"
-# end
