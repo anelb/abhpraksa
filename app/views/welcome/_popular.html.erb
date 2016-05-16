@@ -15,7 +15,7 @@
                 <div class="thumbnail">
                   <img src="<%= product.photo_url %>" alt="...">
                   <div class="caption">
-                    <h4><%= product.title %></h3>
+                    <%= link_to product.title, category_product_path(product.categories.first.id, product.id) %>
                     <p><%= product.price %>KM</p>
                   </div>
                 </div>
@@ -28,10 +28,11 @@
               <div class="item active">
                 <% slice.each do |product| %>
                   <div class="col-sm-6 col-md-3">
+                    <%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#' %>
                     <div class="thumbnail">
                       <img src="<%= product.photo_url %>" alt="...">
                       <div class="caption">
-                        <h4><%= product.title %></h3>
+                        
                         <p><%= product.price %>KM</p>
                       </div>
                     </div>
