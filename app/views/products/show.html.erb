@@ -6,38 +6,30 @@
     </div>
 
     <div class='col-md-6 product-right'>
-      <p><%= @product.description %></p>
-
-      <div class="dropdown">
-        <a class="btn btn-default dropdown-toggle"  id="velicina-naziv" data-toggle="dropdown">
-          Velicina
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" id='velicina'>
-          <% @product.sizes.each do |product| %>
-            <li><%= link_to product.product_size, '#' %></li>
-          <% end %>
-        </ul>
+      <div id='description'>
+        <p><%= @product.description %></p>
       </div>
-
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Boja
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <% @product.colors.each do |product| %>
-            <li><%= link_to product.product_color, '#' %></li>
-          <% end %>
-        </ul>
+      <div>
+        <div id='velicina'>
+        <%= fields_for :products do |product| %>
+            <%= product.label :velicina %>
+            <%= product.collection_select(:size_id, @product.sizes, :id, :product_size) %>
+        <% end %>
+        </div>
+        <div id='kolicina'>
+          <h5>Kolicina</h5>
+          <p>5</p>
+        </div>
+        <div id='cijena'>
+        <h5>Cijena:</h5>
+        <p><%= @product.price %>KM</p>
+        </div>
       </div>
-
-      <h5>Cijena: <%= @product.price %>KM</h5>
     </div>
   </div>
   <br>
   <div class='row'>
-    <p style='text-align: center'>Slicni proizvodi</p>
+    <h4 style='text-align: center; font'>Slicni proizvodi</h4>
     <% Product.all.sample(4).each do |product| %>
       <div class="col-xs-6 col-md-3">
         <a href="#" class="thumbnail">

@@ -1,8 +1,28 @@
 .product-left {
-  border-right: 1px solid black;
-  padding-right: 30px;
+  border-right: 1px solid #DCDCDC;
+  padding: 10px 50px 80px 30px;
 }
 
 .product-right {
-  padding-left: 30px;
+  padding: 10px 30px 80px 50px;
+  font-size: 15px;
+}
+
+#description {
+	margin-bottom: 30px;
+}
+
+#velicina {
+	display: inline-block;
+	> label {
+		display: block;
+	}
+}
+
+#kolicina {
+	display: inline-block;
+}
+
+#cijena {
+	display: inline-block;
 }
