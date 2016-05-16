@@ -1,38 +1,50 @@
-<div class='row'>
-  <div class='col-md-6'>
-      <h4><%= @product.title %></h4>
-      <img src="<%= @product.photo_url %>" class="img-responsive">
-  </div>
-  <div class='col-md-6'>
-    <div class='row'>
+<div class='col-md-10 col-md-offset-1' style='margin-top: 30px'>
+  <div class='row'>
+    <div class='col-md-6 product-left'>
+        <h4><%= @product.title %></h4>
+        <img src="<%= @product.photo_url %>" class="img-responsive">
+    </div>
+
+    <div class='col-md-6 product-right'>
       <p><%= @product.description %></p>
+
+      <div class="dropdown">
+        <a class="btn btn-default dropdown-toggle"  id="velicina-naziv" data-toggle="dropdown">
+          Velicina
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" id='velicina'>
+          <% @product.sizes.each do |product| %>
+            <li><%= link_to product.product_size, '#' %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Boja
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <% @product.colors.each do |product| %>
+            <li><%= link_to product.product_color, '#' %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <h5>Cijena: <%= @product.price %>KM</h5>
     </div>
-    <h4>Velicina</h4>
-    <ul>
-      <% @product.sizes.each do |product| %>
-        <li><%= product.product_size %></li>
-      <% end %>
-    </ul>
-    <h4>Boja</h4>
-    <ul>
-      <% @product.colors.each do |product| %>
-        <li><%= product.product_color %></li>
-      <% end %>
-    </ul>
-    <h5>Cijena: <%= @product.price %>KM</h5>
+  </div>
+  <br>
+  <div class='row'>
+    <p style='text-align: center'>Slicni proizvodi</p>
+    <% Product.all.sample(4).each do |product| %>
+      <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+          <img src="<%= product.photo_url %>" alt="...">
+          <p><%= product.title %></p>
+        </a>
+      </div>
+    <% end %>
   </div>
 </div>
-<br>
-<div class='row'>
-  <p style='text-align: center'>Slicni proizvodi</p>
-  <% Product.all.each do |product| %>
-    <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img src="<%= product.photo_url %>" alt="...">
-      </a>
-    </div>
-  <% end %>
-</div>
-
-<!-- @product.product_variants[0].color.product_color -->
-
