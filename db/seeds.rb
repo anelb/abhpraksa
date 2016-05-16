@@ -27,24 +27,52 @@ djecija_obuca  = Category.create!(title: 'DJECIJA OBUCA')
 sportska_obuca = Category.create!(title: 'SPORTSKA OBUCA')
 dodaci         = Category.create!(title: 'DODACI')
 
-product_1 = Product.create!(title: 'Test product 1', brand_id: 1, price: 70, style: 'casual', 
+product_1 = Product.create!(title: 'Chuck Taylor All Star II product_1', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-product_2 = Product.create!(title: 'Test product 2', brand_id: 1, price: 70, style: 'casual', 
+product_2 = Product.create!(title: 'Chuck Taylor All Star II product_2', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-product_3 = Product.create!(title: 'Test product 3', brand_id: 1, price: 70, style: 'casual', 
+product_3 = Product.create!(title: 'Chuck Taylor All Star II product_3', brand_id: 1, price: 70, style: 'casual', 
+              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
+product_4 = Product.create!(title: 'Chuck Taylor All Star II product_4', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
 
+green  = Color.create!(product_color: 'Green')
+black  = Color.create!(product_color: 'Black')
+red    = Color.create!(product_color: 'Red')
+yellow = Color.create!(product_color: 'yellow')
+
+size_35 = Size.create!(product_size: '35')
+size_36 = Size.create!(product_size: '36')
+size_37 = Size.create!(product_size: '37')
+size_38 = Size.create!(product_size: '38')
+size_39 = Size.create!(product_size: '39')
+
+product_1.product_variants.create(size_id: green.id, color_id: size_38.id)
+product_1.product_variants.create(size_id: red.id,   color_id: size_39.id)
+product_1.product_variants.create(size_id: black.id, color_id: size_35.id)
+
+# create_table "product_variants", force: :cascade do |t|
+# t.integer  "product_id"
+# t.integer  "size_id"
+# t.integer  "color_id"
+# t.datetime "created_at", null: false
+# t.datetime "updated_at", null: false
+# end
 
 zenska_obuca.products   << product_1
 zenska_obuca.products   << product_2
 
 muska_obuca.products    << product_3
+muska_obuca.products    << product_4
+
 sportska_obuca.products << product_1
 sportska_obuca.products << product_2
 
