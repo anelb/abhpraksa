@@ -27,36 +27,36 @@ djecija_obuca  = Category.create!(title: 'DJECIJA OBUCA')
 sportska_obuca = Category.create!(title: 'SPORTSKA OBUCA')
 dodaci         = Category.create!(title: 'DODACI')
 
-product_1 = Product.create!(title: 'Chuck Taylor All Star II product_1', brand_id: 1, price: 70, style: 'casual', 
+product_1 = Product.create!(title: 'Chuck Taylor All Star II product_1 Radi!', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-product_2 = Product.create!(title: 'Chuck Taylor All Star II product_2', brand_id: 1, price: 70, style: 'casual', 
+product_2 = Product.create!(title: 'Chuck Taylor All Star II product_2 Radi!', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-product_3 = Product.create!(title: 'Chuck Taylor All Star II product_3', brand_id: 1, price: 70, style: 'casual', 
+product_3 = Product.create!(title: 'Chuck Taylor All Star II product_3 Radi!', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-product_4 = Product.create!(title: 'Chuck Taylor All Star II product_4', brand_id: 1, price: 70, style: 'casual', 
+product_4 = Product.create!(title: 'Chuck Taylor All Star II product_4 Radi!', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
 
-product_5 = Product.create!(title: 'Chuck Taylor All Star II product_1', brand_id: 1, price: 70, style: 'casual', 
+product_5 = Product.create!(title: 'Chuck Taylor All Star II product_5 Ne radi!', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-product_6 = Product.create!(title: 'Chuck Taylor All Star II product_2', brand_id: 1, price: 70, style: 'casual', 
+product_6 = Product.create!(title: 'Chuck Taylor All Star II product_6 Ne radi', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-product_7 = Product.create!(title: 'Chuck Taylor All Star II product_3', brand_id: 1, price: 70, style: 'casual', 
+product_7 = Product.create!(title: 'Chuck Taylor All Star II product_7 Ne radi', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-product_8 = Product.create!(title: 'Chuck Taylor All Star II product_4', brand_id: 1, price: 70, style: 'casual', 
+product_8 = Product.create!(title: 'Chuck Taylor All Star II product_8 Ne radi', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
@@ -76,13 +76,6 @@ product_1.product_variants.create(size_id: green.id, color_id: size_38.id)
 product_1.product_variants.create(size_id: red.id,   color_id: size_39.id)
 product_1.product_variants.create(size_id: black.id, color_id: size_35.id)
 
-# create_table "product_variants", force: :cascade do |t|
-# t.integer  "product_id"
-# t.integer  "size_id"
-# t.integer  "color_id"
-# t.datetime "created_at", null: false
-# t.datetime "updated_at", null: false
-# end
 
 zenska_obuca.products   << product_1
 zenska_obuca.products   << product_2
@@ -92,43 +85,3 @@ muska_obuca.products    << product_4
 
 sportska_obuca.products << product_1
 sportska_obuca.products << product_2
-
-# Product.create(title: 'Chuck Taylor All Star II', brand_id: 1, price: 70, style: 'casual', 
-#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-#               but is built for more to better meet the demands of your “on the go” lifestyle',
-#               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/home.png')
-# Product.create(title: 'Chuck Taylor All Star II', brand_id: 1, price: 75, style: 'casual', 
-#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-#               but is built for more to better meet the demands of your “on the go” lifestyle',
-#               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/151161C_standard_small.jpg')
-# Product.create(title: 'Chuck Taylor All Star II', brand_id: 1, price: 75, style: 'casual', 
-#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-#               but is built for more to better meet the demands of your “on the go” lifestyle',
-#               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/150146C_standard_small.png')
-
-# Product.create(title: 'Chuck Taylor All Star II InfTdlr', brand_id: 1, price: 75, style: 'casual', 
-#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-#               but is built for more to better meet the demands of your “on the go” lifestyle',
-#               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/750143C_shot1_small.jpg')
-
-
-
-# Product.create(title: 'Chuck TaylorAll Star II Yth/Jr', brand_id: 1, price: 50, style: 'casual', 
-#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-#               but is built for more to better meet the demands of your “on the go” lifestyle',
-#               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/350148C_standard.jpg')
-
-# Product.create(title: 'Chuck TaylorAll Star II Knit', brand_id: 1, price: 80, style: 'casual', 
-#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-#               but is built for more to better meet the demands of your “on the go” lifestyle',
-#               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/grey_.jpg')
-
-# Product.create(title: 'Chuck Taylor All Star II InfTdlr', brand_id: 1, price: 75, style: 'casual', 
-#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-#               but is built for more to better meet the demands of your “on the go” lifestyle',
-#               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/750143C_shot1_small.jpg')
-
-# Product.create(title: 'Chuck Taylor All Star II InfTdlr', brand_id: 1, price: 75, style: 'casual', 
-#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-#               but is built for more to better meet the demands of your “on the go” lifestyle',
-#               photo_url: 'https://s3.eu-central-1.amazonaws.com/imagesrandom/750143C_shot1_small.jpg')

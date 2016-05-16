@@ -14,13 +14,13 @@
       <div>
         <div id='size'>
         <%= fields_for :products do |product| %>
-            <%= product.label :velicina %>
+            <%= product.label :velicina, 'Velicina:' %>
             <%= product.collection_select(:size_id, @product.sizes, :id, :product_size) %>
         <% end %>
         </div>
         <div id='quantity'>
           <h5>Kolicina</h5>
-          <p>5</p>
+          <p><%= text_field_tag 'quantity' %></p>
         </div>
         <div id='price'>
         <h5>Cijena:</h5>
@@ -31,7 +31,7 @@
   </div>
   <br>
   <div class='row'>
-    <h4 style='text-align: center; font'>Slicni proizvodi</h4>
+    <h4 style='text-align: center; margin-top: 30px'>Slicni proizvodi</h4>
     <% Product.all.sample(4).each do |product| %>
       <div class="col-xs-6 col-md-3">
         <a href="#" class="thumbnail">
