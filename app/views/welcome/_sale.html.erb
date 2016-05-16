@@ -1,0 +1,64 @@
+<div class='row'>
+  <span>SALE</span>
+  </div>
+  <div class='row'>
+    <div id="sale-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <% if @products.length <= 4 %>
+          <div class="item active">
+            <% @products.each do |product| %>
+              <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="<%= product.photo_url %>" alt="...">
+                  <div class="caption">
+                    <h4><%= product.title %></h3>
+                    <p><%= product.price %>KM</p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <% @products.each_slice(4) do |slice| %>
+            <% if @products.slice(0..3) == slice %>
+              <div class="item active">
+                <% slice.each do |product| %>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                      <img src="<%= product.photo_url %>" alt="...">
+                      <div class="caption">
+                        <h4><%= product.title %></h3>
+                        <p><%= product.price %>KM</p>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="item">
+                <% slice.each do |product| %>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="thumbnail">
+                        <img src="<%= product.photo_url %>" alt="...">
+                        <div class="caption">
+                          <h4><%= product.title %></h3>
+                          <p><%= product.price %>KM</p>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+              </div>  
+            <% end %>
+          <% end %>
+          <a class="left carousel-control" href="#sale-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#sale-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
