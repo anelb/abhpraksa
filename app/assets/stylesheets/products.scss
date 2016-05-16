@@ -8,21 +8,25 @@
   font-size: 15px;
 }
 
+#title {
+	margin-bottom: 30px
+}
+
 #description {
 	margin-bottom: 30px;
 }
 
-#velicina {
+#size {
 	display: inline-block;
 	> label {
 		display: block;
 	}
 }
 
-#kolicina {
+#quantity {
 	display: inline-block;
 }
 
-#cijena {
+#price {
 	display: inline-block;
 }
