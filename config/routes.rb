@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   
-  resources :categories
+  resources :categories, only: [:show] do
+    resources :products, only:[ :show]
+  end
 
   get  '/sign_up' => 'users#new'
   post '/sign_up' => 'users#create'
