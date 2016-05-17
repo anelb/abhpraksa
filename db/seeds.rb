@@ -64,7 +64,8 @@ product_8 = Product.create!(title: 'Chuck Taylor All Star II product_8 Ne radi',
 green  = Color.create!(product_color: 'Green')
 black  = Color.create!(product_color: 'Black')
 red    = Color.create!(product_color: 'Red')
-yellow = Color.create!(product_color: 'yellow')
+yellow = Color.create!(product_color: 'Yellow')
+grey = Color.create!(product_color: 'Grey')
 
 size_35 = Size.create!(product_size: '35')
 size_36 = Size.create!(product_size: '36')
@@ -72,9 +73,13 @@ size_37 = Size.create!(product_size: '37')
 size_38 = Size.create!(product_size: '38')
 size_39 = Size.create!(product_size: '39')
 
-product_1.product_variants.create(size_id: green.id, color_id: size_38.id)
-product_1.product_variants.create(size_id: red.id,   color_id: size_39.id)
-product_1.product_variants.create(size_id: black.id, color_id: size_35.id)
+product_1.product_variants.create(size_id: size_35.id, color_id: green.id)
+product_1.product_variants.create(size_id: size_35.id, color_id: black.id)
+product_1.product_variants.create(size_id: size_35.id, color_id: yellow.id)
+
+product_1.product_variants.create(size_id: size_36.id, color_id: yellow.id)
+product_1.product_variants.create(size_id: size_36.id, color_id: red.id)
+product_1.product_variants.create(size_id: size_36.id, color_id: grey.id)
 
 
 zenska_obuca.products   << product_1

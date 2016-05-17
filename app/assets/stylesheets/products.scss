@@ -18,6 +18,7 @@
 
 #size {
 	display: inline-block;
+  margin-right: 8px;
 	> label {
 		display: block;
     font-weight: normal;
@@ -25,6 +26,8 @@
 	}
   > select {
     width: 100px;
+    height: 25px;
+    background-color: transparent;
   }
 }
 
@@ -32,16 +35,33 @@
 	display: inline-block;
   > input {
     width: 55px;
+    height: 25px;
   }
 }
 
 #price {
   margin-left: 30px;
 	display: inline-block;
-  > h5 {
-  }
   >p {
-    margin-top: 16px;
     font-weight: bold;
   }
+}
+
+#color {
+  display: inline-block;
+  margin-right: 8px;
+  > label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 8px;
+  }
+  > select {
+    height: 25px;
+    background-color: transparent;
+  }
+}
+
+#cartitem {
+  background-color: transparent;
+  color: black;
 }
