@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def show
     @product_variant = ProductVariant.find_by(product_id: @product.id)
-    @cart_item = CartItem.new
+    @cart_item = @product_variant.cart_items.build(cart_id: current_cart)
   end
 
   private
