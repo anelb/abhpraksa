@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post   '/sign_in' => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
 
+  post '/cart_item' => 'cart_items#create'
+
   namespace :admin do
     resources :users, only: [ :index ]
     post '/promote' => 'users#promote'

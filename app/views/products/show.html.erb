@@ -11,22 +11,27 @@
       <div id='description'>
         <p><%= @product.description %></p>
       </div>
-      <div>
+      <%= form_for @cart_item, url: { action: 'create', controller: 'cart_items' } do |f| %>
         <div id='size'>
+        <%= hidden_field_tag :cart_id, current_cart %>
+        <%= hidden_field_tag :product_variant, @product_variant.id %>
         <%= fields_for :products do |product| %>
             <%= product.label :velicina, 'Velicina:' %>
             <%= product.collection_select(:size_id, @product.sizes, :id, :product_size) %>
         <% end %>
         </div>
         <div id='quantity'>
-          <h5>Kolicina</h5>
-          <p><%= text_field_tag 'quantity' %></p>
+          <h5>Kolicina:</h5>
+          <%= text_field_tag 'quantity' %>
         </div>
         <div id='price'>
-        <h5>Cijena:</h5>
-        <p><%= @product.price %>KM</p>
+          <h5>Cijena:</h5>
+          <p><%= @product.price %>KM</p>
         </div>
-      </div>
+        <div>
+          <%= f.submit 'DODAJ U KORPU' %>
+        </div> 
+      <% end %>
     </div>
   </div>
   <br>
@@ -42,3 +47,20 @@
     <% end %>
   </div>
 </div>
+
+<!-- <div>
+  <div id='size'>
+  <%= fields_for :products do |product| %>
+      <%= product.label :velicina, 'Velicina:' %>
+      <%= product.collection_select(:size_id, @product.sizes, :id, :product_size) %>
+  <% end %>
+  </div>
+  <div id='quantity'>
+    <h5>Kolicina</h5>
+    <p><%= text_field_tag 'quantity' %></p>
+  </div>
+  <div id='price'>
+  <h5>Cijena:</h5>
+  <p><%= @product.price %>KM</p>
+  </div>
+</div> -->

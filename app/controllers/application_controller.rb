@@ -4,8 +4,36 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user 
+  helper_method :current_cart
 
   def current_user 
     @current_user ||= User.find(session[:user_id]) if session[:user_id] 
   end
+
+  def current_cart
+    if session[:cart_id].nil?
+      @current_cart = Cart.create
+      session[:cart_id] = @current_cart.id
+    elsif current_user
+      @current_cart = Cart.create(user_id: current_user.id)
+      session[:cart_id] = @current_cart.id
+    else
+      @current_cart = Cart.find(session[:cart_id])
+      session[:cart_id] = @current_cart.id
+    end
+  end
+
+  # def current_cart
+  #   if session[:cart_id].nil?
+  #     @current_cart = Cart.create
+  #     session[:cart_id] = @current_cart.id
+  #   elsif current_user
+  #     @current_cart = Cart.create(user_id: current_user)
+  #     session[:cart_id] = @current_cart.id
+  #   else
+  #     session[:cart_id]
+  #   end
+  # end
+
+
 end
