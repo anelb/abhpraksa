@@ -12,11 +12,11 @@
         <p><%= @product.description %></p>
       </div>
       <%= form_for @cart_item, url: { action: 'create', controller: 'cart_items' } do |f| %>
-        
+        <%= f.hidden_field :cart_id, value: current_cart %>
+        <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
         <%= f.fields_for :product_variant do |variant_form| %>
         <div id='size'>
           <%= variant_form.label 'Velicina:' %>
-          <%= variant_form.hidden_field :product_variant_id, value: @product_variant.id %>
           <%= variant_form.collection_select(:size_id, @product.sizes , :id, :product_size ) %>
         <% end %>
         </div>
