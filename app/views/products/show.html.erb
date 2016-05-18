@@ -41,10 +41,11 @@
   <div class='row'>
     <h4 style='text-align: center; margin-top: 30px'>Slicni proizvodi</h4>
     <% Product.all.sample(4).each do |product| %>
-      <div class="col-xs-6 col-md-3">
+      <div class="col-xs-6 col-md-3 similiar-products">
         <a href="#" class="thumbnail">
-          <img src="<%= product.photo_url %>" alt="...">
+          <img src="<%= product.photo_url %>" width='150' height='100'>
           <p><%= product.title %></p>
+          <p><%= product.price %>KM</p>
         </a>
       </div>
     <% end %>

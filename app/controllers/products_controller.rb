@@ -4,8 +4,11 @@ class ProductsController < ApplicationController
 
   def show
     product_variant = ProductVariant.where(product_id: @product)
-    @size = product_variant.map { |x| x.size }
-    @color = product_variant.map { |x| x.color }
+    @size = product_variant.map { |product| product.size }
+    @color = product_variant.map { |product| product.color }
+    puts '###########################'
+    puts @size
+    puts '###########################'
     @cart_item = CartItem.new()
   end
 
