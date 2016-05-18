@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path
+      flash[:success] = "Registration successful, Welcome #{@user.first_name}" 
+      redirect_to '/'
     else
       render 'new'
     end
