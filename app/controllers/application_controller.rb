@@ -10,20 +10,39 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id] 
   end
 
+  # def current_cart
+  #   if session[:cart_id].nil?
+  #     @current_cart = Cart.create
+  #     session[:cart_id] = @current_cart.id
+  #     @current_cart 
+  #   elsif current_user
+  #     @current_cart = Cart.create(user_id: current_user.id)
+  #     session[:cart_id] = @current_cart.id
+  #     @current_cart 
+  #   else
+  #     @current_cart = Cart.find(session[:cart_id])
+  #     session[:cart_id] = @current_cart.id
+  #     @current_cart 
+  #   end
+  # end
+
   def current_cart
-    if session[:cart_id].nil?
-      @current_cart = Cart.create
-      session[:cart_id] = @current_cart.id
-      @current_cart 
-    elsif current_user
-      @current_cart = Cart.create(user_id: current_user.id)
-      session[:cart_id] = @current_cart.id
-      @current_cart 
+    if session[:cart_id]
+      begin
+        @current_cart ||= Cart.find(session[:cart_id])
+      rescue ActiveRecord::RecordNotFound => e
+        create_cart
+      end
     else
-      @current_cart = Cart.find(session[:cart_id])
-      session[:cart_id] = @current_cart.id
-      @current_cart 
+      create_cart
     end
+
+    @current_cart
+  end
+
+  def create_cart
+    @current_cart = Cart.create!
+    session[:cart_id] = @current_cart.id
   end
 
 end
