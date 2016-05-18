@@ -196,6 +196,11 @@ span.glyphicon.glyphicon-chevron-left {
   z-index: 2;
 }
 
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+
 
 
 
