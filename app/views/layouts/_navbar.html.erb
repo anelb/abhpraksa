@@ -17,6 +17,8 @@
           <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#' %>
           <li><%= link_to 'LOG OUT', logout_path, method: 'delete' %></li>
         <% else %>
+          <li><span style='color: white'>Cart:</span> <%= link_to current_cart.cart_items.count, cart_path, :style => 'color: white; display: inline-block;' %>
+          </li>
           <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#' %>
           <li><%= link_to 'LOGIN', sign_in_path %></li>
           <li><%= link_to 'REGISTER', sign_up_path %></li>

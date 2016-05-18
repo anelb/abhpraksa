@@ -65,7 +65,7 @@ green  = Color.create!(product_color: 'Green')
 black  = Color.create!(product_color: 'Black')
 red    = Color.create!(product_color: 'Red')
 yellow = Color.create!(product_color: 'Yellow')
-grey = Color.create!(product_color: 'Grey')
+grey   = Color.create!(product_color: 'Grey')
 
 size_35 = Size.create!(product_size: '35')
 size_36 = Size.create!(product_size: '36')
@@ -76,10 +76,6 @@ size_39 = Size.create!(product_size: '39')
 product_1.product_variants.create(size_id: size_35.id, color_id: green.id)
 product_1.product_variants.create(size_id: size_35.id, color_id: black.id)
 product_1.product_variants.create(size_id: size_35.id, color_id: yellow.id)
-
-product_1.product_variants.create(size_id: size_36.id, color_id: yellow.id)
-product_1.product_variants.create(size_id: size_36.id, color_id: red.id)
-product_1.product_variants.create(size_id: size_36.id, color_id: grey.id)
 
 
 zenska_obuca.products   << product_1

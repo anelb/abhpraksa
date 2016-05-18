@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   post '/cart_item' => 'cart_items#create'
 
+  get  '/cart'      => 'carts#show'
+
   namespace :admin do
     resources :users, only: [ :index ]
     post '/promote' => 'users#promote'

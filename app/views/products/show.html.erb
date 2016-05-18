@@ -13,21 +13,20 @@
       </div>
       <div>
         <%= form_for @cart_item, url: { action: 'create', controller: 'cart_items' } do |f| %>
-          <%= f.hidden_field :cart_id, value: current_cart %>
-          <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
-          <%= f.fields_for :product_variant do |variant_form| %>
+          <%= f.hidden_field :cart_id, value: current_cart.id %>
+          <%= fields_for :product_variant do |variant| %>
             <div id='size'>
-              <%= variant_form.label 'Velicina:' %>
-              <%= variant_form.collection_select(:size_id, @product.sizes.uniq , :id, :product_size ) %>
-            </div>  
+              <%= variant.label 'Velicina' %>
+              <%= variant.collection_select(:size_id, @size.uniq , :id, :product_size ) %>
+            </div>
             <div id='color'>
-              <%= variant_form.label 'Boja:' %>
-              <%= variant_form.collection_select(:color_id, @product.colors.uniq , :id, :product_color ) %>
+              <%= variant.label 'Boja' %>
+              <%= variant.collection_select(:color_id, @color.uniq , :id, :product_color ) %>
             </div>
           <% end %>
           <div id='quantity'>
             <h5>Kolicina:</h5>
-            <%= number_field_tag 'quantity', '', class: 'form-group' %>
+            <%= f.text_field :quantity,  class: 'form-group' %>
           </div>
           <div id='price'>
             <h5>Cijena:</h5>
@@ -51,3 +50,5 @@
     <% end %>
   </div>
 </div>
+
+
