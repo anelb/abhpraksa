@@ -20,10 +20,14 @@
           </li>
           <li><%= link_to 'LOG OUT', logout_path, method: 'delete' %></li>
         <% else %>
+          <% if current_cart.cart_items.empty? %>
+            <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', class: 'not-active' %></li>
+          <% else %> 
           <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'>
             <span class='number-notification'>#{current_cart.cart_items.count}</span>
             </span>".html_safe, cart_path %>
           </li>
+          <% end %>
           <li><%= link_to 'LOGIN', sign_in_path %></li>
           <li><%= link_to 'REGISTER', sign_up_path %></li>
         <% end %>
