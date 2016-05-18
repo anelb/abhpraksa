@@ -5,10 +5,19 @@
 .thumbnail {
   border: 0px;
   margin: 30px;
-  height: 100px;
-  width: 200px;
-  > img {
-    max-height: 75%;
-    max-width: 75%;
-  }
+  color: black;
+}
+
+.thumbnail .caption {
+	padding: 10px 0px 0px 0px;
+}
+
+.caption {
+	> a {
+	color: black;
+	font-size: 13px;
+	}
+	> p {
+		font-size: 15px;
+	}
 }

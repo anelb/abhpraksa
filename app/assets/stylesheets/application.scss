@@ -91,7 +91,7 @@ body {
 }
 
 .glyphicon {
-    font-size: 15px;
+    font-size: 20px;
 }
 .list-group {
   font-size: 15px;
@@ -172,6 +172,19 @@ span.glyphicon.glyphicon-chevron-left {
   font-size: 14px;
 }
 
+.number-notification {
+    position:absolute;
+    top: -7px;
+    right:-6px;
+    padding: 3px 3px 2px 3px;
+    background-color:red;
+    color:white;
+    font-family: arial;
+    font-weight:bold;
+    font-size: 10px;
+    border-radius: 4px;
+    box-shadow:1px 1px 1px silver;
+}
 
 
 
