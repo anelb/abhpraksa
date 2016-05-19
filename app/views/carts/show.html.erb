@@ -1,35 +1,84 @@
-<div class='row' style='margin-bottom: 30px'>
-  <h3 style='margin-left: 30px'>Vasa korpa</h3>
-</div>  
-<% @cart.each do |cart_item| %>
-<div class='row'> 
-  <div class='col-md-8 cart-image'>
-    <div id='cart-picture' class='col-md-3'>
-      <img src="<%= cart_item.product_variant.product.photo_url %>" width='150' height='auto'>
+  <div class='col-md-8'>  
+    <div class='row' style='margin-bottom: 30px'>
+      <h3 style='margin-left: 30px'>Vasa korpa</h3>
     </div>
-    <div id='product-details' class='col-md-6 cart-details'>
-      <p>Model: <%= cart_item.product_variant.product.brand.title %></p>
-      <p>Velicina: <%= cart_item.product_variant.color.product_color %></p>
-      <p>Boja: <%= cart_item.product_variant.color.product_color %></p>
-      <p>ID: <%= cart_item.product_variant.product.id %></p>
-    </div>
-    <div id='cart-info' class='col-md-3'>
-      <div class="row">
-        <div class='pull-right'>
-          <p style='margin-bottom: 0px'>Cijena:</p>
-          <p><strong><%= cart_item.product_variant.product.price %>KM</strong></p>
+    <% @cart.each do |cart_item| %>
+    <div class='row'> 
+      <div class='col-md-12 space'>
+        <%= link_to "<span id='remove-item' class='glyphicon glyphicon-remove'></span>"
+          .html_safe, delete_cart_item_path(cart_item.id),  method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div id='cart-picture' class='col-md-3'>
+          <img src="<%= cart_item.product_variant.product.photo_url %>" width='150' height='auto'>
+        </div>
+        <div id='product-details' class='col-md-6 cart-details'>
+          <p>Model: <%= cart_item.product_variant.product.brand.title %></p>
+          <p>Velicina: <%= cart_item.product_variant.size.product_size %></p>
+          <p>Boja: <%= cart_item.product_variant.color.product_color %></p>
+          <p>ID: <%= cart_item.product_variant.product.id %></p>
+        </div>
+        <div id='cart-info' class='col-md-3'>
+          <div class="row">
+            <div class='pull-right'>
+              <p style='margin-bottom: 0px'>Cijena:</p>
+              <p><strong><%= cart_item.product_variant.product.price %>KM</strong></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class='pull-right'>
+              <p style='display: inline-block'>Kolicina:</p>
+              <div id='quantity-cart'>
+                <p><%= cart_item.quantity %></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class='pull-right'>
-          <p style='display: inline-block'>Kolicina</p>
-          <%= text_field_tag :qunatity %>
-        </div>
-      </div>
     </div>
+    <% end %>
   </div>
-  <div class='col-md-4'>
+  <div id='order' class='col-md-4'>
+
+      
+        <div class='col-md-10 pull-right' style='margin: 20px 0px; padding: 0px'>
+
+          <ul class="list-inline">
+            <li style='margin-right: 75px'>KORPA</li>
+            <li>DOSTAVA</li>
+            <li class='pull-right'>PLACANJE</li>
+          </ul>
+        </div>
+        <div class='col-md-10 pull-right' style='border: 1px solid #ECDCDC; padding: 0px'>
+          <div style='margin: 15px; padding-bottom: 15px; border-bottom: 1px solid #ECDCDC'>
+            <div class='row'>
+              <div class='col-md-7 pull-left' style='padding: 0px; margin-bottom: 21px'>
+                <p>Narudzba <span style='color: #BB9E9E; margin-left: 10px'><%= current_cart.how_many_orders %> proizvoda</span></p>
+              </div>
+            </div>
+          
+            <div class='row'>
+              <div class='col-md-5 pull-right' style='text-align: right; padding: 0px'>
+                <p>Cijena:</p>
+                <p><strong><%= current_cart.total %>KM</strong></p>
+              </div>
+            </div>
+            <br>
+            <div class='row'>
+              <div class='col-md-5 pull-right' style='text-align: right; padding: 0px'>
+                <p>Dostava:</p>
+                <p><strong><%= current_cart.delivery_cost %>KM</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-6 pull-right' style='text-align: right; margin-bottom: 15px'>
+              <p>Ukupno: <strong><%= current_cart.total + current_cart.delivery_cost %>KM</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class='pull-right' style='margin-top: 15px'>
+          <%= link_to 'Odustani', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',  
+                                                                            data: { confirm: 'Are you sure?' } %>                                                                  
+
+          <button class='btn btn-primary'>Nastavi</button>
+        </div>
   </div>
-</div>
-<hr>
-<% end %> 
