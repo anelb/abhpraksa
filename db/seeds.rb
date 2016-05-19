@@ -73,9 +73,15 @@ size_37 = Size.create!(product_size: '37')
 size_38 = Size.create!(product_size: '38')
 size_39 = Size.create!(product_size: '39')
 
-product_1.product_variants.create(size_id: size_35.id, color_id: green.id)
-product_1.product_variants.create(size_id: size_35.id, color_id: black.id)
-product_1.product_variants.create(size_id: size_35.id, color_id: yellow.id)
+#Green color and Size 35, 3 product variant
+3.times do 
+	product_1.product_variants.create(size_id: size_35.id, color_id: green.id)
+end
+
+#Block color and Size 35, 5 product variant
+5.times do
+	product_1.product_variants.create(size_id: size_35.id, color_id: black.id)
+end
 
 
 zenska_obuca.products   << product_1

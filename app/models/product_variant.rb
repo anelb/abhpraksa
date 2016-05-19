@@ -6,4 +6,8 @@ class ProductVariant < ActiveRecord::Base
 
   has_many :cart_items
 
+  def self.check_quantity(product_variant) 
+  	self.where(size_id: product_variant.size_id, color_id: product_variant.size_id )
+  end
+
 end
