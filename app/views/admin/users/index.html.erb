@@ -3,7 +3,7 @@
   <li class="list-group-item" id='user'>Admins</li>
   <% @users.each do |user| %>
   <% if user.role == 'admin' %>
-      <li class="list-group-item clearfix"><%= user.first_name.capitalize%>
+      <li class="list-group-item clearfix">
         <span><%= user.first_name.capitalize%></span><span> (<%= user.email %>)</span>
         <span class='pull-right'>
           <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
@@ -23,7 +23,7 @@
   <% @users.each do |user| %>
   <% if user.role == 'basic' %>
       <li class="list-group-item clearfix">
-        <span><%= user.first_name.capitalize%></span><span>(<%= user.email %>)</span>
+        <span><%= user.first_name.capitalize%></span><span> (<%= user.email %>)</span>
         <span class='pull-right'>
           <%= form_tag(controller: 'users', action: 'promote', method: "post") do %>
             <%= hidden_field_tag :user_id, user.id %>
