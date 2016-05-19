@@ -1,3 +1,29 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#qunatity {
+  width: 30px;
+  height: 20px;
+  margin-left: 10px;
+  text-align: center;
+}
+p {
+  font-size: 13px;
+}
+
+#cart-picture {
+  margin-top: 20px;
+}
+
+#cart-info {
+  margin-top: 20px;
+}
+
+#product-details {
+  padding-left: 50px;
+}
+
+hr {
+  width: 185px;
+}
