@@ -21,12 +21,12 @@ class CartItemsController < ApplicationController
     product = cart_item.product_variant.product
     CartItem.find(params[:cart_item_id]).destroy
     if current_cart.cart_items.empty?
+      flash[:info] = "Your cart is now empty"
       redirect_to category_product_path(product.categories.first.id, product.id )
     else
+      flash[:info] = 'Product removed from cart'
       redirect_to cart_path
     end
-    flash[:info] = 'Product removed from cart'
-    
   end
 
   private
