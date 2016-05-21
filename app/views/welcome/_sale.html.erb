@@ -8,13 +8,11 @@
         <div class="item active">
           <% @products.each do |product| %>
             <div class="col-sm-6 col-md-3">
-              <div class="thumbnail">
-                <img src="<%= product.photo_url %>" alt="...">
-                <div class="caption">
-                  <%= link_to product.title, category_product_path(product.categories.first.id, product.id) %>
-                  <p><%= product.price %>KM</p>
-                </div>
-              </div>
+              <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
+                <img src="<%= product.photo_url %>" class="img-responsive">
+                <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'><%= product.title %></p> 
+                <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -24,13 +22,11 @@
             <div class="item active">
               <% slice.each do |product| %>
                 <div class="col-sm-6 col-md-3">
-                  <div class="thumbnail">
+                  <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
                     <img src="<%= product.photo_url %>" class="img-responsive">
-                    <div class="caption">
-                      <%= link_to product.title, category_product_path(product.categories.first.id, product.id) %>
-                      <p><%= product.price %>KM</p>
-                    </div>
-                  </div>
+                    <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'><%= product.title %></p> 
+                    <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+                  <% end %>
                 </div>
               <% end %>
             </div>
@@ -38,13 +34,11 @@
             <div class="item">
               <% slice.each do |product| %>
                   <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail">
+                    <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
                       <img src="<%= product.photo_url %>" class="img-responsive">
-                      <div class="caption">
-                        <%= link_to product.title, '#' %>
-                        <p><%= product.price %>KM</p>
-                      </div>
-                    </div>
+                      <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'><%= product.title %></p> 
+                      <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+                    <% end %>
                   </div>
               <% end %>
             </div>  

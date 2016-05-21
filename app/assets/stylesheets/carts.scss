@@ -60,8 +60,23 @@ hr {
 
 #remove-item {
 	position: absolute;
+	right: 720px;
 	font-size: 12px;
 	color: #A5A0A0;
 }
+
+#discard {
+	border-color: #888888;
+	background-color: white;
+	color: #606060;
+	padding: 5px 20px;
+}
+
+#checkout {
+	padding: 5px 25px;
+	color: white;
+	background-color: #606060;
+}
+
 
 

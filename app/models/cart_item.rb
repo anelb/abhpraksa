@@ -16,4 +16,5 @@ class CartItem < ActiveRecord::Base
         errors.add(:quantity, "has to be less then #{product_variant_qunatity}") 
     end
   end
+
 end

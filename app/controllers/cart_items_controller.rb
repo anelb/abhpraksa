@@ -6,8 +6,9 @@ class CartItemsController < ApplicationController
                                               color_id: params[:product_variant][:color_id])
     @product = @product_variant.product
 
-    @cart_item = @product_variant.cart_items.build(cart_items_params)
-
+    @cart_item = current_cart.new_item(product_variant: @product_variant, 
+                                       params: cart_items_params)
+    #byebug
     if @cart_item.save
       flash[:info] = 'Item added to basket'
     else

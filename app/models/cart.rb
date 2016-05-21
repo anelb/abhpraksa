@@ -22,4 +22,17 @@ class Cart < ActiveRecord::Base
   	end
   	return orders.inject(:+)
   end
+
+  def new_item(option = {})
+    current_item = cart_items.find_by(product_variant_id: option[:product_variant].id)
+
+    if !current_item
+      current_item = option[:product_variant].cart_items.build(option[:params])
+    else
+      option[:params][:quantity].empty? ? current_item.quantity = nil : current_item.quantity += option[:params][:quantity].to_i
+      #byebug
+    end
+    current_item
+  end
+  
 end

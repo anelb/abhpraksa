@@ -18,6 +18,7 @@
 @import 'carts';
 
 
+
 body {
   font-family: Lato;
   font-size: 11px;
@@ -200,6 +201,11 @@ span.glyphicon.glyphicon-chevron-left {
 .not-active {
    pointer-events: none;
    cursor: default;
+}
+
+a.thumbnail {
+  text-decoration: none;
+  outline: none;
 }
 
 

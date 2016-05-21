@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   delete '/logout'            => 'sessions#destroy'
 
   post '/cart_item' => 'cart_items#create'
-  delete '/:cart_item_id' => 'cart_items#destroy', as: :delete_cart_item
+  delete '/cart_item/:cart_item_id' => 'cart_items#destroy', as: :delete_cart_item
 
   get '/cart' => 'carts#show'
-  delete '/:cart_id' => 'carts#destroy', as: :delete_cart
+  delete '/cart/:cart_id' => 'carts#destroy', as: :delete_cart
 
 
   namespace :admin do

@@ -5,7 +5,7 @@ class CartsController < ApplicationController
 
   def destroy
   	Cart.find(params[:cart_id]).destroy
-  	flash[:danger] = 'Your cart is now empty'
+  	flash[:success] = 'Your cart is now empty'
   	redirect_to root_path
   end
 end
