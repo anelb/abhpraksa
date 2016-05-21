@@ -13,10 +13,10 @@ Brand.create(title: 'Nike')
 Brand.create(title: 'Adidas')
 
 
-zenska_obuca   = Category.create!(title: 'ZENSKA OBUCA')
-muska_obuca    = Category.create!(title: 'MUSKA OBUCA')
-djecija_obuca  = Category.create!(title: 'DJECIJA OBUCA')
-sportska_obuca = Category.create!(title: 'SPORTSKA OBUCA')
+zenska_obuca   = Category.create!(title: 'ŽENSKA OBUĆA')
+muska_obuca    = Category.create!(title: 'MUŠKA OBUĆA')
+djecija_obuca  = Category.create!(title: 'DJEČIJA OBUĆA')
+sportska_obuca = Category.create!(title: 'SPORTSKA OBUĆA')
 dodaci         = Category.create!(title: 'DODACI')
 
 product_1 = Product.create!(title: 'CONS Sumner ', brand_id: 1, price: 70, style: 'casual', 

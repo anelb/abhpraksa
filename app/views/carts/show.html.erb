@@ -1,6 +1,6 @@
   <div class='col-md-8'>  
     <div class='row' style='margin-bottom: 30px'>
-      <h3 style='margin-left: 30px'>Vasa korpa</h3>
+      <h3 style='margin-left: 30px'>Vaša korpa</h3>
     </div>
     <% @cart.each do |cart_item| %>
     <div class='row'> 
@@ -12,7 +12,7 @@
         </div>
         <div id='product-details' class='col-md-6 cart-details'>
           <p>Model: <%= cart_item.product_variant.product.brand.title %></p>
-          <p>Velicina: <%= cart_item.product_variant.size.product_size %></p>
+          <p>Veličina: <%= cart_item.product_variant.size.product_size %></p>
           <p>Boja: <%= cart_item.product_variant.color.product_color %></p>
           <p>ID: <%= cart_item.product_variant.id %></p>
         </div>
@@ -41,7 +41,7 @@
       <ul class="list-inline">
         <li style='margin-right: 75px'>KORPA</li>
         <li>DOSTAVA</li>
-        <li class='pull-right'>PLACANJE</li>
+        <li class='pull-right'>PLAĆANJE</li>
       </ul>
     </div>
     <div class='col-md-10 pull-right' style='border: 1px solid #ECDCDC; padding: 0px'>

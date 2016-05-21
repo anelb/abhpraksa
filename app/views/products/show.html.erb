@@ -16,7 +16,7 @@
           <%= f.hidden_field :cart_id, value: current_cart.id %>
           <%= fields_for :product_variant do |variant| %>
             <div id='size'>
-              <%= variant.label 'Velicina' %>
+              <%= variant.label 'Veličina' %>
               <%= variant.collection_select(:size_id, @size.uniq , :id, :product_size ) %>
             </div>
             <div id='color'>
@@ -25,7 +25,7 @@
             </div>
           <% end %>
           <div id='quantity'>
-            <h5>Kolicina:</h5>
+            <h5>Količina:</h5>
             <%= f.text_field :quantity,  class: 'form-group' %>
           </div>
           <div id='price'>
@@ -39,7 +39,7 @@
   </div>
   <br>
   <div class='row'>
-    <h4 style='text-align: center; margin: 30px 0px 50px 0px'>Slicni proizvodi</h4>
+    <h4 style='text-align: center; margin: 30px 0px 50px 0px'>Slični proizvodi</h4>
     <% Product.all.sample(4).each do |product| %>
       <div class="col-xs-6 col-md-3">
         <a href="#" class="thumbnail similar">
