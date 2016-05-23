@@ -10,18 +10,26 @@ Rails.application.routes.draw do
     resources :products, only:[ :show]
   end
 
-  get  '/sign_up' => 'users#new'
-  post '/sign_up' => 'users#create'
+  get    '/sign_up'           => 'users#new'
+  post   '/sign_up'           => 'users#create'
 
-  get    '/sign_in' => 'sessions#new'
-  post   '/sign_in' => 'sessions#create'
-  delete '/logout'  => 'sessions#destroy'
+  get    '/sign_in'           => 'sessions#new'
+  post   '/sign_in'           => 'sessions#create'
+  delete '/logout'            => 'sessions#destroy'
+
+  post '/cart_item' => 'cart_items#create'
+  delete '/cart_item/:cart_item_id' => 'cart_items#destroy', as: :delete_cart_item
+
+  get '/cart' => 'carts#show'
+  delete '/cart/:cart_id' => 'carts#destroy', as: :delete_cart
+
 
   namespace :admin do
     resources :users, only: [ :index ]
     post '/promote' => 'users#promote'
     post '/demote'  => 'users#demote'
   end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

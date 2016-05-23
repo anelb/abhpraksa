@@ -1,0 +1,82 @@
+// Place all the styles related to the Carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+p {
+  font-size: 13px;
+}
+
+#cart-picture {
+  margin-top: 20px;
+}
+
+#cart-info {
+  margin-top: 20px;
+}
+
+#product-details {
+  padding-left: 50px;
+}
+
+hr {
+  width: 185px;
+}
+
+#quantity-cart {
+	border: 1px solid #ECDCDC;
+	border-radius: 2px;
+	display: inline-block;
+	margin-left: 10px;
+	> p {
+		font-size: 12px;
+		margin: 0px;
+		padding: 0px 13px;
+
+	}
+}
+
+
+#order .row {
+	margin: 0px;
+}
+
+#order p {
+	margin-bottom: 0px;
+}
+
+.space {
+	padding-bottom: 15px; 
+	border-bottom: 1px solid #ECDCDC; 
+	margin-bottom: 20px
+}
+
+.list-inline {
+	margin: 0px;
+	> li {
+	font-size: 11px;
+	padding: 0px
+	}
+}
+
+#remove-item {
+	position: absolute;
+	right: 720px;
+	font-size: 12px;
+	color: #A5A0A0;
+}
+
+#discard {
+	border-color: #888888;
+	background-color: white;
+	color: #606060;
+	padding: 5px 20px;
+}
+
+#checkout {
+	padding: 5px 25px;
+	color: white;
+	background-color: #606060;
+}
+
+
+

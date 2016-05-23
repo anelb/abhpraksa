@@ -1,28 +1,43 @@
 <nav class="navbar navbar-regular">
   <div class="container">
-    <div class="navbar-header">
-      <%= link_to 'abhShoes', root_path, class: "navbar-brand" %>
-    </div>
-    <div class='collapse navbar-collapse'>
-      <ul class="nav navbar-nav navbar-midle">
-        <% Category.all.each do |category| %>
-          <li><%= link_to category.title, '#' %></li>
-        <% end %>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
-          <% if current_user.role == 'admin' %>
-            <li><%= link_to 'ADMIN', admin_users_path %>
-          <% end %>
-          <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#' %>
-          <li><%= link_to 'LOG OUT', logout_path, method: 'delete' %></li>
-        <% else %>
-          <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#' %>
-          <li><%= link_to 'LOGIN', sign_in_path %></li>
-          <li><%= link_to 'REGISTER', sign_up_path %></li>
-        <% end %>
-      </ul>
-    </div>
+        <div class="navbar-header">
+          <%= link_to 'abhShoes', root_path, class: "navbar-brand" %>
+        </div>
+
+        <div class='collapse navbar-collapse'>
+          <ul class="nav navbar-nav navbar-midle">
+            <% Category.all.each do |category| %>
+              <li><%= link_to category.title, '#' %></li>
+            <% end %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <% if current_user.role == 'admin' %>
+                <li><%= link_to 'ADMIN', admin_users_path %>
+              <% end %>
+              <% if current_cart.cart_items.empty? %>
+                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', class: 'not-active' %></li>
+              <% else %> 
+                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'>
+                  <span class='number-notification'>#{current_cart.cart_items.count}</span>
+                  </span>".html_safe, cart_path %>
+                </li>
+              <% end %>
+              <li><%= link_to 'LOG OUT', logout_path, method: 'delete' %></li>
+            <% else %>
+              <% if current_cart.cart_items.empty? %>
+                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', class: 'not-active' %></li>
+              <% else %> 
+              <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'>
+                <span class='number-notification'>#{current_cart.cart_items.count}</span>
+                </span>".html_safe, cart_path %>
+              </li>
+              <% end %>
+              <li><%= link_to 'LOGIN', sign_in_path %></li>
+              <li><%= link_to 'REGISTER', sign_up_path %></li>
+            <% end %>
+          </ul>
+        </div>
   </div>
 </nav>
 
