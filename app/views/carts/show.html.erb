@@ -75,6 +75,6 @@
       <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',
                                                                         id: 'discard',
                                                                         data: { confirm: 'Are you sure?' } %> 
-      <%= link_to 'NASTAVI', '#', class: 'btn btn-primary', id: 'checkout' %>
+      <%= link_to 'NASTAVI', new_order_path, class: 'btn btn-primary', id: 'checkout' %>
     </div>
   </div>
