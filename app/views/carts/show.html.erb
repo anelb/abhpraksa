@@ -74,7 +74,17 @@
     <div class='pull-right' style='margin-top: 15px'>
       <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',
                                                                         id: 'discard',
-                                                                        data: { confirm: 'Are you sure?' } %> 
-      <%= link_to 'NASTAVI', new_order_path, class: 'btn btn-primary', id: 'checkout' %>
+                                                                     data: { confirm: 'Are you sure?' } %>                                                        
+        <%= form_for @order, url: { action: 'create', controller: 'orders' } do %>
+          <script 
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-label="KUPI"
+            data-key="pk_test_AZebgrq7WPJ7q57V3qV85edz"
+            data-description="A month's subscription"
+            data-amount="500"
+            data-locale="auto"
+            data-shipping-address='true'>
+          </script>
+        <% end %>
     </div>
   </div>

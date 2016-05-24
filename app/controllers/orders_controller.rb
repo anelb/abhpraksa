@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    
+
     @amount = current_cart.total + current_cart.delivery_cost
 
     Stripe.api_key = 'sk_test_16AbhCb7Wn82EeAkxBYXBF5l'
