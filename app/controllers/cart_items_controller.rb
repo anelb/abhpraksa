@@ -8,7 +8,7 @@ class CartItemsController < ApplicationController
 
     @cart_item = current_cart.new_item(product_variant: @product_variant, 
                                        params: cart_items_params)
-    #byebug
+   
     if @cart_item.save
       flash[:info] = 'Item added to basket'
     else
