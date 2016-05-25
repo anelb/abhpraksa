@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-	belongs_to :order
+	has_one :order
   belongs_to :user
   has_many :cart_items, dependent: :destroy
 
@@ -21,6 +21,10 @@ class Cart < ActiveRecord::Base
   		orders << item.quantity
   	end
   	return orders.inject(:+)
+  end
+
+  def total_with_delivery
+    total + delivery_cost
   end
 
   def new_item(option = {})
