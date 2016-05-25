@@ -58,13 +58,13 @@ ActiveRecord::Schema.define(version: 20160524210344) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "stripeShippingAddressLine1"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "cart_id"
-    t.integer  'stripeShippingAddressZip'
-    t.string   'stripeShippingAddressCity'
-    t.string   'stripeShippingAddressCountry'                               
-    t.integer  'stripeShippingAddressCountryCode'
+    t.integer  "stripeShippingAddressZip"
+    t.string   "stripeShippingAddressCity"
+    t.string   "stripeShippingAddressCountry"
+    t.integer  "stripeShippingAddressCountryCode"
   end
 
   create_table "product_variants", force: :cascade do |t|
