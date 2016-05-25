@@ -23,7 +23,10 @@ Rails.application.routes.draw do
   get '/cart' => 'carts#show'
   delete '/cart/:cart_id' => 'carts#destroy', as: :delete_cart
 
-  resources :orders
+  # resources :cart_items
+  # resources :carts
+  
+  resources :orders, only: [:create]
 
   namespace :admin do
     resources :users, only: [ :index ]

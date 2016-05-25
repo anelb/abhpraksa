@@ -75,7 +75,7 @@
           <script 
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-label="KUPI"
-            data-key="pk_test_AZebgrq7WPJ7q57V3qV85edz"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
             data-description="A month's subscription"
             data-amount="<%= current_cart.total_with_delivery * 100 %>"
             data-locale="auto"

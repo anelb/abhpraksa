@@ -8,9 +8,7 @@ class OrdersController < ApplicationController
   def create
 
     @order = current_cart.build_order(order_params)
-
-    Stripe.api_key = 'sk_test_16AbhCb7Wn82EeAkxBYXBF5l'
-
+    
     customer = Stripe::Customer.create(
       :email           => params[:stripeEmail],
       :source          => params[:stripeToken]
@@ -24,7 +22,8 @@ class OrdersController < ApplicationController
         :currency    => 'usd'
       )
       if @order.save
-        current_cart.destroy
+        current_cart.remove_product_variant
+        session[:cart_id] = nil
         flash[:success] = 'Thanks for ordering!'
         redirect_to root_path
       end
