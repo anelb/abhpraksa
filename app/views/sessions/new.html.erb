@@ -13,6 +13,10 @@
             <%= f.password_field :password, class: 'form-control' %>
           </div>
         </div>
+        <%= f.label :remember_me do %>
+          <%= f.check_box :remember_me %>
+          <span style='margin-bottom: 5px'>Remember me</span>
+        <% end %>
         <div class='pull-right form-button-margin'>
           <%= f.submit 'LOG IN', class: 'btn btn-default' %>
         </div> 
