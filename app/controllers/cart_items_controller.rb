@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
     if @cart_item.save
       flash[:info] = 'Item added to basket'
     else
-      flash[:danger] = @cart_item.errors.full_messages.first
+      flash[:warning] = @cart_item.errors.full_messages.first
     end
     redirect_to category_product_path(@category, @product)
   end
