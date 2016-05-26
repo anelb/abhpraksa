@@ -40,8 +40,6 @@
     <div class='col-md-10 pull-right' style='margin: 20px 0px; padding: 0px'>
       <ul class="list-inline">
         <li style='margin-right: 75px'>KORPA</li>
-        <li>DOSTAVA</li>
-        <li class='pull-right'>PLAĆANJE</li>
       </ul>
     </div>
     <div class='col-md-10 pull-right' style='border: 1px solid #ECDCDC; padding: 0px'>
@@ -67,14 +65,25 @@
       </div>
       <div class='row'>
         <div class='col-md-6 pull-right' style='text-align: right; margin-bottom: 15px'>
-          <p>Ukupno: <strong><%= current_cart.total + current_cart.delivery_cost %>KM</strong></p>
+          <p>Ukupno: <strong><%= current_cart.total_with_delivery %>KM</strong></p>
         </div>
       </div>
     </div>
     <div class='pull-right' style='margin-top: 15px'>
-      <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',
+                                                            
+        <%= form_for @order, url: { action: 'create', controller: 'orders' } do %>
+          <script 
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-label="KUPI"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="A month's subscription"
+            data-amount="<%= current_cart.total_with_delivery * 100 %>"
+            data-locale="auto"
+            data-shipping-address='true'>
+          </script>
+        <% end %>
+        <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',
                                                                         id: 'discard',
-                                                                        data: { confirm: 'Are you sure?' } %> 
-      <%= link_to 'NASTAVI', '#', class: 'btn btn-primary', id: 'checkout' %>
+                                                                     data: { confirm: 'Are you sure?' } %>  
     </div>
   </div>

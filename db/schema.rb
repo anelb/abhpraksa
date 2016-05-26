@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506085242) do
+ActiveRecord::Schema.define(version: 20160526052534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20160506085242) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string   "stripeShippingAddressLine1"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "cart_id"
+    t.integer  "stripeShippingAddressZip"
+    t.string   "stripeShippingAddressCity"
+    t.string   "stripeShippingAddressCountry"
+    t.integer  "stripeShippingAddressCountryCode"
+  end
+
   create_table "product_variants", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "size_id"
@@ -75,11 +86,6 @@ ActiveRecord::Schema.define(version: 20160506085242) do
     t.text     "photo_url"
   end
 
-  create_table "shoes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "sizes", force: :cascade do |t|
     t.integer  "product_size"
     t.datetime "created_at",   null: false
@@ -94,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160506085242) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "role",            default: "basic"
+    t.string   "remember_digest"
   end
 
   add_foreign_key "categories_products", "categories"

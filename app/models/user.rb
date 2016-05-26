@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  attr_accessor :remember_token
+
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
   validates :first_name, :last_name, length: {maximum: 50}
@@ -13,4 +15,28 @@ class User < ActiveRecord::Base
   has_one :cart
   has_secure_password
 
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+    BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  def authenticated?(attribute, token)
+    digest = self.send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
 end

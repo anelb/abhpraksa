@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-	
+	has_one :order
   belongs_to :user
   has_many :cart_items, dependent: :destroy
 
@@ -23,6 +23,10 @@ class Cart < ActiveRecord::Base
   	return orders.inject(:+)
   end
 
+  def total_with_delivery
+    total + delivery_cost
+  end
+
   def new_item(option = {})
     current_item = cart_items.find_by(product_variant_id: option[:product_variant].id)
 
@@ -30,9 +34,17 @@ class Cart < ActiveRecord::Base
       current_item = option[:product_variant].cart_items.build(option[:params])
     else
       option[:params][:quantity].empty? ? current_item.quantity = nil : current_item.quantity += option[:params][:quantity].to_i
-      #byebug
     end
     current_item
   end
   
+  def remove_product_variant
+    cart_items.each do |item|
+      item.quantity.times do
+      ProductVariant.where(size_id: item.product_variant.size_id, 
+                           color_id: item.product_variant.color_id, 
+                           product_id: item.product_variant.product_id).destroy_all
+      end
+    end
+  end
 end
