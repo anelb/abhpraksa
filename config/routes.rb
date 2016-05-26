@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create]
 
   namespace :admin do
+    get 'dashboard' => 'dashboard#show'
     resources :users, only: [ :index ]
     post '/promote' => 'users#promote'
     post '/demote'  => 'users#demote'
