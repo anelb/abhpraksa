@@ -29,7 +29,6 @@ class Cart < ActiveRecord::Base
 
   def new_item(option = {})
     current_item = cart_items.find_by(product_variant_id: option[:product_variant].id)
-
     if !current_item
       current_item = option[:product_variant].cart_items.build(option[:params])
     else

@@ -65,28 +65,28 @@ size_37 = Size.create!(product_size: '37')
 size_38 = Size.create!(product_size: '38')
 size_39 = Size.create!(product_size: '39')
 
-#Green color and Size 35, 3 product variant
-3.times do 
-	product_1.product_variants.create(size_id: size_35.id, color_id: green.id)
+products = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
+categories = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
+
+products.each do |product|
+  categories.sample.products << product
+  15.times do
+    product.product_variants.create(size_id: size_35.id, color_id: green.id)
+    product.product_variants.create(size_id: size_35.id, color_id: black.id)
+  end
 end
 
-#Block color and Size 35, 5 product variant
-5.times do
-	product_1.product_variants.create(size_id: size_35.id, color_id: black.id)
-end
+# products = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
+# colors = [ green, black, red, yellow, grey ]
+# sizes = [ size_35, size_36, size_37, size_38, size_39]
+# categories = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
 
 
-zenska_obuca.products   << product_1
-zenska_obuca.products   << product_2
 
-muska_obuca.products    << product_3
-muska_obuca.products    << product_4
-
-sportska_obuca.products << product_4
-sportska_obuca.products << product_5
-
-zenska_obuca.products   << product_6
-zenska_obuca.products   << product_7
-
-muska_obuca.products    << product_8
+# products.each do |product|
+#   categories.sample.products << product
+#   colors.length.times do |num|
+#     product.product_variants.create(size_id: sizes[num].id, color_id: colors[num].id)
+#   end
+# end
 
