@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+ 
   
   resources :categories, only: [:show] do
     resources :products, only:[ :show]
@@ -30,10 +30,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :category
     get 'dashboard' => 'dashboard#show'
     post '/promote' => 'users#promote'
     post '/demote'  => 'users#demote'
   end
+  
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

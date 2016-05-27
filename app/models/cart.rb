@@ -40,9 +40,13 @@ class Cart < ActiveRecord::Base
   def remove_product_variant
     cart_items.each do |item|
       item.quantity.times do
-      ProductVariant.where(size_id: item.product_variant.size_id, 
-                           color_id: item.product_variant.color_id, 
-                           product_id: item.product_variant.product_id).destroy_all
+      ProductVariant.find_by(size_id: item.product_variant.size_id, 
+                             color_id: item.product_variant.color_id, 
+                             product_id: item.product_variant.product_id).destroy
+      end
+      product = Product.find(item.product_variant.product_id)
+      if product.product_variants.blank?
+        Product.find(product.id).destroy
       end
     end
   end
