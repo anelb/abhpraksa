@@ -21,17 +21,15 @@ class OrdersController < ApplicationController
         :description => 'AbhShop Customer',
         :currency    => 'usd'
       )
-      if @order.save
-        current_cart.remove_product_variant
-        session[:cart_id] = nil
-        flash[:success] = 'Thanks for ordering!'
-        redirect_to root_path
-      end
+      @order.save
+      current_cart.remove_product_variant
+      session[:cart_id] = nil
+      flash[:success] = 'Thanks for ordering!'
+      redirect_to root_path
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
     end
-
   end
 
   private

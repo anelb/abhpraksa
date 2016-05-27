@@ -2,7 +2,7 @@
 	<ul class='list-inline'>
 		<li><p>DASHBOARD</p></li>
 		<li><p>OBUCA</p></li>
-		<li><%= link_to 'KORISINICI', admin_users_path %></li>
+		<li><%= link_to 'KORISNICI', admin_users_path %></li>
 	</ul>
 </div>
 <div id='dashboard-container' class='row' style='text-align: center'>
@@ -10,11 +10,11 @@
 	<div class='col-md-4'>
 		<a href="#">
 			<div class='col-md-12'>
-		     <p>126</p>
+		     <p><%= @categories.count %></p>
 		     <p class='small-text'>kategorija</p>
 			</div>	
 			<div class='col-md-6 col-md-offset-3'>
-				<p>DODAJ KATEGORIJE</p>
+				<%= link_to 'DODAJ KATEGORIJU', new_admin_user_path %>
 			</div>
 		</a>
 	</div>
@@ -22,11 +22,11 @@
 	<div class='col-md-4'>
 		<a href="#">
 			<div class='col-md-12'>
-		     <p>5412</p>
+		     <p><%= @product_variants.count %></p>
 		     <p class='small-text'>obuca</p>
 			</div>	
 			<div class='col-md-6 col-md-offset-3'>
-				<p>DODAJ OBUCU</p>
+				<%= link_to 'DODAJ OBUCU', new_admin_user_path %>
 			</div>
 		</a>
 	</div>
@@ -34,12 +34,12 @@
 	<div class='col-md-4'>
 		<a href="#">
 			<div class='col-md-12'>
-		     <p>412</p>
-		     <p class='small-text'>korisnici</p>
-			</div>	
-			<div class='col-md-6 col-md-offset-3'>
-				<p>DODAJ KORISNIKE</p>
+		    <p><%= @users.count %></p>
+		    <p class='small-text'>korisnici</p>
 			</div>
-		</a>
+		</a>	
+		<div class='col-md-6 col-md-offset-3'>
+			<%= link_to 'DODAJ KORISNIKE', new_admin_user_path %>
+		</div>
 	</div>
 </div>

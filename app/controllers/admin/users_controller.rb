@@ -3,6 +3,10 @@ class Admin::UsersController < AdminController
   def index
     @users = User.order(:id)
   end
+
+  def new
+    
+  end
   
   def promote
     @user = User.find(params[:user_id])
