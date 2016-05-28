@@ -36,7 +36,6 @@ class OrdersController < ApplicationController
 
     def user_has_to_be_logged_in
       unless current_user
-        flash[:danger] = 'You have to be logged in before you make an order'
         redirect_to sign_in_path
       end
     end

@@ -91,6 +91,23 @@ hr {
 	padding: 2px 25px !important;
 }
 
+.cart-warning-text {
+	margin-top: 10px;
+	display: inline-block;
+	color: red;
+	padding: 10px;
+	border: 1px solid #ECDCDC;
+	width: 100%;
+}
+
+#cart-warning-button {
+	margin-right: 5px;
+	background: #150606 !important;
+	color: white;
+	border-color: #150606 !important;
+	padding-left: 30px;
+	padding-right: 30px;
+}
 
 
 

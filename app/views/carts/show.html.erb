@@ -69,35 +69,34 @@
         </div>
       </div>
     </div>
-    <div class='pull-right' style='margin-top: 15px'>
-      <% if current_user %>                                                         
-        <%= form_for @order, url: { action: 'create', controller: 'orders' } do %>
-          <script 
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-email="<%= current_user.email %>"
-            data-label="KUPI"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="AbhShop"
-            data-amount="<%= current_cart.total_with_delivery * 100 %>"
-            data-locale="auto"
-            data-shipping-address='true'>
-          </script>
+    <div class='col-md-10 pull-right' style='margin: 0px; padding: 0px'>
+      <div class='pull-right' style='margin-top: 15px'>
+        <% if current_user %>                                                         
+          <%= form_for @order, url: { action: 'create', controller: 'orders' } do %>
+            <script 
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-email="<%= current_user.email %>"
+              data-label="KUPI"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="AbhShop"
+              data-amount="<%= current_cart.total_with_delivery * 100 %>"
+              data-locale="auto"
+              data-shipping-address='true'>
+            </script>
+            <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',
+                                                                        id: 'discard',
+                                                                     data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <% else %>
+            
+            <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary pull-right',
+                                                                        id: 'discard',
+                                                                     data: { confirm: 'Are you sure?' } %>
+            <button id='cart-warning-button' type="button" class="btn btn-info pull-right disabled">KUPI</button> 
+            <div style='text-align: center'>                                                     
+              <p class='cart-warning-text'><strong>Napomena:</strong> Morate biti logovani da bi izvrsili placanje</p>
+            </div>  
         <% end %>
-      <% else %>
-        <%= form_for @order, url: { action: 'create', controller: 'orders' } do %>
-          <script 
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-label="KUPI"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="AbhShop"
-            data-amount="<%= current_cart.total_with_delivery * 100 %>"
-            data-locale="auto"
-            data-shipping-address='true'>
-          </script>
-        <% end %>
-      <% end %>
-      <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',
-                                                                      id: 'discard',
-                                                                   data: { confirm: 'Are you sure?' } %>  
+      </div>
     </div>
   </div>
