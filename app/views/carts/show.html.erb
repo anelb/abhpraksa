@@ -94,7 +94,9 @@
                                                                      data: { confirm: 'Are you sure?' } %>
             <button id='cart-warning-button' type="button" class="btn btn-info pull-right disabled">KUPI</button> 
             <div style='text-align: center'>                                                     
-              <p class='cart-warning-text'><strong>Napomena:</strong> Morate biti logovani da bi izvrsili placanje</p>
+              <p class='cart-warning-text'><strong>Napomena:</strong> Morate biti logovani da bi izvrsili placanje.
+                <%= link_to 'Loguj se', sign_in_path %>
+              </p>
             </div>  
         <% end %>
       </div>

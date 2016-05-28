@@ -1,6 +1,6 @@
 class Admin::DashboardController < AdminController
 
-  def show
+  def index
     @categories = Category.all
     @product_variants = ProductVariant.all
     @users = User.all

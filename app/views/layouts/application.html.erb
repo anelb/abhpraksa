@@ -24,6 +24,13 @@
       </script>
     <% end %>
     <div class='container'>
+      <% if content_for? :admin_navbar %>
+        <%= content_for :admin_navbar %>
+      <% elsif content_for? :admin_navbar_new_user %>
+        <%= content_for :admin_navbar_new_user %>
+      <% else %>
+        <%= content_for :admin_navbar_new_shoes %>
+      <% end %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>

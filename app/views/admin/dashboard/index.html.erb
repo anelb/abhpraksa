@@ -1,0 +1,48 @@
+<% content_for :admin_navbar, render('admin/dashboard/admin_navbar') %>
+<div id='dashboard-container' class='row' style='text-align: center'>
+
+	<div class='col-md-4'>
+		<%= link_to admin_categories_path do %>
+			<div class='col-md-12'>
+		     <p><%= @categories.count %></p>
+		     <p class='small-text'>kategorija</p>
+			</div>
+		<% end %>	
+		<div class='col-md-6 col-md-offset-3'>
+			<%= link_to 'DODAJ KATEGORIJU', new_admin_category_path %>
+		</div>
+	</div>
+
+	<div class='col-md-4'>
+		<%= link_to admin_products_path do %>
+			<div class='col-md-12'>
+		     <p><%= @product_variants.count %></p>
+		     <p class='small-text'>obuca</p>
+			</div>
+		<% end %>	
+		<div class='col-md-6 col-md-offset-3'>
+			<%= link_to 'DODAJ OBUCU', new_admin_product_path %>
+		</div>
+	</div>
+
+	<div class='col-md-4'>
+		<%= link_to admin_users_path do %>
+			<div class='col-md-12'>
+		    <p><%= @users.count %></p>
+		    <p class='small-text'>korisnici</p>
+			</div>
+		<% end %>	
+		<div class='col-md-6 col-md-offset-3'>
+			<%= link_to 'DODAJ KORISNIKE', new_admin_user_path %>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#dashboard-title').find('a').each(function() {
+    if (this.href == window.location.href) {
+        $(this).addClass('active-link')
+        }
+    });
+});
+</script>

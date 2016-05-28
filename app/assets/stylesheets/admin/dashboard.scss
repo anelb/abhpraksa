@@ -6,8 +6,11 @@
 		font-size: 11px;
 	}
 	a {
-		color: black;
+		color: #9E9D9D;
 		text-decoration: none;
+	}
+	a:active {
+		color: black;
 	}
 }
 
@@ -60,5 +63,9 @@
 		font-size: 11px;
 		text-decoration: none;
 	}
+}
+
+.active-link {
+	color: black !important;
 }
 
