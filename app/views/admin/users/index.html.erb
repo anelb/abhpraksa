@@ -1,5 +1,30 @@
-<% content_for :admin_navbar_new_user, render('admin/dashboard/admin_navbar_new_user') %>
-<ul class="list-group">
+<% content_for :admin_navbar_new_user, render('admin/users/admin_navbar_new_user') %>
+<table class='table table-bordered table-hover'>
+  <thead>
+    <tr>
+      <th>Korisnicko ime</th>
+      <th>Email Adresa</th>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th>Opcije</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %> <%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td>
+        <span class='glyphicon glyphicon-edit'></span>
+        <span class='glyphicon glyphicon-trash'></span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<!-- <ul class="list-group">
   <li class="list-group-item" id='user'>Admins</li>
   <% @users.each do |user| %>
   <% if user.role == 'admin' %>
@@ -35,4 +60,13 @@
       </li>
     <% end %>
   <% end %>
-</ul>
+</ul> -->
+<script>
+$(document).ready(function() {
+    $('#dashboard-title').find('a').each(function() {
+    if (this.href == window.location.href) {
+        $(this).addClass('active-link')
+        }
+    });
+});
+</script>

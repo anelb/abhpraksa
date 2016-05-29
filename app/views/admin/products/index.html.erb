@@ -1,4 +1,38 @@
-<% content_for :admin_navbar_new_shoes, render('admin/dashboard/admin_navbar_new_shoes') %>
-<% @products.each do |product| %>
-	<%= product.title %>
-<% end %>
+
+<% content_for :admin_navbar_new_shoes, render('admin/products/admin_navbar_new_shoes') %>
+<table class='table table-bordered table-hover'>
+	<thead>
+	  <tr>
+	    <th>Naziv</th>
+	    <th>Kategorija</th>
+	    <th>Brand</th>
+	    <th>Cijena</th>
+	    <th>Opcije</th>
+	  </tr>
+	</thead>
+	<tbody>
+	<% @products.each do |product| %>
+	  <tr>
+	    <td><%= product.title %></td>
+	    <td><%= product.categories.first.title %></td>
+	    <td><%= product.brand.title %></td>
+	    <td><%= product.price %></td>
+	    <td>
+	    	<span class='glyphicon glyphicon-edit'></span>
+        <span class='glyphicon glyphicon-trash'></span>
+	    </td>
+	  </tr>
+	<% end %>
+	</tbody>
+</table>
+<script>
+$(document).ready(function() {
+    $('#dashboard-title').find('a').each(function() {
+    if (this.href == window.location.href) {
+        $(this).addClass('active-link')
+        }
+    });
+});
+</script>
+
+
