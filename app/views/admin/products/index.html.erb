@@ -7,7 +7,7 @@
 	    <th>Kategorija</th>
 	    <th>Brand</th>
 	    <th>Cijena</th>
-	    <th>Opcije</th>
+	    <th style='text-align: center; width: 6%; padding-left: 0px !important'>Opcije</th>
 	  </tr>
 	</thead>
 	<tbody>
@@ -17,9 +17,9 @@
 	    <td><%= product.categories.first.title %></td>
 	    <td><%= product.brand.title %></td>
 	    <td><%= product.price %></td>
-	    <td>
-	    	<span class='glyphicon glyphicon-edit'></span>
-        <span class='glyphicon glyphicon-trash'></span>
+	    <td style='text-align: center; width: 6%; padding-left: 0px !important'>
+	    	<span class='glyphicon glyphicon-edit admin-icon'></span>
+        <span class='glyphicon glyphicon-trash admin-icon'></span>
 	    </td>
 	  </tr>
 	<% end %>

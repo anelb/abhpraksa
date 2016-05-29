@@ -1,0 +1,22 @@
+@import 'dashboard';
+@import 'categories';
+@import 'products';
+@import 'users';
+
+th {
+	color: #AFAFAF;
+}
+
+th, td {
+	padding-left: 20px !important;
+}
+
+tbody {
+	font-size: 13px;
+	color: black;
+}
+
+.admin-icon {
+	font-size: 12px !important;
+	color: #AFAFAF;
+}

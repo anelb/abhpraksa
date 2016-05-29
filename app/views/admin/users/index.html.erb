@@ -6,7 +6,7 @@
       <th>Email Adresa</th>
       <th>Ime</th>
       <th>Prezime</th>
-      <th>Opcije</th>
+      <th style='text-align: center; width: 6%; padding-left: 0px !important'>Opcije</th>
     </tr>
   </thead>
   <tbody>
@@ -16,9 +16,9 @@
       <td><%= user.email %></td>
       <td><%= user.first_name %></td>
       <td><%= user.last_name %></td>
-      <td>
-        <span class='glyphicon glyphicon-edit'></span>
-        <span class='glyphicon glyphicon-trash'></span>
+      <td style='text-align: center; width: 6%; padding-left: 0px !important'>
+        <span class='glyphicon glyphicon-edit admin-icon'></span>
+        <span class='glyphicon glyphicon-trash admin-icon'></span>
       </td>
     </tr>
   <% end %>
