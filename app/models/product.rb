@@ -10,4 +10,8 @@ class Product < ActiveRecord::Base
       product.product_variants.blank? ? self.find(product.id).destroy : product
     end
   end
+  def capitalize_category
+    categories.first.title.mb_chars.downcase.split.collect { |category| category.to_s.capitalize }
+    #byebug
+  end
 end
