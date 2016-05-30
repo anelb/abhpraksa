@@ -43,7 +43,7 @@ product_5 = Product.create(title: 'CONS CTAS Pro ', brand_id: 1, price: 70, styl
 product_6 = Product.create(title: 'Chuck Taylor All Star II', brand_id: 1, price: 65, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/6.png')
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/7_.jpg')
 product_7 = Product.create(title: 'Jack Purcell Signature', brand_id: 1, price: 20, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
@@ -51,7 +51,7 @@ product_7 = Product.create(title: 'Jack Purcell Signature', brand_id: 1, price: 
 product_8 = Product.create(title: 'Jack Purcell Signature', brand_id: 1, price: 70, style: 'casual', 
               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
+              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/1_.png')
 
 green  = Color.create!(product_color: 'Green')
 black  = Color.create!(product_color: 'Black')
