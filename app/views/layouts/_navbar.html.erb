@@ -16,7 +16,7 @@
                 <li><%= link_to 'ADMIN', admin_dashboard_index_path %></li>
               <% end %>
               <% if current_cart.cart_items.empty? %>
-                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', class: 'not-active' %></li>
+                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', id: 'inactive-cart-link' %></li>
               <% else %> 
                 <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'>
                   <span class='number-notification'>#{current_cart.cart_items.count}</span>
