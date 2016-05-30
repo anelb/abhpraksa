@@ -23,16 +23,26 @@ tbody {
 }
 
 .create-new {
-	padding: 12px !important;
 	background-image: linear-gradient(-180deg, #46424D  0%, #675E66  100%);
-	position: absolute;
-  right: 110px;
-  top: 78px;
-  border-left: 10px solid white;
-  color: white !important;
+  color: white;
 }
 
 li, td { 
 	cursor: pointer; 
+}
+
+.col-md-10:first-of-type {
+  padding: 0px;
+}
+
+.col-md-2 {
+  padding: 0px;
+  a {
+    border-radius: 0px;
+    padding: 8.5px 20px;
+  }
+  a:hover {
+    color: white;
+  }
 }
 
