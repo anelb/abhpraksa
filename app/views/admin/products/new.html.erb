@@ -1,0 +1,58 @@
+<% content_for :admin_navbar_new_shoes, render('admin/products/admin_navbar_new_shoes') %>
+<div>
+  <%= form_for @product, url: { controller: 'admin/products', action: 'create' } do |f| %>
+  <div class='col-md-6'>
+    <%= f.label :naziv %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :opis %>
+    <%= f.text_area :description %>
+    <br>
+    <%= f.label :cijena %>
+    <%= f.number_field :price, min: 1 %>
+    <br>
+    <%= f.fields_for :categories do |category| %>
+      <%= category.label :kategorija %>
+      <%= category.collection_select(:category_id, Category.all, :id, :title, 
+                                                                      prompt: "Izaberi kategoriju") %>
+    <% end %>
+    <%= f.fields_for :brands do |brand| %>
+      <%= brand.label :brend %>
+      <%= brand.collection_select(:brand_id, Brand.all, :id, :title,                                                             prompt: "Izaberi brend") %>
+    <% end %>
+    <br>
+    <%= f.fields_for :product_variants do |product_variant| %>
+      <%= product_variant.label :boja %>
+      <%= product_variant.collection_select(:color_id, Color.all, :id, :product_color, 
+                                                                      prompt: "Izaberi boju") %>
+      <%= product_variant.label :size %>
+      <%= product_variant.collection_select(:size_id, Size.all, :id, :product_size, 
+                                                                      prompt: "Izaberi velicinu") %>
+    <% end %>
+    <br>
+    <%= f.submit 'Kreiraj artikal' %>
+  <% end %>
+  </div>
+  <div class='col-md-6'>
+  </div>
+</div>
+
+
+<!-- create_table "products", force: :cascade do |t|
+  t.integer  "brand_id"
+  t.string   "title"
+  t.integer  "price"
+  t.string   "style"
+  t.datetime "created_at",  null: false
+  t.datetime "updated_at",  null: false
+  t.text     "description"
+  t.text     "photo_url"
+end -->
+
+<!-- create_table "product_variants", force: :cascade do |t|
+  t.integer  "product_id"
+  t.integer  "size_id"
+  t.integer  "color_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end -->

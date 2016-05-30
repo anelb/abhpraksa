@@ -54,6 +54,7 @@
 
 #dashboard-container .col-md-6 {
 	background-image: linear-gradient(-180deg, #46424D  0%, #675E66  100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#46424D), color-stop(100%,#675E66));
 	height: 25px;
 	margin-top: 20px;
 	width: 50%;
