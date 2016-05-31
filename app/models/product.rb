@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
   belongs_to :brand
   has_and_belongs_to_many :categories
 
+  validates :brand_id, :title, :price, :description, presence: true
+  
   accepts_nested_attributes_for :product_variants
 
   def self.remove_empty_product_variants

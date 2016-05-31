@@ -1,29 +1,31 @@
 <% content_for :admin_navbar_new_user, render('admin/users/admin_navbar_new_user') %>
-<table class='table table-bordered table-hover'>
-  <thead>
-    <tr>
-      <th>Korisnicko ime</th>
-      <th>Email Adresa</th>
-      <th>Ime</th>
-      <th>Prezime</th>
-      <th style='text-align: center; width: 6%; padding-left: 0px !important'>Opcije</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.full_name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
-      <td style='text-align: center; width: 6%; padding-left: 0px !important'>
-        <span class='glyphicon glyphicon-edit admin-icon'></span>
-        <span class='glyphicon glyphicon-trash admin-icon'></span>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <table class='table table-bordered table-hover'>
+    <thead>
+      <tr>
+        <th>Korisnicko ime</th>
+        <th>Email Adresa</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th style='text-align: center; width: 6%; padding-left: 0px !important'>Opcije</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td style='text-align: center; width: 6%; padding-left: 0px !important'>
+          <span class='glyphicon glyphicon-edit admin-icon'></span>
+          <span class='glyphicon glyphicon-trash admin-icon'></span>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 <!-- <ul class="list-group">
   <li class="list-group-item" id='user'>Admins</li>
   <% @users.each do |user| %>

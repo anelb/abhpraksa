@@ -26,6 +26,10 @@ tbody {
 	background-image: linear-gradient(-180deg, #46424D  0%, #675E66  100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#46424D), color-stop(100%,#675E66));
   color: rgb(255,255,255);
+  border-radius: 0px;
+  padding: 10px 20px;
+  font-size: 11px;
+
 }
 
 li, td { 
@@ -46,5 +50,9 @@ li, td {
   a:hover {
     color: white;
   }
+}
+
+input.create-new:hover {
+  color: white;
 }
 
