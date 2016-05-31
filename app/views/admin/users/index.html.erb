@@ -1,13 +1,13 @@
 <% content_for :admin_navbar_new_user, render('admin/users/admin_navbar_new_user') %>
 <div class="row">
-  <table class='table table-bordered table-hover'>
+  <table id='user-table' class='table table-bordered table-hover'>
     <thead>
       <tr>
         <th>Korisnicko ime</th>
         <th>Email Adresa</th>
         <th>Ime</th>
         <th>Prezime</th>
-        <th style='text-align: center; width: 6%; padding-left: 0px !important'>Opcije</th>
+        <th style='text-align: center; width: 6%; padding-left: 10px !important'>Opcije</th>
       </tr>
     </thead>
     <tbody>
@@ -17,9 +17,29 @@
         <td><%= user.email %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <td style='text-align: center; width: 6%; padding-left: 0px !important'>
+        <td style='text-align: center; width: 6%; padding-left: 10px !important'>
           <span class='glyphicon glyphicon-edit admin-icon'></span>
           <span class='glyphicon glyphicon-trash admin-icon'></span>
+          <% if user.role == 'admin' %>
+            <span style='display: inline-block'>
+              <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
+                <%= hidden_field_tag :user_id, user.id %>
+                <%= button_tag(type: "submit", class: "btn btn-danger", id: 'demote-button') do %>
+                  <span class='glyphicon glyphicon-arrow-down admin-icon'></span>
+                <% end %>
+              <% end %>
+            </span>
+            </p>
+          <% else %>
+            <span style='display: inline-block'>
+              <%= form_tag(controller: 'users', action: 'promote', method: "post") do %>
+                <%= hidden_field_tag :user_id, user.id %>
+                <%= button_tag(type: "submit", class: "btn btn-success", id: 'promote-button') do %>
+                  <span class='glyphicon glyphicon-arrow-up admin-icon'></span>
+                <% end %>
+              <% end %>
+            </span>
+          <% end %>
         </td>
       </tr>
     <% end %>

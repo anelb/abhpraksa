@@ -17,3 +17,10 @@
 //= require_tree .
 //= require bootstrap-sprockets
 //= require products
+
+$(document).ready(function() {
+  $('#empty-cart').click(function(event){
+    alert('Hooray!');
+    event.preventDefault(); // Prevent link from following its href
+  });
+});

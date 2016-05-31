@@ -1,0 +1,34 @@
+<% content_for :admin_navbar_new_user, render('admin/users/admin_navbar_new_user') %>
+<%= form_for @user, url: { controller: 'admin/users', action: 'create' } do |f| %>
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class='form-group'>
+        <%= f.label :nil, 'Korisnicko ime' %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <div class='form-group'>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class='form-group'>
+        <%= f.label :ime, 'Ime' %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <div class='form-group'>
+        <%= f.label :prezime %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div>
+
+  </div>
+<% end %>

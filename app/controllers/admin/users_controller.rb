@@ -5,7 +5,7 @@ class Admin::UsersController < AdminController
   end
 
   def new
-    
+    @user = User.new
   end
   
   def promote

@@ -10,14 +10,16 @@ class Admin::ProductsController < AdminController
   end
 
   def create
-    @brand = Brand.find(params[:brand][:id])
-    @category = Category.find(params[:category][:id])
-    @product = @brand.products.build(product_params)
-    @product.categories.push(@category)
-    if @product.save
+    begin
+      @brand = Brand.find(params[:brand][:id])
+      @category = Category.find(params[:category][:id])
+      @product = @brand.products.build(product_params)
+      @product.categories.push(@category)
+      @product.save!
       redirect_to admin_products_path
-    else
-      render 'new'
+    rescue Exception => e
+
+      redirect_to new_admin_product_path
     end
   end
 

@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
     end
   end
   def capitalize_category
-    categories.first.title.mb_chars.downcase.split.collect { |category| category.to_s.capitalize }
+    categories.first.title.mb_chars.downcase.split.collect { |category| category.capitalize.to_s }.join(' ')
     #byebug
   end
 end
