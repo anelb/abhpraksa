@@ -14,7 +14,7 @@
         <% end %>
         <div class='form-border'>
           <div class='form-group'>
-            <%= f.label :username %>
+            <%= f.label(:username).upcase.html_safe %>
             <%= f.text_field :username, class: 'form-control' %>
           </div>
           <div class='form-group'>

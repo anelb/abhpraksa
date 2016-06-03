@@ -42,12 +42,14 @@ class Admin::UsersController < AdminController
   def promote
     @user = User.find(params[:user_id])
     @user.update_attribute(:role, 'admin')
+    flash[:info] = 'User promoted to Admin'
     redirect_to admin_users_path
   end
 
   def demote
     @user = User.find(params[:user_id])
     @user.update_attribute(:role, 'basic')
+    flash[:success] = 'User demoted to regular user'
     redirect_to admin_users_path
   end
 
