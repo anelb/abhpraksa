@@ -25,40 +25,14 @@
               <%= f.number_field :price, min: 1, class: 'form-control' %>
             </div>
           </div>
-        </div>   
-        <div class='row'>
           <div class='col-md-6'>
-            <%= fields_for :category do |x| %>
-              <div class="form-group">
-                <%= x.label :kategorija %>
-                <%= x.collection_select(:id, Category.all, :id, :title, { prompt: "Izaberi kategoriju" }, { class: 'form-control' }) %>
-              </div>  
-            <% end %>
-          </div>
-          <div class='col-md-6'>
-            <%= fields_for :brand do |x| %>
+            <%= f.fields_for :brand do |x| %>
               <div class="form-group">
                 <%= x.label :brend %>
                 <%= x.collection_select(:id, Brand.all, :id, :title, { prompt: "Izaberi brend" }, { class: 'form-control' }) %>
               </div>  
             <% end %>
           </div>
-        </div>
-        <div class='row'>
-          <%= f.fields_for :product_variants do |product_variant| %>
-            <div class='col-md-6'>
-              <div class="form-group">
-                <%= product_variant.label :boja %>
-                <%= product_variant.collection_select(:color_id, Color.all, :id, :product_color, { prompt: "Izaberi boju" }, { class: 'form-control' }) %>
-              </div>  
-            </div>
-            <div class='col-md-6'>
-              <div class="form-group">
-                <%= product_variant.label :size %>
-                <%= product_variant.collection_select(:size_id, Size.all, :id, :product_size, { prompt: "Izaberi velicinu" }, { class: 'form-control' }) %>
-              </div>
-            </div> 
-          <% end %>
         </div>
       </div>
       <div class='col-md-6'>

@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   validates :brand_id, :title, :price, :description, presence: true
   
   accepts_nested_attributes_for :product_variants
+  accepts_nested_attributes_for :brand
 
   def self.remove_empty_product_variants
     self.all.map do |product|
@@ -16,6 +17,5 @@ class Product < ActiveRecord::Base
   end
   def capitalize_category
     categories.first.title.mb_chars.downcase.split.collect { |category| category.capitalize.to_s }.join(' ')
-    #byebug
   end
 end

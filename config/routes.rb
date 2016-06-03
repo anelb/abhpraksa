@@ -28,8 +28,8 @@ Rails.application.routes.draw do
     post '/promote' => 'users#promote'
     post '/demote'  => 'users#demote'
     resources :categories, except: [:show]
-    resources :products, except: [:show]
-   
+    resources :products
+    
   end
   
   
