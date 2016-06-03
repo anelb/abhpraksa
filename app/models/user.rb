@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :remember_token
 
-  validates :first_name, :last_name, :email, presence: true
+  validates :first_name, :last_name, :email, :username,  presence: true
   validates :email, uniqueness: true
   validates :first_name, :last_name, length: {maximum: 50}
   validates_format_of :first_name, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/

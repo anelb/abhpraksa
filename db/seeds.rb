@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(first_name: 'Fidel', last_name: 'Castro', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: 'admin')
+User.create(username: 'El dictator', first_name: 'Fidel', last_name: 'Castro', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', role: 'admin')
 
 Brand.create(title: 'Converse')
 Brand.create(title: 'Nike')
@@ -75,18 +75,3 @@ products.each do |product|
     product.product_variants.create(size_id: size_35.id, color_id: black.id)
   end
 end
-
-# products = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
-# colors = [ green, black, red, yellow, grey ]
-# sizes = [ size_35, size_36, size_37, size_38, size_39]
-# categories = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
-
-
-
-# products.each do |product|
-#   categories.sample.products << product
-#   colors.length.times do |num|
-#     product.product_variants.create(size_id: sizes[num].id, color_id: colors[num].id)
-#   end
-# end
-

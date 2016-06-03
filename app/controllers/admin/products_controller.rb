@@ -18,7 +18,7 @@ class Admin::ProductsController < AdminController
       @product.save!
       redirect_to admin_products_path
     rescue Exception => e
-
+      byebug
       redirect_to new_admin_product_path
     end
   end

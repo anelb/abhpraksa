@@ -1,6 +1,6 @@
 <% content_for :admin_navbar_new_user, render('admin/users/admin_navbar_new_user') %>
 <div class='row' style='border: 1px solid #ECECEC; padding: 40px'>
-  <%= form_for @user, url: { controller: 'admin/users', action: 'create' } do |f| %>
+  <%= form_for @user, url: { controller: 'admin/users', action: 'update' }, method: :patch do |f| %>
     <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |message| %>
         <p style='font-size: 14px; color: #b30000'><%= message %></p>
@@ -52,10 +52,8 @@
     </div>
     <div class='row'>
       <div class='form-group pull-right'>
-        <%= f.submit 'KREIRAJ KORISNIKA', class: 'btn create-new' %>
+        <%= f.submit '# KORISNIKA', class: 'btn create-new' %>
       </div>
     </div>
   <% end %>
 </div>  
-  
-

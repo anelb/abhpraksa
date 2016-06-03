@@ -18,8 +18,9 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td style='text-align: center; width: 6%; padding-left: 10px !important'>
-          <span class='glyphicon glyphicon-edit admin-icon'></span>
-          <span class='glyphicon glyphicon-trash admin-icon'></span>
+          <%= link_to "<span class='glyphicon glyphicon-edit admin-icon'></span>".html_safe, edit_admin_user_path(user) %>
+          <%= link_to "<span class='glyphicon glyphicon-trash admin-icon'></span>".html_safe,
+            admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% if user.role == 'admin' %>
             <span style='display: inline-block'>
               <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
@@ -46,43 +47,6 @@
     </tbody>
   </table>
 </div>
-<!-- <ul class="list-group">
-  <li class="list-group-item" id='user'>Admins</li>
-  <% @users.each do |user| %>
-  <% if user.role == 'admin' %>
-      <li class="list-group-item clearfix">
-        <span><%= user.first_name.capitalize%></span><span> (<%= user.email %>)</span>
-        <span class='pull-right'>
-          <%= form_tag(controller: 'users', action: 'demote', method: "post") do %>
-            <%= hidden_field_tag :user_id, user.id %>
-            <%= button_tag(type: "submit", class: "btn btn-danger") do %>
-              <span class='glyphicon glyphicon-arrow-down'></span>
-            <% end %>
-          <% end %>
-        <span>
-      </li>
-    <% end %>  
-  <% end %>
-</ul>
-
-<ul class="list-group">
-  <li class="list-group-item" id='user'>Users</li>
-  <% @users.each do |user| %>
-  <% if user.role == 'basic' %>
-      <li class="list-group-item clearfix">
-        <span><%= user.first_name.capitalize%></span><span> (<%= user.email %>)</span>
-        <span class='pull-right'>
-          <%= form_tag(controller: 'users', action: 'promote', method: "post") do %>
-            <%= hidden_field_tag :user_id, user.id %>
-            <%= button_tag(type: "submit", class: "btn btn-success") do %>
-              <span class='glyphicon glyphicon-arrow-up'></span>
-            <% end %>
-          <% end %>
-        <span>
-      </li>
-    <% end %>
-  <% end %>
-</ul> -->
 <script>
 $(document).ready(function() {
     $('#dashboard-title').find('a').each(function() {
