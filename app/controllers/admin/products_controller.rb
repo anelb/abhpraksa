@@ -25,7 +25,6 @@ class Admin::ProductsController < AdminController
       @product.save
       render 'new'
     end
-    byebug
   end
 
 
