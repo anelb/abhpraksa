@@ -18,11 +18,11 @@ class Admin::ProductsController < AdminController
       params[:category_id].each do |id|
         @product.categories.push(Category.find(id))
       end
-      @product.save!
+      @product.save
+      flash[:info] = 'New product created'
       redirect_to admin_products_path
     rescue Exception => e
       @product.save
-      flash[:info] = e
       render 'new'
     end
   end
