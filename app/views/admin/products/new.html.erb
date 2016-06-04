@@ -25,13 +25,21 @@
               <%= f.number_field :price, min: 1, class: 'form-control' %>
             </div>
           </div>
+        </div>
+        <div class='row'>
           <div class='col-md-6'>
-            <%= f.fields_for :brand do |x| %>
               <div class="form-group">
-                <%= x.label :brend %>
-                <%= x.collection_select(:id, Brand.all, :id, :title, { prompt: "Izaberi brend" }, { class: 'form-control' }) %>
+                <%= f.label :brend %>
+                <%= f.select :brand_id, options_for_select( Brand.all.map { |b| [b.title, b.id ]}.unshift(['Izaberi brend',''])), {}, { class: 'form-control'} %>
               </div>  
-            <% end %>
+          </div>
+          <div class='col-md-6'>
+              <div class="form-group">
+                
+                <%= label_tag :kategorija %>
+                <%= select_tag :category_id, options_for_select( Category.all.map { |b| [b.title, b.id ]}), { multiple: true, class: 'form-control'} %>
+              
+              </div>  
           </div>
         </div>
       </div>

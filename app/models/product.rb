@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+
   has_many :product_variants, dependent: :destroy 
   has_many :sizes, through: :product_variants
   has_many :colors, through: :product_variants
@@ -8,7 +9,7 @@ class Product < ActiveRecord::Base
   validates :brand_id, :title, :price, :description, presence: true
   
   accepts_nested_attributes_for :product_variants
-  accepts_nested_attributes_for :brand
+
 
   def self.remove_empty_product_variants
     self.all.map do |product|

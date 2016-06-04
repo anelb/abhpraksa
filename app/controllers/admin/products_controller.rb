@@ -6,7 +6,6 @@ class Admin::ProductsController < AdminController
 
   def new
   	@product = Product.new
-    @product.build_brand
   end
 
   def show
@@ -15,10 +14,15 @@ class Admin::ProductsController < AdminController
 
   def create
     @product = Product.new(product_params)
-    if @product.save 
-      flash[:info] = 'New product created'
+    begin
+      params[:category_id].each do |id|
+        @product.categories.push(Category.find(id))
+      end
+      @product.save!
       redirect_to admin_products_path
-    else
+    rescue Exception => e
+      @product.save
+      flash[:info] = e
       render 'new'
     end
   end
@@ -27,8 +31,7 @@ class Admin::ProductsController < AdminController
   private
 
     def product_params
-      params.require(:product).permit(:title, :price, :description, :brand_id, :photo_url,
-                                      brand_attributes: [:id] )
+      params.require(:product).permit(:title, :price, :description, :brand_id, :photo_url)
     end
 
 end
