@@ -1,0 +1,18 @@
+<div class='col-md-5'>
+  <div class='form-group'>
+    <%= f.label :velicina %>
+    <%= f.collection_select :size_id, Size.all, :id, :product_size, {}, { class: 'form-control' } %>
+  </div>
+</div>
+<div class='col-md-5'>
+  <div class='form-group'>
+    <%= f.label :boja %>
+    <%= f.collection_select :color_id, Color.all, :id, :product_color, {}, { class: 'form-control' } %>
+  </div>
+</div>
+<div class='col-md-2'>
+  <div class='form-group'>
+    <%= label_tag :kolicina %>
+    <%= number_field_tag :quantity, 1,  min: 1, class: 'form-control'  %>
+  </div>
+</div>

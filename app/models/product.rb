@@ -25,4 +25,15 @@ class Product < ActiveRecord::Base
   def capitalize_category
     categories.first.title.mb_chars.downcase.split.collect { |category| category.capitalize.to_s }.join(' ')
   end
+
+  def create_with_product_variants(quantity)
+    self.save
+    quantity.to_i.times { ProductVariant.find_by(product_id: self.id).dup.save }
+  end
+
+  def create_with_category(params)
+    params[:category_id].map do |id|
+      self.categories.push(Category.find(id))
+    end
+  end
 end
