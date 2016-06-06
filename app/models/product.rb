@@ -5,6 +5,15 @@ class Product < ActiveRecord::Base
   has_many :colors, through: :product_variants
   belongs_to :brand
   has_and_belongs_to_many :categories
+  # This method associates the attribute ":avatar" with a file attachment
+  has_attached_file :image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+
+  # Validate the attached image is image/jpg, image/png, etc
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   validates :brand_id, :title, :price, :description, presence: true
   validate :category_blank?
