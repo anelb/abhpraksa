@@ -5,7 +5,8 @@ gem 'stripe'
 gem 'toastr-rails'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'will_paginate', '~> 3.1.0'
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 
