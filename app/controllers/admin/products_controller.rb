@@ -16,13 +16,12 @@ class Admin::ProductsController < AdminController
 
   def create
     @product = Product.new(product_params)
-    begin
-      @product.create_with_category(params)
+    @product.build_with_category(params)
+    if @product.save
       @product.create_with_product_variants(params[:quantity])
       flash[:info] = 'New product created'
       redirect_to admin_products_path
-    rescue
-      @product.save
+    else
       render 'new'
     end
   end
