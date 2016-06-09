@@ -1,4 +1,14 @@
+/*$(document).on 'click', 'form .add_fields', (event) ->
+  time = new Date().getTime()
+  regexp = new RegExp($(this).data('id'), 'g')
+  $(this).before($(this).data('fields').replace(regexp, time))
+  event.preventDefault()
+*/
 
-$(document).on "page:change", ->
-  $('.add_fields').click ->
-    alert 'Clicked!'
+$(document).on('click', 'form .add_fields', function(event) {
+  var regexp, time;
+  time = new Date().getTime();
+  regexp = new RegExp($(this).data('id'), 'g');
+  $(this).before($(this).data('fields').replace(regexp, time));
+  return event.preventDefault();
+});

@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   validates :brand_id, :title, :price, :description, presence: true
   validate :category_blank
   
-  accepts_nested_attributes_for :product_variants
+  accepts_nested_attributes_for :product_variants, :allow_destroy => true, :reject_if => :all_blank
 
   def category_blank
     if self.categories.blank?
