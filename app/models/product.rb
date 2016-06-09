@@ -25,18 +25,19 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def self.remove_empty_product_variants
-    self.all.map do |product|
-      product.product_variants.blank? ? self.find(product.id).destroy : product
-    end
-  end
+  # def self.remove_empty_product_variants
+  #   self.all.map do |product|
+  #     product.product_variants.blank? ? self.find(product.id).destroy : product
+  #   end
+  # end
+  
   def capitalize_category
     categories.first.title.mb_chars.downcase.split.collect { |category| category.capitalize.to_s }.join(' ')
   end
 
-  def create_with_product_variants(quantity)
-    quantity.to_i.times { ProductVariant.find_by(product_id: self.id).dup.save }
-  end
+  # def create_with_product_variants(quantity)
+  #   quantity.to_i.times { ProductVariant.find_by(product_id: self.id).dup.save }
+  # end
 
   def build_with_category(params)
     return unless params[:category_id].present?

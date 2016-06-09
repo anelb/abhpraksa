@@ -1,7 +1,7 @@
 <% content_for :admin_navbar_new_shoes, render('admin/products/admin_navbar_new_shoes') %>
 <div class='row' style='border: 1px solid #ECECEC'>
   <div class='row' style='margin: 20px 45px 30px 30px'>
-    <%= form_for @product, url: { controller: 'admin/products', action: 'update' } do |f| %>
+    <%= form_for @product, url: { controller: 'admin/products', action: 'update' },  multipart: true do |f| %>
     <div class='row'>
       <div class='col-md-6'>
         <% if @product.errors.any? %>
@@ -55,8 +55,8 @@
             </div>
             <div class='col-md-2'>
               <div class='form-group'>
-                <%= label_tag :kolicina %>
-                <%= number_field_tag :quantity, 1,  min: 1, class: 'form-control'  %>
+                <%= variant.label :kolicina %>
+                <%= variant.number_field :quantity,  { value: @product.product_variants[0].quantity, min: 1, class: 'form-control' }  %>
               </div>
             </div>
           <% end %>
@@ -64,6 +64,8 @@
       </div>
       <div class='col-md-6'>
         <div>
+          <%= f.label :nil, 'Upload slike' %>
+          <%= f.file_field :image %>
         </div>
         <div class='row'>
           <div class="form-group">
