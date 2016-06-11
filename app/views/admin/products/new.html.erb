@@ -1,8 +1,7 @@
-
 <% content_for :admin_navbar_new_shoes, render('admin/products/admin_navbar_new_shoes') %>
 <div class='row' style='border: 1px solid #ECECEC'>
   <div class='row' style='margin: 20px 45px 30px 30px'>
-    <%= form_for @product, url: { controller: 'admin/products', action: 'create' } do |f| %>
+    <%= form_for @product, url: { controller: 'admin/products', action: 'create' }, multipart: true, remote: true do |f| %>
     <div class='row'>
       <div class='col-md-6'>
         <% if @product.errors.any? %>
@@ -40,33 +39,26 @@
               </div>  
           </div>
         </div>
-        <div class='row'>
+        <div class='row' style='padding-right: 15px'>
           <%= f.fields_for :product_variants do |variant| %>
-            <div class='col-md-5'>
-              <div class='form-group'>
-                <%= variant.label :velicina %>
-                <%= variant.collection_select :size_id, Size.all, :id, :product_size, {}, { class: 'form-control' } %>
-              </div>
-            </div>
-            <div class='col-md-5'>
-              <div class='form-group'>
-                <%= variant.label :boja %>
-                <%= variant.collection_select :color_id, Color.all, :id, :product_color, {}, { class: 'form-control' } %>
-              </div>
-            </div>
-            <div class='col-md-2'>
-              <div class='form-group'>
-                <%= label_tag :kolicina %>
-                <%= number_field_tag :quantity, 1,  min: 1, class: 'form-control'  %>
-              </div>
-            </div>
+            <%= render 'product_variant_fields', f: variant %>
           <% end %>
+          <%= link_to_add_product_variants 'Dodaj velicinu i boju', f, :product_variants %>
         </div>
       </div>
       <div class='col-md-6'>
-        <div>
-          <%= f.label :nil, 'Upload slike' %>
-          <%= f.file_field :image %>
+        <div class='row'>
+          <%= f.label :nil, 'Upload Slike' %>
+          <div class='col-md-12' style='padding: 0px'>
+            <div class="fileUpload">
+              <%= f.file_field :image, id: "uploadBtn", class: "upload" %>
+              <div id='upload-button'>
+                <span class='glyphicon glyphicon-cloud-upload'></span>
+                <p>Uploaduj sliku</p>
+              </div>
+            </div>
+            <input id="uploadFile" placeholder="No images selected" disabled="disabled" />
+          </div>
         </div>
         <div class='row'>
           <div class="form-group">
@@ -84,3 +76,8 @@
     <% end %>
   </div>
 </div>
+<script type="text/javascript">
+  document.getElementById("uploadBtn").onchange = function () {
+  document.getElementById("uploadFile").value = this.value;
+  };
+</script>

@@ -19,39 +19,39 @@ djecija_obuca  = Category.create(title: 'DJEČIJA OBUĆA')
 sportska_obuca = Category.create(title: 'SPORTSKA OBUĆA')
 dodaci         = Category.create(title: 'DODACI')
 
-product_1 = Product.new(title: 'CONS Sumner ', brand_id: 1, price: 70, style: 'casual', 
-              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-              but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/6.png')
-product_2 = Product.new(title: 'CONS One Star Pro ', brand_id: 1, price: 120, style: 'casual', 
-              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-              but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/2.png')
-product_3 = Product.new(title: 'Chuck Taylor All Star II', brand_id: 1, price: 30, style: 'casual', 
-              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-              but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/3.jpg')
-product_4 = Product.new(title: 'Chuck Taylor All Star II', brand_id: 1, price: 80, style: 'casual', 
-              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-              but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
+# product_1 = Product.new(title: 'CONS Sumner ', brand_id: 1, price: 70, style: 'casual', 
+#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+#               but is built for more to better meet the demands of your “on the go” lifestyle',
+#               photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/6.png')
+# product_2 = Product.new(title: 'CONS One Star Pro ', brand_id: 1, price: 120, style: 'casual', 
+#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+#               but is built for more to better meet the demands of your “on the go” lifestyle',
+#               photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/2.png')
+# product_3 = Product.new(title: 'Chuck Taylor All Star II', brand_id: 1, price: 30, style: 'casual', 
+#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+#               but is built for more to better meet the demands of your “on the go” lifestyle',
+#               photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/3.jpg')
+# product_4 = Product.new(title: 'Chuck Taylor All Star II', brand_id: 1, price: 80, style: 'casual', 
+#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+#               but is built for more to better meet the demands of your “on the go” lifestyle',
+#               photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
 
-product_5 = Product.new(title: 'CONS CTAS Pro ', brand_id: 1, price: 70, style: 'casual', 
-              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-              but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/5.png')
-product_6 = Product.new(title: 'Chuck Taylor All Star II', brand_id: 1, price: 65, style: 'casual', 
-              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-              but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/7_.jpg')
-product_7 = Product.new(title: 'Jack Purcell Signature', brand_id: 1, price: 20, style: 'casual', 
-              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-              but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/8.jpg')
-product_8 = Product.new(title: 'Jack Purcell Signature', brand_id: 1, price: 70, style: 'casual', 
-              description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
-              but is built for more to better meet the demands of your “on the go” lifestyle',
-              photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/1_.png')
+# product_5 = Product.new(title: 'CONS CTAS Pro ', brand_id: 1, price: 70, style: 'casual', 
+#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+#               but is built for more to better meet the demands of your “on the go” lifestyle',
+#               photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/5.png')
+# product_6 = Product.new(title: 'Chuck Taylor All Star II', brand_id: 1, price: 65, style: 'casual', 
+#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+#               but is built for more to better meet the demands of your “on the go” lifestyle',
+#               photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/7_.jpg')
+# product_7 = Product.new(title: 'Jack Purcell Signature', brand_id: 1, price: 20, style: 'casual', 
+#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+#               but is built for more to better meet the demands of your “on the go” lifestyle',
+#               photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/8.jpg')
+# product_8 = Product.new(title: 'Jack Purcell Signature', brand_id: 1, price: 70, style: 'casual', 
+#               description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+#               but is built for more to better meet the demands of your “on the go” lifestyle',
+#               photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/1_.png')
 
 green  = Color.create(product_color: 'Green')
 black  = Color.create(product_color: 'Black')
@@ -65,17 +65,17 @@ size_37 = Size.create(product_size: '37')
 size_38 = Size.create(product_size: '38')
 size_39 = Size.create(product_size: '39')
 
-pro = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
-cat = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
+# pro = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
+# cat = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
 
-pro.each do |product|
-  product.categories.push(cat.sample)
-  product.save
-end
+# pro.each do |product|
+#   product.categories.push(cat.sample)
+#   product.save
+# end
 
-pro.each do |product|
-  15.times do
-    product.product_variants.create(size_id: size_35.id, color_id: green.id)
-    product.product_variants.create(size_id: size_35.id, color_id: black.id)
-  end
-end
+# pro.each do |product|
+#   15.times do
+#     product.product_variants.create(size_id: size_35.id, color_id: green.id)
+#     product.product_variants.create(size_id: size_35.id, color_id: black.id)
+#   end
+# end
