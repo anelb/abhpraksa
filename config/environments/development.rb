@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  
+
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.default_url_options = { host: "localhost:3000" }
@@ -25,8 +25,8 @@ Rails.application.configure do
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
+    :user_name      => ENV['SENDGRID_USERNAME_DEVELOPMENT'],
+    :password       => ENV['SENDGRID_PASSWORD_DEVELOPMENT'],
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
