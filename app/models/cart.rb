@@ -35,19 +35,15 @@ class Cart < ActiveRecord::Base
       option[:params][:quantity].empty? ? current_item.quantity = nil : current_item.quantity += option[:params][:quantity].to_i
     end
     current_item
+    #byebug
   end
   
   def remove_product_variant
     cart_items.each do |item|
-      item.quantity.times do
-      ProductVariant.find_by(size_id: item.product_variant.size_id, 
-                             color_id: item.product_variant.color_id, 
-                             product_id: item.product_variant.product_id).destroy
-      end
-      product = Product.find(item.product_variant.product_id)
-      if product.product_variants.blank?
-        Product.find(product.id).destroy
-      end
+      product_variant = ProductVariant.find(item.product_variant_id)
+      new_quantity = product_variant.quantity - item.quantity
+      product_variant.update_attribute(:quantity, new_quantity)
+      product_variant.destroy if product_variant.quantity == 0 
     end
   end
 end

@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
   square: '200x200#',
   medium: '300x300>'
   }
-
+  validates :title, uniqueness: true
   validates :brand_id, :title, :price, :description, presence: true
   validate :category_blank
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
