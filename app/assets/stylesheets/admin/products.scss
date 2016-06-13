@@ -37,3 +37,40 @@
   margin-bottom: 10px;
   font-size: 15px;
 } 
+
+.add_fields {
+  background-image: linear-gradient(-180deg, #46424D  0%, #675E66  100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#46424D), color-stop(100%,#675E66));
+  color: rgb(255,255,255);
+  border-radius: 0px;
+  padding: 10px 10px;
+  font-size: 11px;
+  margin-left: 15px;
+  font-size: 9px;
+}
+
+a.add_fields:hover {
+  color: white;
+  text-decoration: none;
+  outline: none;
+}
+a.add_fields:active {
+  color: white;
+  text-decoration: none;
+  outline: none;
+}
+a.add_fields:focus {
+  color: white;
+  text-decoration: none;
+  outline: none;
+}
+
+.remove_fields {
+  text-align: center;
+  .glyphicon-remove {
+    margin-top: 20px;
+    color: #46424D;
+    font-size: 12px;
+  }
+}
+
