@@ -6,7 +6,6 @@ class Admin::ProductsController < AdminController
 
   def new
   	@product = Product.new
-    @product.product_variants.build
   end
 
   def create
@@ -32,6 +31,13 @@ class Admin::ProductsController < AdminController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    flash[:info] = 'Product deleted'
+    redirect_to admin_products_path
   end
 
 

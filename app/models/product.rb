@@ -5,29 +5,20 @@ class Product < ActiveRecord::Base
   has_many :colors, through: :product_variants
   belongs_to :brand
   has_and_belongs_to_many :categories
-  
-  has_attached_file :image, styles: {
-    thumb: '100x100>',
-    square: '200x200#',
-    medium: '300x300>'
-  }
-
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+ 
+  accepts_nested_attributes_for :product_variants, :allow_destroy => true, :reject_if => :all_blank
 
   has_attached_file :image, styles: {
-    thumb: '100x100>',
-    square: '200x200#',
-    medium: '300x300>'
+  thumb: '100x100>',
+  square: '200x200#',
+  medium: '300x300>'
   }
-
-  # Validate the attached image is image/jpg, image/png, etc
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   validates :brand_id, :title, :price, :description, presence: true
   validate :category_blank
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   
-  accepts_nested_attributes_for :product_variants, :allow_destroy => true, :reject_if => :all_blank
-
+  
   def category_blank
     if self.categories.blank?
       errors.add(:category, 'field cant be empty')
@@ -53,5 +44,13 @@ class Product < ActiveRecord::Base
     params[:category_id].map do |id|
       self.categories.push(Category.find(id))
     end 
+  end
+
+  def picture_link
+    if self.image.url.include? 'missing'
+      self.photo_url
+    else
+      self.image.url
+    end
   end
 end

@@ -1,7 +1,7 @@
 <% content_for :admin_navbar_new_shoes, render('admin/products/admin_navbar_new_shoes') %>
 <div class='row' style='border: 1px solid #ECECEC'>
   <div class='row' style='margin: 20px 45px 30px 30px'>
-    <%= form_for @product, url: { controller: 'admin/products', action: 'create' }, multipart: true, remote: true do |f| %>
+    <%= form_for @product, url: { controller: 'admin/products', action: 'create' }, multipart: true do |f| %>
     <div class='row'>
       <div class='col-md-6'>
         <% if @product.errors.any? %>
@@ -43,7 +43,7 @@
           <%= f.fields_for :product_variants do |variant| %>
             <%= render 'product_variant_fields', f: variant %>
           <% end %>
-          <%= link_to_add_product_variants 'Dodaj velicinu i boju', f, :product_variants %>
+          <%= link_to_add_product_variants 'DODAJ VELICINU I BOJU', f, :product_variants%>
         </div>
       </div>
       <div class='col-md-6'>
@@ -57,7 +57,7 @@
                 <p>Uploaduj sliku</p>
               </div>
             </div>
-            <input id="uploadFile" placeholder="No images selected" disabled="disabled" />
+            <input id="uploadFile" placeholder="No image selected" disabled="disabled" />
           </div>
         </div>
         <div class='row'>
@@ -72,6 +72,7 @@
       <div class='form-group pull-right'>
         <%= f.submit 'KREIRAJ ARTIKAL', class: "btn create-new" %>
       </div>
+      <%= link_to 'ODUSTANI', admin_products_path, class: 'pull-right btn odustani' %>
     </div>
     <% end %>
   </div>
