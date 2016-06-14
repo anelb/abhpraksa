@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :reset_token 
 
   validates :first_name, :last_name, :email, :username,  presence: true
   validates :email, :username, uniqueness: true
@@ -44,4 +44,10 @@ class User < ActiveRecord::Base
   def full_name
     self.first_name + ' ' + self.last_name
   end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, User.digest(reset_token))
+  end
+
 end
