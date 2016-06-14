@@ -1,7 +1,7 @@
 class Admin::CategoriesController < AdminController
 
   def index
-  	@categories = Category.all
+    @categories = Category.all
   end
 
   def new
@@ -40,7 +40,7 @@ class Admin::CategoriesController < AdminController
   end
   
   private
-    def category_params
-      params.require(:category).permit(:title)
-    end
+  def category_params
+    params.require(:category).permit(:title)
+  end
 end

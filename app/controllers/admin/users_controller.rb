@@ -8,7 +8,7 @@ class Admin::UsersController < AdminController
     @user = User.new
   end
 
-   def create
+  def create
     @user = User.new(user_params)
     if @user.save
       flash[:info] = 'New user created'
@@ -56,7 +56,7 @@ class Admin::UsersController < AdminController
 
   private
 
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
+  end
 end
