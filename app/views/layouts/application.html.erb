@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'https://js.stripe.com/v2/' %>
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -14,12 +15,32 @@
     <% else %>
       <%= render 'layouts/navbar' %>
     <% end %>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %> col-md-4 col-md-offset-4"><h4><%= value %></h4></div>
-    <% end %> 
+    <% unless flash.empty? %>
+      <script type="text/javascript">
+          <% flash.each do |f| %>
+            <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info' ) %>
+            toastr['<%= type %>']('<%= f[1] %>');
+          <% end %>
+      </script>
+    <% end %>
     <div class='container'>
+      <% if content_for? :admin_navbar %>
+        <%= content_for :admin_navbar %>
+      <% elsif content_for? :admin_navbar_new_user %>
+        <%= content_for :admin_navbar_new_user %>
+      <% else %>
+        <%= content_for :admin_navbar_new_shoes %>
+      <% end %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
-</body>
+  </body>
+  <script>
+    $(document).ready(function() {
+      $('#empty-cart').click(function(event){
+        alert('Your cart is currently empty.');
+        event.preventDefault(); 
+      });
+    });
+  </script>
 </html>

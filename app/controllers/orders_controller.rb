@@ -21,24 +21,21 @@ class OrdersController < ApplicationController
         :description => 'AbhShop Customer',
         :currency    => 'usd'
       )
-      if @order.save
-        current_cart.remove_product_variant
-        session[:cart_id] = nil
-        flash[:success] = 'Thanks for ordering!'
-        redirect_to root_path
-      end
+      @order.save
+      current_cart.remove_product_variant
+      session[:cart_id] = nil
+      flash[:success] = 'Thanks for ordering!'
+      redirect_to root_path
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
     end
-
   end
 
   private
 
     def user_has_to_be_logged_in
       unless current_user
-        flash[:danger] = 'You have to be logged in before you make an order'
         redirect_to sign_in_path
       end
     end

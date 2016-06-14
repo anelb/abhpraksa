@@ -13,9 +13,12 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'toastr';
 @import 'welcome';
 @import 'products';
 @import 'carts';
+@import 'admin/admin_dashboard';
+@import 'admin/products';
 
 
 
@@ -111,7 +114,7 @@ body {
   right: 125px;
   left: 125px;
   background-color: white;
-  padding: 30px 50px;
+  padding: 30px 50px 70px 50px;
   border-radius: 15px;
   > .row {
     margin: 0px;
@@ -206,6 +209,13 @@ span.glyphicon.glyphicon-chevron-left {
 a.thumbnail {
   text-decoration: none;
   outline: none;
+}
+
+.toast {
+  position: absolute;
+  right: 80px;
+  top: 50px;
+  text-align: center;
 }
 
 

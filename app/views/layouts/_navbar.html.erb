@@ -13,10 +13,10 @@
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
               <% if current_user.role == 'admin' %>
-                <li><%= link_to 'ADMIN', admin_users_path %>
+                <li><%= link_to 'ADMIN', admin_dashboard_index_path %></li>
               <% end %>
               <% if current_cart.cart_items.empty? %>
-                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', class: 'not-active' %></li>
+                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', id: 'empty-cart' %></li>
               <% else %> 
                 <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'>
                   <span class='number-notification'>#{current_cart.cart_items.count}</span>
@@ -26,7 +26,7 @@
               <li><%= link_to 'LOG OUT', logout_path, method: 'delete' %></li>
             <% else %>
               <% if current_cart.cart_items.empty? %>
-                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', class: 'not-active' %></li>
+                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', id: 'empty-cart' %></li>
               <% else %> 
               <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'>
                 <span class='number-notification'>#{current_cart.cart_items.count}</span>

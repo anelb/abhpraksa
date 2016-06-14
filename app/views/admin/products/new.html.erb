@@ -1,0 +1,84 @@
+<% content_for :admin_navbar_new_shoes, render('admin/products/admin_navbar_new_shoes') %>
+<div class='row' style='border: 1px solid #ECECEC'>
+  <div class='row' style='margin: 20px 45px 30px 30px'>
+    <%= form_for @product, url: { controller: 'admin/products', action: 'create' }, multipart: true do |f| %>
+    <div class='row'>
+      <div class='col-md-6'>
+        <% if @product.errors.any? %>
+          <% @product.errors.full_messages.each do |message| %>
+            <p style='font-size: 14px; color: #b30000'><%= message %></p>
+          <% end %>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :naziv %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :opis %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
+        <div class='row'>
+          <div class='col-md-6'> 
+            <div class="form-group">
+              <%= f.label :cijena %>
+              <%= f.number_field :price, min: 1, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-md-6'>
+              <div class="form-group">
+                <%= f.label :brend %>
+                <%= f.select :brand_id, options_for_select( Brand.all.map { |b| [b.title, b.id ]}.unshift(['Izaberi brend',''])), {}, { class: 'form-control'} %>
+              </div>  
+          </div>
+          <div class='col-md-6'>
+              <div class="form-group">
+                <%= label_tag :kategorija %>
+                <%= select_tag :category_id, options_for_select( Category.all.map { |b| [b.title, b.id ]}), { multiple: true, class: 'form-control'} %>
+              </div>  
+          </div>
+        </div>
+        <div class='row' style='padding-right: 15px'>
+          <%= f.fields_for :product_variants do |variant| %>
+            <%= render 'product_variant_fields', f: variant %>
+          <% end %>
+          <%= link_to_add_product_variants 'DODAJ VELICINU I BOJU', f, :product_variants%>
+        </div>
+      </div>
+      <div class='col-md-6'>
+        <div class='row'>
+          <%= f.label :nil, 'Upload Slike' %>
+          <div class='col-md-12' style='padding: 0px'>
+            <div class="fileUpload">
+              <%= f.file_field :image, id: "uploadBtn", class: "upload" %>
+              <div id='upload-button'>
+                <span class='glyphicon glyphicon-cloud-upload'></span>
+                <p>Uploaduj sliku</p>
+              </div>
+            </div>
+            <input id="uploadFile" placeholder="No image selected" disabled="disabled" />
+          </div>
+        </div>
+        <div class='row'>
+          <div class="form-group">
+            <%= f.label :nil, 'ili Link slike' %>
+            <%= f.text_field :photo_url, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='form-group pull-right'>
+        <%= f.submit 'KREIRAJ ARTIKAL', class: "btn create-new" %>
+      </div>
+      <%= link_to 'ODUSTANI', admin_products_path, class: 'pull-right btn odustani' %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  document.getElementById("uploadBtn").onchange = function () {
+  document.getElementById("uploadFile").value = this.value;
+  };
+</script>

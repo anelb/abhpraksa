@@ -5,13 +5,23 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:session][:email])
-    if @user && @user.authenticate(params[:session][:password])
-      log_in @user
-      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      redirect_to '/'
+    if attempt.to_i == 3
+      if time_attempt > 20.seconds.ago
+        flash[:warning] = 'Too many wrong attempts'
+      else
+        cookies[:attempt] = nil
+      end
+      redirect_to sign_in_path
     else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
+      if @user && @user.authenticate(params[:session][:password])
+        log_in @user
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+        redirect_to '/'
+      else
+        flash.now[:warning] = 'Invalid email/password combination'
+        increment_attempt_num
+        render 'new'
+      end
     end
   end
   def destroy

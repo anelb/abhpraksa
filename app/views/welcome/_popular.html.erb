@@ -11,7 +11,7 @@
             <div class="col-sm-6 col-md-4 col-lg-3">
               <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
                 <div class='pull-left col-md-10 col-md-offset-1'>
-                  <img src="<%= product.photo_url %>" class="img-responsive">
+                  <img src="<%= product.picture_link %>" class="img-responsive">
                   
                   <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'>
                     <%= product.title %>
@@ -30,7 +30,7 @@
                   <div class="col-sm-6 col-md-4 col-lg-3">
                     <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
                       <div class='pull-left col-md-10 col-md-offset-1'>
-                        <img src="<%= product.photo_url %>" class="img-responsive">
+                        <img src="<%= product.picture_link %>" class="img-responsive">
                         
                         <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'>
                           <%= product.title %>
@@ -47,7 +47,7 @@
                   <div class="col-sm-6 col-md-4 col-lg-3">
                     <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
                       <div class='pull-left col-md-10 col-md-offset-1'>
-                        <img src="<%= product.photo_url %>" class="img-responsive">
+                        <img src="<%= product.picture_link %>" class="img-responsive">
                         
                         <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'>
                           <%= product.title %>

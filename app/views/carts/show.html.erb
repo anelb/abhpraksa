@@ -8,7 +8,7 @@
         <%= link_to "<span id='remove-item' class='glyphicon glyphicon-remove'></span>"
           .html_safe, delete_cart_item_path(cart_item.id),  method: :delete, data: { confirm: 'Are you sure?' } %>
         <div id='cart-picture' class='col-md-3'>
-          <img src="<%= cart_item.product_variant.product.photo_url %>" width='150' height='auto'>
+          <img src="<%= cart_item.product_variant.product.picture_link %>" width='150' height='auto'>
         </div>
         <div id='product-details' class='col-md-6 cart-details'>
           <p>Model: <%= cart_item.product_variant.product.brand.title %></p>
@@ -69,21 +69,36 @@
         </div>
       </div>
     </div>
-    <div class='pull-right' style='margin-top: 15px'>
-                                                            
-        <%= form_for @order, url: { action: 'create', controller: 'orders' } do %>
-          <script 
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-label="KUPI"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="A month's subscription"
-            data-amount="<%= current_cart.total_with_delivery * 100 %>"
-            data-locale="auto"
-            data-shipping-address='true'>
-          </script>
-        <% end %>
-        <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',
+    <div class='col-md-10 pull-right' style='margin: 0px; padding: 0px'>
+      <div class='pull-right' style='margin-top: 15px'>
+        <% if current_user %>                                                         
+          <%= form_for @order, url: { action: 'create', controller: 'orders' } do %>
+            <script 
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-email="<%= current_user.email %>"
+              data-label="KUPI"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="AbhShop"
+              data-amount="<%= current_cart.total_with_delivery * 100 %>"
+              data-locale="auto"
+              data-shipping-address='true'>
+            </script>
+            <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary',
                                                                         id: 'discard',
-                                                                     data: { confirm: 'Are you sure?' } %>  
+                                                                     data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <% else %>
+            
+            <%= link_to 'ODUSTANI', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary pull-right',
+                                                                        id: 'discard',
+                                                                     data: { confirm: 'Are you sure?' } %>
+            <button id='cart-warning-button' type="button" class="btn btn-info pull-right disabled">KUPI</button> 
+            <div style='text-align: center'>                                                     
+              <p class='cart-warning-text'><strong>Napomena:</strong> Morate biti logovani da bi izvrsili placanje.
+                <%= link_to 'Loguj se', sign_in_path %>
+              </p>
+            </div>  
+        <% end %>
+      </div>
     </div>
   </div>
