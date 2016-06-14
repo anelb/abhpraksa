@@ -34,17 +34,17 @@ class OrdersController < ApplicationController
 
   private
 
-    def user_has_to_be_logged_in
-      unless current_user
-        redirect_to sign_in_path
-      end
+  def user_has_to_be_logged_in
+    unless current_user
+      redirect_to sign_in_path
     end
+  end
 
-    def order_params
-      params.permit(:stripeShippingAddressLine1,
-                    :stripeShippingAddressZip,
-                    :stripeShippingAddressCity,
-                    :stripeShippingAddressCountry,
-                    :stripeShippingAddressCountryCode )
-    end
+  def order_params
+    params.permit(:stripeShippingAddressLine1,
+                  :stripeShippingAddressZip,
+                  :stripeShippingAddressCity,
+                  :stripeShippingAddressCountry,
+                  :stripeShippingAddressCountryCode )
+  end
 end

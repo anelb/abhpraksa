@@ -5,7 +5,7 @@ class Admin::ProductsController < AdminController
   end
 
   def new
-  	@product = Product.new
+    @product = Product.new
   end
 
   def create
@@ -43,9 +43,9 @@ class Admin::ProductsController < AdminController
 
   private
 
-    def product_params
-      params.require(:product).permit(:title, :price, :description, :brand_id, :photo_url, :image,
-                                      product_variants_attributes: [ :id, :size_id, :color_id, :quantity, :_destroy ])
-    end
+  def product_params
+    params.require(:product).permit(:title, :price, :description, :brand_id, :photo_url, :image,
+                                    product_variants_attributes: [ :id, :size_id, :color_id, :quantity, :_destroy ])
+  end
 
 end

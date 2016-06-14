@@ -9,9 +9,9 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :product_variants, :allow_destroy => true, :reject_if => :all_blank
 
   has_attached_file :image, styles: {
-  thumb: '100x100>',
-  square: '200x200#',
-  medium: '300x300>'
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
   }
   validates :title, uniqueness: true
   validates :brand_id, :title, :price, :description, presence: true
