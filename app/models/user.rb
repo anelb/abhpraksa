@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update_attribute(:remember_digest, remember_token)
   end
 
   def authenticated?(attribute, token)
@@ -47,7 +47,12 @@ class User < ActiveRecord::Base
 
   def create_reset_digest
     self.reset_token = User.new_token
-    update_attribute(:reset_digest, User.digest(reset_token))
+    update_attribute(:reset_digest, reset_token)
+    #byebug
+  end
+
+  def delete_reset_digest
+    self.update_attribute(:reset_digest, nil)
   end
 
 end

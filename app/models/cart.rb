@@ -37,6 +37,10 @@ class Cart < ActiveRecord::Base
     current_item
     #byebug
   end
+
+  def add_user_id(current_user)
+    self.update_attribute(:user_id, current_user.id)
+  end
   
   def remove_product_variant
     cart_items.each do |item|

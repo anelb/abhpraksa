@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if attempt.to_i == 3
       if time_attempt > 20.seconds.ago
         time_to_wait = Time.now.round - time_attempt.round
-        flash[:warning] = "You have to wait #{ 20 - time_to_wait } seconds before try to log in again"
+        flash[:warning] = "You have to wait #{20 - time_to_wait} seconds before try to log in again"
       else
         cookies[:attempt] = nil
         flash[:info] = 'You can try to log in again'
