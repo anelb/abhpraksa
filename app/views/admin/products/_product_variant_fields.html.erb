@@ -14,7 +14,7 @@
   <div class='col-md-2'>
     <div class='form-group'>
       <%= f.label :kolicina %>
-      <%= f.number_field :quantity,  { value: f.object.quantity, min: 1, class: 'form-control' }  %>
+      <%= f.number_field :quantity,  { value: product_variant_quantity(f), min: 1, class: 'form-control' }  %>
     </div>
   </div>
   <div class='col-md-2'>

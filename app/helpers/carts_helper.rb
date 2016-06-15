@@ -4,7 +4,6 @@ module CartsHelper
     if session[:cart_id]
       begin
         @current_cart ||= Cart.find(session[:cart_id])
-        #byebug
       rescue ActiveRecord::RecordNotFound => e
         create_cart
       end

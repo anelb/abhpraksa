@@ -14,4 +14,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: @user.email, subject: 'Password changed'
   end
+
+  def order_completed(user)
+    @user = user
+    mail to: @user.email, subject: 'Order completed'
+  end
 end
