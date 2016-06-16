@@ -10,6 +10,7 @@
       <div id='description'>
         <p><%= @product.description %></p>
       </div>
+      <%= select_tag :test, grouped_options_for_select(@grouped_options) %>
       <div>
         <% if @product.product_variants.blank? %>
           <div class="well well-lg text-center">Trenutno ovaj proizvod nije na stanju</div>
