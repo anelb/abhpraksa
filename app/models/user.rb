@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :reset_token 
 
   validates :first_name, :last_name, :email, :username,  presence: true
   validates :email, :username, uniqueness: true
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update_attribute(:remember_digest, remember_token)
   end
 
   def authenticated?(attribute, token)
@@ -44,4 +44,15 @@ class User < ActiveRecord::Base
   def full_name
     self.first_name + ' ' + self.last_name
   end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, reset_token)
+    #byebug
+  end
+
+  def delete_reset_digest
+    self.update_attribute(:reset_digest, nil)
+  end
+
 end

@@ -18,7 +18,7 @@
             <%= f.check_box :remember_me %>
             <span style='margin-bottom: 5px'>Remember me</span>
           <% end %>
-          <%= link_to 'Forgot password?', '#', class: 'pull-right', style: 'margin-top: 10px' %>
+          <%= link_to 'Forgot password?', new_password_reset_path, class: 'pull-right', style: 'margin-top: 10px' %>
         </div>
         <div class='pull-right' style='margin-top: 10px'>
           <%= f.submit 'LOG IN', class: 'btn btn-default' %>

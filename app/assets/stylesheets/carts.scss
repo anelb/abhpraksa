@@ -23,90 +23,90 @@ hr {
 }
 
 #quantity-cart {
-	border: 1px solid #ECDCDC;
-	border-radius: 2px;
-	display: inline-block;
-	margin-left: 10px;
-	> p {
-		font-size: 12px;
-		margin: 0px;
-		padding: 0px 13px;
+  border: 1px solid #ECDCDC;
+  border-radius: 2px;
+  display: inline-block;
+  margin-left: 10px;
+  > p {
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px 13px;
 
-	}
+  }
 }
 
 
 #order .row {
-	margin: 0px;
+  margin: 0px;
 }
 
 #order p {
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .space {
-	padding-bottom: 15px; 
-	border-bottom: 1px solid #ECDCDC; 
-	margin-bottom: 20px
+  padding-bottom: 15px; 
+  border-bottom: 1px solid #ECDCDC; 
+  margin-bottom: 20px
 }
 
 .list-inline {
-	margin: 0px;
-	> li {
-	font-size: 11px;
-	padding: 0px
-	}
+  margin: 0px;
+  > li {
+  font-size: 11px;
+  padding: 0px
+  }
 }
 
 #remove-item {
-	position: absolute;
-	right: 720px;
-	font-size: 12px;
-	color: #A5A0A0;
+  position: absolute;
+  right: 720px;
+  font-size: 12px;
+  color: #A5A0A0;
 }
 
 #discard {
-	border-color: #888888;
-	background-color: white;
-	color: #606060;
-	margin-bottom: 5px;
+  border-color: #888888;
+  background-color: white;
+  color: #606060;
+  margin-bottom: 5px;
 }
 
 #new_order {
-	display: inline-block;
+  display: inline-block;
 }
 
 .stripe-button-el span {
-	background: none !important;
-	background-image: none !important;
-	font-family: Lato !important;
-	font-weight: normal !important;
-	border: none !important;
-	box-shadow: none !important;
+  background: none !important;
+  background-image: none !important;
+  font-family: Lato !important;
+  font-weight: normal !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .stripe-button-el {
-	background: #606060 !important;
-	display: inline-block;
-	padding: 2px 25px !important;
+  background: #606060 !important;
+  display: inline-block;
+  padding: 2px 25px !important;
 }
 
 .cart-warning-text {
-	margin-top: 10px;
-	display: inline-block;
-	color: red;
-	padding: 10px;
-	border: 1px solid #ECDCDC;
-	width: 100%;
+  margin-top: 10px;
+  display: inline-block;
+  color: red;
+  padding: 10px;
+  border: 1px solid #ECDCDC;
+  width: 100%;
 }
 
 #cart-warning-button {
-	margin-right: 5px;
-	background: #150606 !important;
-	color: white;
-	border-color: #150606 !important;
-	padding-left: 30px;
-	padding-right: 30px;
+  margin-right: 5px;
+  background: #150606 !important;
+  color: white;
+  border-color: #150606 !important;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 

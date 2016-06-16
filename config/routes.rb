@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/cart' => 'carts#show'
   delete '/cart/:cart_id' => 'carts#destroy', as: :delete_cart
   
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :orders, only: [:create]
 
   namespace :admin do
@@ -29,7 +30,6 @@ Rails.application.routes.draw do
     post '/demote'  => 'users#demote'
     resources :categories, except: [:show]
     resources :products
-    
   end
   
   

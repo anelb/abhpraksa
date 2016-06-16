@@ -1,26 +1,26 @@
 class Cart < ActiveRecord::Base
-	has_one :order
+  has_one :order
   belongs_to :user
   has_many :cart_items, dependent: :destroy
 
   def total
-  	price = []
-  	cart_items.each do|item| 
-  		price << ProductVariant.find(item.product_variant_id).product.price * item.quantity
-  	end
-  	return price.inject(:+)
+    price = []
+    cart_items.each do|item| 
+      price << ProductVariant.find(item.product_variant_id).product.price * item.quantity
+    end
+    return price.inject(:+)
   end
 
   def delivery_cost
-  	how_many_orders * 5
+    how_many_orders * 5
   end
 
   def how_many_orders
-  	orders = []
-  	cart_items.each do|item| 
-  		orders << item.quantity
-  	end
-  	return orders.inject(:+)
+    orders = []
+    cart_items.each do|item| 
+      orders << item.quantity
+    end
+    return orders.inject(:+)
   end
 
   def total_with_delivery
@@ -36,6 +36,10 @@ class Cart < ActiveRecord::Base
     end
     current_item
     #byebug
+  end
+
+  def add_user_id(current_user)
+    self.update_attribute(:user_id, current_user.id)
   end
   
   def remove_product_variant

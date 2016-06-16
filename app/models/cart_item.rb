@@ -1,9 +1,9 @@
 class CartItem < ActiveRecord::Base
 
-	belongs_to :cart
-	belongs_to :product_variant
+  belongs_to :cart
+  belongs_to :product_variant
 
-	validates :cart_id, :product_variant_id, :quantity, presence: true
+  validates :cart_id, :product_variant_id, :quantity, presence: true
 
   validates_numericality_of :quantity, :only_integer => true, :greater_than_or_equal_to => 1
 
@@ -11,7 +11,7 @@ class CartItem < ActiveRecord::Base
 
   def quantity_check
     if quantity > product_variant.quantity
-        errors.add(:kolicina, "has to be less then #{product_variant.quantity}") 
+      errors.add(:kolicina, "has to be less then #{product_variant.quantity}") 
     end
   end
 

@@ -1,0 +1,13 @@
+<div class='row'>
+  <div class='col-md-6 col-md-offset-3'>
+    <p>Forgot your account's password? Enter your email address and we'll send you a recovery link.</p>
+    <div class='col-md-8' style='padding-left: 0px'>
+      <div class='form-group'>
+      <%= form_for :password_reset, url: password_resets_path do |f| %>
+        <%= f.email_field :email, class: 'form-control' %>
+        <%= f.submit "Send Recovory Mail", class: 'btn btn-default form-input reset-password' %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

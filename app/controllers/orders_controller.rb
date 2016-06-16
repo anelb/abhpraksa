@@ -23,8 +23,10 @@ class OrdersController < ApplicationController
       )
       @order.save
       current_cart.remove_product_variant
+      current_cart.add_user_id(current_user)
       session[:cart_id] = nil
       flash[:success] = 'Thanks for ordering!'
+      UserMailer.order_completed(current_user).deliver_now
       redirect_to root_path
     rescue Stripe::CardError => e
       flash[:error] = e.message
@@ -34,17 +36,17 @@ class OrdersController < ApplicationController
 
   private
 
-    def user_has_to_be_logged_in
-      unless current_user
-        redirect_to sign_in_path
-      end
+  def user_has_to_be_logged_in
+    unless current_user
+      redirect_to sign_in_path
     end
+  end
 
-    def order_params
-      params.permit(:stripeShippingAddressLine1,
-                    :stripeShippingAddressZip,
-                    :stripeShippingAddressCity,
-                    :stripeShippingAddressCountry,
-                    :stripeShippingAddressCountryCode )
-    end
+  def order_params
+    params.permit(:stripeShippingAddressLine1,
+                  :stripeShippingAddressZip,
+                  :stripeShippingAddressCity,
+                  :stripeShippingAddressCountry,
+                  :stripeShippingAddressCountryCode )
+  end
 end

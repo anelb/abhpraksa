@@ -19,7 +19,7 @@
 @import 'carts';
 @import 'admin/admin_dashboard';
 @import 'admin/products';
-
+@import 'password_resets';
 
 
 body {
@@ -178,17 +178,17 @@ span.glyphicon.glyphicon-chevron-left {
 }
 
 .number-notification {
-    position:absolute;
-    top: -7px;
-    right:-6px;
-    padding: 3px 3px 2px 3px;
-    background-color:red;
-    color:white;
-    font-family: arial;
-    font-weight:bold;
-    font-size: 10px;
-    border-radius: 4px;
-    box-shadow:1px 1px 1px silver;
+  position:absolute;
+  top: -7px;
+  right:-6px;
+  padding: 3px 3px 2px 3px;
+  background-color:red;
+  color:white;
+  font-family: arial;
+  font-weight:bold;
+  font-size: 10px;
+  border-radius: 4px;
+  box-shadow:1px 1px 1px silver;
 }
 
 .carousel-inner {

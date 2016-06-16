@@ -9,21 +9,21 @@
 }
 
 #title {
-	margin-bottom: 30px
+  margin-bottom: 30px
 }
 
 #description {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 #size {
-	display: inline-block;
+  display: inline-block;
   margin-right: 8px;
-	> label {
-		display: block;
+  > label {
+    display: block;
     font-weight: normal;
     margin-bottom: 8px;
-	}
+  }
   > select {
     width: 100px;
     height: 25px;
@@ -34,7 +34,7 @@
 }
 
 #quantity {
-	display: inline-block;
+  display: inline-block;
   > input {
     width: 55px;
     height: 25px;
@@ -45,7 +45,7 @@
 
 #price {
   margin-left: 30px;
-	display: inline-block;
+  display: inline-block;
   >p {
     font-weight: bold;
   }
