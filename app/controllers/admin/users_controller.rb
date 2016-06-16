@@ -28,7 +28,7 @@ class Admin::UsersController < AdminController
       flash[:info] = 'User updated'
       redirect_to admin_users_path
     else
-      render 'new'
+      render 'edit'
     end
   end
 

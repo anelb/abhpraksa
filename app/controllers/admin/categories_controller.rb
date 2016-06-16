@@ -28,7 +28,7 @@ class Admin::CategoriesController < AdminController
       flash[:info] = 'Category updated'
       redirect_to admin_categories_path
     else
-      render 'new'
+      render 'edit'
     end
   end
 
