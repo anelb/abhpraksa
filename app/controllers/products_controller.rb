@@ -5,14 +5,10 @@ class ProductsController < ApplicationController
   def show
     product_variant = ProductVariant.where(product_id: @product)
     @size = product_variant.map { |product| product.size }
-    @color = product_variant.map { |product| product.color }
     @cart_item = CartItem.new()
-    @grouped_options = [
-     ['35',
-       ['Yellow','Red']],
-     ['36',
-       ['Green','Black','Grey']]
-    ]
+    @test_color = Hash.new {|k, v| k[v]= []}
+    product_variant.each { |product| @test_color[Size.find(product.size_id).product_size] <<
+                                                    Color.find(product.color_id).product_color.strip }
   end
 
   private

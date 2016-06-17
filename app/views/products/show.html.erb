@@ -10,7 +10,6 @@
       <div id='description'>
         <p><%= @product.description %></p>
       </div>
-      <%= select_tag :test, grouped_options_for_select(@grouped_options) %>
       <div>
         <% if @product.product_variants.blank? %>
           <div class="well well-lg text-center">Trenutno ovaj proizvod nije na stanju</div>
@@ -28,7 +27,7 @@
               </div>
               <div id='color'>
                 <%= variant.label 'Boja' %>
-                <%= variant.collection_select(:color_id, @color.uniq , :id, :product_color ) %>
+                <%= variant.select :color_id, grouped_options_for_select(@test_color) %>
               </div>
             <% end %>
             <div id='quantity'>
