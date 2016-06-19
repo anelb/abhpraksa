@@ -9,4 +9,7 @@ module Admin::ProductsHelper
 
   end
 
+  # def show_product_categories(category_title)
+  #   return if @product.categories.map { |x| x.title }.include? category_title
+  # end
 end

@@ -25,15 +25,15 @@
             </div>
           </div>
         </div>
-        <div class='row'>
+        <div id='product-category' class='row'>
           <div class='col-md-6'>
               <div class="form-group">
                 <%= f.label :brend %>
-                <%= f.select :brand_id, options_for_select( Brand.all.map { |b| [b.title, b.id ]}.unshift(['Izaberi brend',''])), {}, { class: 'form-control' } %>
+                <%= f.select :brand_id, options_for_select( Brand.all.map { |b| [b.title, b.id ]}.unshift(['Izaberi brend',''])), {}, { class: 'selectpicker' } %>
               </div>  
           </div>
           <div class='col-md-6'>
-            <div id='product-category' class="form-group">
+            <div class="form-group">
               <%= label_tag :kategorija %>
               <%= select_tag :category_id, options_for_select( Category.all.map { |b| [b.title, b.id ]}), { multiple: true, class: 'selectpicker'} %>
             </div>  
