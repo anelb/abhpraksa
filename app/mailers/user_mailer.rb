@@ -19,4 +19,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: @user.email, subject: 'Order completed'
   end
+
+  def account_activation(user)
+    @user = user
+    mail to: @user.email, subject: 'Account activation'
+  end
 end

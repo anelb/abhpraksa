@@ -21,9 +21,8 @@ Rails.application.routes.draw do
   
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :orders, only: [:create]
-
+  resources :account_activations, only: [:edit]
   namespace :admin do
-
     resources :dashboard, only: [:index]
     resources :users, except: [:show]
     post '/promote' => 'users#promote'
