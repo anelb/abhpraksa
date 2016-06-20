@@ -69,7 +69,9 @@ pro = [ product_1, product_2, product_3, product_4, product_5, product_6, produc
 cat = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
 
 pro.each do |product|
-  product.categories.push(cat.sample)
+  cat.each do |category|
+    product.categories.push(category)
+  end
   product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
   product.product_variants.build(size_id: size_35.id, color_id: black.id, quantity: 10)
   product.product_variants.build(size_id: size_36.id, color_id: green.id, quantity: 10)
