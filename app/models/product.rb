@@ -16,7 +16,9 @@ class Product < ActiveRecord::Base
   validates :title, uniqueness: true
   validates :brand_id, :title, :price, :description, presence: true
   validate :category_blank
+  #validate :duplicate_variant
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_size :image, :less_than => 2.megabytes
   
   
   def category_blank
@@ -53,4 +55,9 @@ class Product < ActiveRecord::Base
       self.image.url
     end
   end
+
+  #varijabla = params[:product][:product_variants_attributes].map{ |k, v| [v[:size_id], v[:color_id]]  }
+
+  
+
 end

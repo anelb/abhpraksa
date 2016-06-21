@@ -45,21 +45,20 @@
       </div>
     </div>
     <div id='products' class='row'>
-      <% @category.products.each_slice(4) do |slice| %>
-          <div class='row'>
+      <% @products.each_slice(4) do |slice| %>
+          <div class='row' style='margin-bottom: 80px'>
             <% slice.each do |product| %>
-                <div class="col-sm-6 col-md-3 col-lg-3">
-                  <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
-                    <div style='height: 80px'>
-                      <img src="<%= product.picture_link %>" class='img-responsive'>
-                    </div>
-                    <p style='margin-top: 15px; margin-bottom: 0px'>
-                      <%= product.title %>
-                    </p> 
-                    <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
-                  <% end %>
-                    
-                </div>
+              <div class="col-sm-6 col-md-3 col-lg-3">
+                <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
+                  <div style='height: 80px'>
+                    <img src="<%= product.picture_link %>" class='img-responsive'>
+                  </div>
+                  <p style='margin-top: 15px; margin-bottom: 0px'>
+                    <%= product.title %>
+                  </p> 
+                  <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+                <% end %>  
+              </div>
             <% end %>
           </div>
       <% end %> 
