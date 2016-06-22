@@ -13,13 +13,13 @@ class Admin::ProductsController < AdminController
   def create
     @product = Product.new(product_params)
     @product.build_with_category(params)
-    if same_variant(@product_variants)
-      @product.errors.add(:duplicate_variants, ": There is at least two variants with same attributes")
-      render 'new'
-    elsif @product.save
+    if @product.save && !same_variant(@product_variants)
       flash[:info] = 'New product created'
       redirect_to admin_products_path
     else
+      if same_variant(@product_variants)
+        @product.errors.add(:duplicate_variants, ": There is at least two variants with same attributes")                
+      end
       render 'new'
     end
   end
@@ -54,8 +54,7 @@ class Admin::ProductsController < AdminController
 
   def set_product_variants_params
     product_variants_params = params[:product][:product_variants_attributes]
-    product_variants_params.blank? ? @product_variants = [] : 
-          @product_variants = product_variants_params.map{ |k, v| [v[:size_id], v[:color_id]] }
+    @product_variants = product_variants_params.blank? ? [] : product_variants_params.map { |_k, v| [v[:size_id], v[:color_id]] }
   end
 
   def product_params
@@ -64,7 +63,7 @@ class Admin::ProductsController < AdminController
   end
 
   def same_variant(variants)
-    (1..(variants.length)).collect {|v| variants[0] == variants[v] }.include? true
+    (1..(variants.length)).collect { |v| variants[0] == variants[v] }.include? true
   end
 
 end

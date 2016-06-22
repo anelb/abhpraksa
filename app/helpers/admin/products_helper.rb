@@ -4,12 +4,11 @@ module Admin::ProductsHelper
     if current_page? action: 'new'
       1
     else
-      f.object.quantity
+      if f.object.quantity.blank?
+        1
+      else
+        f.object.quantity
+      end
     end  
-
   end
-
-  # def show_product_categories(category_title)
-  #   return if @product.categories.map { |x| x.title }.include? category_title
-  # end
 end
