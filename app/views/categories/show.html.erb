@@ -7,7 +7,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <%= label_tag :brand %>
-          <%= select_tag :brand, options_for_select( Brand.all.map { |b| [b.title, b.id ]}.unshift(['Svi brendovi',''])), { class: 'form-control'} %>
+          <%= select_tag :brand, options_for_select( Brand.all.map { |b| [b.title, "?brand=#{b.title.downcase}" ]}.unshift(['Svi brendovi', '?brand=all'])), { class: 'form-control'} %>
         </div>
       </div>
     </div>
@@ -15,7 +15,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <%= label_tag :velicina %>
-          <%= select_tag :size, options_for_select( Size.all.map { |b| [b.product_size, b.id ]}.unshift(['Sve velicine',''])), { class: 'form-control'}  %>
+          <%= select_tag :size, options_for_select( Size.all.map { |b| [b.product_size, "?size=#{b.product_size}" ]}.unshift(['Sve velicine','?size=all'])), { class: 'form-control'}  %>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class='col-md-8'>
         <div class="form-group">
           <%= label_tag :boja %>
-          <%= select_tag :color, options_for_select( Color.all.map { |b| [b.product_color, b.id ]}.unshift(['Sve boje',''])), { class: 'form-control'}  %>
+          <%= select_tag :color, options_for_select( Color.all.map { |b| [b.product_color, "?color=#{b.product_color.downcase}" ]}.unshift(['Sve boje','?color=all'])), { class: 'form-control'}  %>
         </div>
       </div>
     </div>

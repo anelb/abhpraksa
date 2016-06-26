@@ -73,6 +73,8 @@ pro.each do |product|
     product.categories.push(category)
   end
   product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
+  #same produvt variant
+  #product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
   product.product_variants.build(size_id: size_35.id, color_id: black.id, quantity: 10)
   product.product_variants.build(size_id: size_36.id, color_id: green.id, quantity: 10)
   product.product_variants.build(size_id: size_36.id, color_id: black.id, quantity: 10)
