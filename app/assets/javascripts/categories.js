@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-  var currentParams = window.location.href.split('?').splice(1, 4);
-  
+  // var currentParams = window.location.href.split('?').splice(1, 5).toString().split('&');
+  var currentParams = [ window.location.href.split('?')[1] ] || ''
   // $("#brand > option").each(function() {
   //   if (this.value == queryString) {
   //     this.selected = 'selected';
@@ -10,13 +10,20 @@ $(document).ready(function() {
 
   $('#brand, #color, #size' ).on('change', function () {
     var filter = $(this).val();
-    if ( currentParams.length > 0) {
-      var splitByDelimiter = currentParams.toString().split('&');
-      $.each( splitByDelimiter, function(index, param) {
-        var filterTitle = filter.split('=')[0].split('?')[1];
+    if ( currentParams != '') {
+      var filterTitle = filter.split('=')[0].split('?')[1];
+      $.each( currentParams, function(index, param) {
         if ( param.indexOf(filterTitle) >= 0 ) {
-          splitByDelimiter.splice(splitByDelimiter.indexOf(param), 1).join('&');
-          window.location = filter + '&' + splitByDelimiter.join('&')
+          var paramsSplited = currentParams.toString();
+          if (paramsSplited.split('=').length == 2) {
+          currentParams.splice(currentParams.indexOf(param), 1);
+          window.location = filter + 'One';
+          }
+          else {
+            var newParams = paramsSplited.split('&')
+            newParams.splice(newParams.indexOf(param), 1);
+            window.location = filter + 'Many' + '&' + newParams;
+          };
         }
         else {
           window.location = filter + '&' + currentParams;
@@ -25,7 +32,6 @@ $(document).ready(function() {
     }
     else {
       window.location = filter;
-    };
-        
+    };    
   });
 });
