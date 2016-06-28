@@ -2,12 +2,13 @@
   <div class='row'>
     <h5>FILTER</h5>
   </div>
+  <%= form_tag('T', method: 'get') do |f| %>
   <div id='filters'>
     <div class='row'>
       <div class="col-md-8">
         <div class="form-group">
           <%= label_tag :brand %>
-          <%= select_tag :brand, options_for_select( Brand.all.map { |b| [b.title, "?brand=#{b.title.downcase}" ]}.unshift(['Svi brendovi', '?brand=all'])), { class: 'form-control'} %>
+          <%= select_tag :brand, options_for_select( Brand.all.map { |b| [b.title, "?brand=#{b.id}" ]}.unshift(['Svi brendovi', '?brand=all'])), { class: 'form-control'} %>
         </div>
       </div>
     </div>
@@ -15,7 +16,7 @@
       <div class="col-md-8">
         <div class="form-group">
           <%= label_tag :velicina %>
-          <%= select_tag :size, options_for_select( Size.all.map { |b| [b.product_size, "?size=#{b.product_size}" ]}.unshift(['Sve velicine','?size=all'])), { class: 'form-control'}  %>
+          <%= select_tag :size, options_for_select( Size.all.map { |b| [b.product_size, "?size=#{b.id}" ]}.unshift(['Sve velicine','?size=all'])), { class: 'form-control'}  %>
         </div>
       </div>
     </div>
@@ -23,12 +24,13 @@
       <div class='col-md-8'>
         <div class="form-group">
           <%= label_tag :boja %>
-          <%= select_tag :color, options_for_select( Color.all.map { |b| [b.product_color, "?color=#{b.product_color.downcase}" ]}.unshift(['Sve boje','?color=all'])), { class: 'form-control'}  %>
+          <%= select_tag :color, options_for_select( Color.all.map { |b| [b.product_color, "?color=#{b.id}" ]}.unshift(['Sve boje','?color=all'])), { class: 'form-control'}  %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<% end %>
 <div class='col-md-10'>
   <div class="col-md-12 pull-right">
     <div class='row'>
