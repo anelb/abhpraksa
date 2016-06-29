@@ -23,7 +23,7 @@ product_1 = Product.new(title: 'CONS Sumner ', brand_id: 1, price: 70, style: 'c
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/6.png')
-product_2 = Product.new(title: 'CONS One Star Pro ', brand_id: 1, price: 120, style: 'casual', 
+product_2 = Product.new(title: 'CONS One Star Pro ', brand_id: 2, price: 120, style: 'casual', 
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/2.png')
@@ -31,7 +31,7 @@ product_3 = Product.new(title: 'Chuck Taylor All Star II', brand_id: 1, price: 3
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/3.jpg')
-product_4 = Product.new(title: 'Chuck Taylor All Star III', brand_id: 1, price: 80, style: 'casual', 
+product_4 = Product.new(title: 'Chuck Taylor All Star III', brand_id: 3, price: 80, style: 'casual', 
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
@@ -40,15 +40,15 @@ product_5 = Product.new(title: 'CONS CTAS Pro I', brand_id: 1, price: 70, style:
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/5.png')
-product_6 = Product.new(title: 'Chuck Taylor All Star IV', brand_id: 1, price: 65, style: 'casual', 
+product_6 = Product.new(title: 'Chuck Taylor All Star IV', brand_id: 2, price: 65, style: 'casual', 
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/7_.jpg')
-product_7 = Product.new(title: 'Jack Purcell Signature I', brand_id: 1, price: 20, style: 'casual', 
+product_7 = Product.new(title: 'Jack Purcell Signature I', brand_id: 2, price: 20, style: 'casual', 
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/8.jpg')
-product_8 = Product.new(title: 'Jack Purcell Signature II', brand_id: 1, price: 70, style: 'casual', 
+product_8 = Product.new(title: 'Jack Purcell Signature II', brand_id: 3, price: 70, style: 'casual', 
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/1_.png')
@@ -68,19 +68,24 @@ size_39 = Size.create(product_size: '39')
 pro = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
 cat = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
 
-# pro.each do |product|
-#   cat.each do |category|
-#     product.categories.push(category)
-#   end
-#   #product.save
-#   #same produvt variant
-#   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
-#   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
-#   product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
-#   #product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
-#   product.product_variants.build(size_id: size_35.id, color_id: black.id, quantity: 10)
-#   product.product_variants.build(size_id: size_36.id, color_id: green.id, quantity: 10)
-#   product.product_variants.build(size_id: size_36.id, color_id: black.id, quantity: 10)
-#   product.product_variants.build(size_id: size_36.id, color_id: grey.id, quantity: 10)
-#   product.save!
-# end
+pro.each do |product|
+  cat.each do |category|
+    product.categories.push(category)
+  end
+  #   #product.save
+  #   #same produvt variant
+  #   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
+  #   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
+  product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
+  #product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
+  product.product_variants.build(size_id: size_35.id, color_id: black.id, quantity: 10)
+  product.product_variants.build(size_id: size_36.id, color_id: green.id, quantity: 10)
+  product.product_variants.build(size_id: size_36.id, color_id: black.id, quantity: 10)
+  product.product_variants.build(size_id: size_36.id, color_id: grey.id, quantity: 10)
+  product.product_variants.build(size_id: size_37.id, color_id: yellow.id, quantity: 10)
+  product.product_variants.build(size_id: size_37.id, color_id: black.id, quantity: 10)
+  product.product_variants.build(size_id: size_38.id, color_id: red.id, quantity: 10)
+  product.product_variants.build(size_id: size_38.id, color_id: grey.id, quantity: 10)
+  product.save!
+end
+

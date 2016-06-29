@@ -6,6 +6,8 @@ class Product < ActiveRecord::Base
   belongs_to :brand
   has_and_belongs_to_many :categories
 
+  scope :by_brand, ->(brand) { where(brand_id: brand) }
+  #scope :by_color, ->(color) { where()}
 
  
   accepts_nested_attributes_for :product_variants, :allow_destroy => true, :reject_if => :all_blank
@@ -31,7 +33,7 @@ class Product < ActiveRecord::Base
                            'updated_at') 
     end
     if without_quantity.length > without_quantity.uniq.length 
-      errors.add(:product_variants, 'error: There is at least two variant with same attributes')
+      errors.add(:product_variant, 'error: There is at least two variants with same attributes')
     end
   end
 
