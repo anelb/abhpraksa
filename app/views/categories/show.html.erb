@@ -34,10 +34,10 @@
 <% end %>
 
 <div class='col-md-10'>
-  <!-- <div class="col-md-12 pull-right">
-    <div class='row'>
+  <div class="col-md-12 pull-right">
+    <div class='row category-title'>
       <h5 class='pull-left'><%= @category.title %></h5>
-      <div class="col-md-4 pull-right">
+      <!-- <div class="col-md-4 pull-right">
         <div class='col-md-3'>
           <p>Cijena:</p>
         </div>
@@ -45,9 +45,9 @@
           <div class="form-group">
             <%= select_tag :sort_by_price, options_for_select([['od vece ka manjoj', 1], ['od manje ka vecoj', 2 ]]), { class: 'form-control'} %>
           </div>
-        </div>
+        </div> -->
       </div>
-    </div> -->
+    </div>
     <div id='products' class='row'>
       <% @products.each_slice(4) do |slice| %>
           <div class='row' style='margin-bottom: 80px'>
