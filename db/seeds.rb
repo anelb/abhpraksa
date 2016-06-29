@@ -36,7 +36,7 @@ product_4 = Product.new(title: 'Chuck Taylor All Star III', brand_id: 3, price: 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
 
-product_5 = Product.new(title: 'CONS CTAS Pro I', brand_id: 1, price: 70, style: 'casual', 
+product_5 = Product.new(title: 'CONS CTAS Pro I', brand_id: 2, price: 70, style: 'casual', 
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/5.png')
@@ -68,9 +68,9 @@ size_39 = Size.create(product_size: '39')
 pro = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
 cat = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
 
-pro.each do |product|
-  cat.each do |category|
-    product.categories.push(category)
+pro[0..3].each do |product|
+  5.times do
+    product.categories.push(cat.sample)
   end
   #   #product.save
   #   #same produvt variant
@@ -79,13 +79,31 @@ pro.each do |product|
   product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
   #product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
   product.product_variants.build(size_id: size_35.id, color_id: black.id, quantity: 10)
-  product.product_variants.build(size_id: size_36.id, color_id: green.id, quantity: 10)
-  product.product_variants.build(size_id: size_36.id, color_id: black.id, quantity: 10)
+  product.product_variants.build(size_id: size_36.id, color_id: red.id, quantity: 10)
+  product.product_variants.build(size_id: size_36.id, color_id: yellow.id, quantity: 10)
   product.product_variants.build(size_id: size_36.id, color_id: grey.id, quantity: 10)
   product.product_variants.build(size_id: size_37.id, color_id: yellow.id, quantity: 10)
   product.product_variants.build(size_id: size_37.id, color_id: black.id, quantity: 10)
   product.product_variants.build(size_id: size_38.id, color_id: red.id, quantity: 10)
   product.product_variants.build(size_id: size_38.id, color_id: grey.id, quantity: 10)
+  product.save!
+end
+
+pro[4..7].each do |product|
+  5.times do
+    product.categories.push(cat.sample)
+  end
+  #   #product.save
+  #   #same produvt variant
+  #   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
+  #   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
+  product.product_variants.build(size_id: size_37.id, color_id: yellow.id, quantity: 10)
+  product.product_variants.build(size_id: size_37.id, color_id: black.id, quantity: 10)
+  product.product_variants.build(size_id: size_38.id, color_id: red.id, quantity: 10)
+  product.product_variants.build(size_id: size_38.id, color_id: grey.id, quantity: 10)
+  product.product_variants.build(size_id: size_39.id, color_id: green.id, quantity: 10)
+  product.product_variants.build(size_id: size_39.id, color_id: grey.id, quantity: 10)
+  product.product_variants.build(size_id: size_39.id, color_id: black.id, quantity: 10)
   product.save!
 end
 
