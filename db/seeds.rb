@@ -65,19 +65,14 @@ size_37 = Size.create(product_size: '37')
 size_38 = Size.create(product_size: '38')
 size_39 = Size.create(product_size: '39')
 
-pro = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
-cat = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
+products = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
+categories = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
+colors = [ green, black, red, grey, yellow]
+sizes = [ size_35, size_36, size_37, size_38, size_39]
 
-pro[0..3].each do |product|
-  5.times do
-    product.categories.push(cat.sample)
-  end
-  #   #product.save
-  #   #same produvt variant
-  #   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
-  #   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
+products.each do |product|
+  product.categories.push(categories.sample)
   product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
-  #product.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 10)
   product.product_variants.build(size_id: size_35.id, color_id: black.id, quantity: 10)
   product.product_variants.build(size_id: size_36.id, color_id: red.id, quantity: 10)
   product.product_variants.build(size_id: size_36.id, color_id: yellow.id, quantity: 10)
@@ -89,21 +84,4 @@ pro[0..3].each do |product|
   product.save!
 end
 
-pro[4..7].each do |product|
-  5.times do
-    product.categories.push(cat.sample)
-  end
-  #   #product.save
-  #   #same produvt variant
-  #   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
-  #   #ProductVariant.create(product_id: product.id, size_id: size_35.id, color_id: green.id, quantity: 10)
-  product.product_variants.build(size_id: size_37.id, color_id: yellow.id, quantity: 10)
-  product.product_variants.build(size_id: size_37.id, color_id: black.id, quantity: 10)
-  product.product_variants.build(size_id: size_38.id, color_id: red.id, quantity: 10)
-  product.product_variants.build(size_id: size_38.id, color_id: grey.id, quantity: 10)
-  product.product_variants.build(size_id: size_39.id, color_id: green.id, quantity: 10)
-  product.product_variants.build(size_id: size_39.id, color_id: grey.id, quantity: 10)
-  product.product_variants.build(size_id: size_39.id, color_id: black.id, quantity: 10)
-  product.save!
-end
 
