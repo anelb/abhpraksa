@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby "2.3.0"
 
 gem 'stripe'
+gem "paranoia", "~> 2.0"
 gem 'toastr-rails'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'will_paginate', '~> 3.1.0'
