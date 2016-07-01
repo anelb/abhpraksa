@@ -6,9 +6,7 @@ class Product < ActiveRecord::Base
   belongs_to :brand
   has_and_belongs_to_many :categories
 
-  scope :by_brand, ->(brand) { where(brand_id: brand) }
-  #scope :by_color, ->(color) { where()}
-
+  acts_as_paranoid
  
   accepts_nested_attributes_for :product_variants, :allow_destroy => true, :reject_if => :all_blank
 
