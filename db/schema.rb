@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701050231) do
+ActiveRecord::Schema.define(version: 20160701115447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20160701050231) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
-    t.integer  "product_variant_id"
     t.integer  "quantity"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "product_variant_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20160701050231) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "carts_product_variants", id: false, force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "product_variant_id"
+  end
+
+  add_index "carts_product_variants", ["cart_id"], name: "index_carts_product_variants_on_cart_id", using: :btree
+  add_index "carts_product_variants", ["product_variant_id"], name: "index_carts_product_variants_on_product_variant_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -75,9 +83,13 @@ ActiveRecord::Schema.define(version: 20160701050231) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "quantity"
+    t.datetime "deleted_at"
   end
 
+  add_index "product_variants", ["deleted_at"], name: "index_product_variants_on_deleted_at", using: :btree
+
   create_table "products", force: :cascade do |t|
+    t.integer  "category_id"
     t.integer  "brand_id"
     t.string   "title"
     t.integer  "price"
@@ -90,10 +102,7 @@ ActiveRecord::Schema.define(version: 20160701050231) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.datetime "deleted_at"
   end
-
-  add_index "products", ["deleted_at"], name: "index_products_on_deleted_at", using: :btree
 
   create_table "sizes", force: :cascade do |t|
     t.integer  "product_size"
@@ -116,6 +125,8 @@ ActiveRecord::Schema.define(version: 20160701050231) do
     t.boolean  "activated",         default: false
   end
 
+  add_foreign_key "carts_product_variants", "carts"
+  add_foreign_key "carts_product_variants", "product_variants"
   add_foreign_key "categories_products", "categories"
   add_foreign_key "categories_products", "products"
 end

@@ -5,8 +5,12 @@ class Cart < ActiveRecord::Base
 
   def total
     price = []
-    cart_items.each do|item| 
-      price << ProductVariant.find(item.product_variant_id).product.price * item.quantity
+    cart_items.each do|item|
+      if item.product_variant.deleted?
+        next
+      else
+        price << ProductVariant.find(item.product_variant_id).product.price * item.quantity 
+      end
     end
     return price.inject(:+)
   end
@@ -17,8 +21,12 @@ class Cart < ActiveRecord::Base
 
   def how_many_orders
     orders = []
-    cart_items.each do|item| 
-      orders << item.quantity
+    cart_items.each do|item|
+      if item.product_variant.deleted?
+        next
+      else
+        orders << item.quantity
+      end
     end
     return orders.inject(:+)
   end
@@ -50,4 +58,5 @@ class Cart < ActiveRecord::Base
       product_variant.destroy if product_variant.quantity == 0 
     end
   end
+
 end
