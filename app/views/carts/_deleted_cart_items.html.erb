@@ -1,5 +1,7 @@
 <div class='row'>
   <div class='col-md-12 space' style='background-color: #fcf8e3'>
+    <%= link_to "<span id='remove-item-deleted' class='glyphicon glyphicon-remove'></span>"
+      .html_safe, delete_cart_item_path(f.id),  method: :delete, data: { confirm: 'Are you sure?' } %>
     <div id='cart-picture' class='col-md-3'>
       <img src="<%= f.product_variant.product.picture_link %>" width='150' height='auto'>
     </div>

@@ -14,11 +14,8 @@
       <div class='col-md-4'>
         <div class="alert alert-warning" role="alert">
           <strong>Napomena:</strong>
-          U korpi se nalazi proizvod koji nije dostupan, i ako zeliti nastaviti kupovinu, ispraznite korpu.
+          U korpi se nalazi proizvod koji nije dostupan, i ako zeliti nastaviti kupovinu, izbrisite ga iz korpe.
         </div>
-        <%= link_to 'ISPRAZNI KORPU', delete_cart_path(current_cart.id), method: :delete, class: 'btn btn-primary pull-right',
-                                                                          id: 'discard',
-                                                                       data: { confirm: 'Are you sure?' } %>
       </div>
     <% else %>
 
