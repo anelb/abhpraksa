@@ -15,17 +15,23 @@ class SessionsController < ApplicationController
       end
       redirect_to sign_in_path
     else
-      if @user && @user.authenticate(params[:session][:password])
-        log_in @user
-        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-        redirect_to '/'
+      if @user.activated?
+        if @user && @user.authenticate(params[:session][:password])
+          log_in @user
+          params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+          redirect_to '/'
+        else
+          flash.now[:warning] = 'Invalid email/password combination'
+          increment_attempt_num
+          render 'new'
+        end
       else
-        flash.now[:warning] = 'Invalid email/password combination'
-        increment_attempt_num
-        render 'new'
+        flash[:warning] = 'Account is not activated. Check your email for the activation link.'
+        redirect_to root_url
       end
     end
   end
+
   def destroy
     log_out if logged_in?
     redirect_to root_url

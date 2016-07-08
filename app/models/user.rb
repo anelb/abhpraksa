@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
-  attr_accessor :remember_token, :reset_token 
+  attr_accessor :remember_token, :reset_token, :activation_token
+
+  before_create :create_activation_digest 
 
   validates :first_name, :last_name, :email, :username,  presence: true
   validates :email, :username, uniqueness: true
@@ -53,6 +55,15 @@ class User < ActiveRecord::Base
 
   def delete_reset_digest
     self.update_attribute(:reset_digest, nil)
+  end
+
+  def activate
+    self.update_attribute(:activated, true)
+  end
+
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 
 end

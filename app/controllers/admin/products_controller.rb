@@ -10,12 +10,18 @@ class Admin::ProductsController < AdminController
 
   def create
     @product = Product.new(product_params)
+    #@product = Product.build_new_product(params)
     @product.build_with_category(params)
+    #byebug
+    # if params[:product][:product_variants_attributes]
+    #   @product.build_with_variant(params)
+    # end
     if @product.save
       flash[:info] = 'New product created'
       redirect_to admin_products_path
     else
       render 'new'
+      #byebug
     end
   end
 
@@ -25,12 +31,14 @@ class Admin::ProductsController < AdminController
 
   def update
     @product = Product.find(params[:id])
+    @product.build_with_category(params)
     if @product.update(product_params)
       flash[:info] = 'Product updated'
       redirect_to admin_products_path
     else
       render 'edit'
     end
+    #byebug
   end
 
   def destroy

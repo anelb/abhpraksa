@@ -74,3 +74,19 @@ a.add_fields:focus {
   }
 }
 
+#product-category {
+  button.selectpicker {
+    background-color: transparent;
+  }
+  button.btn-default.btn {
+    color: black;
+    font-size: 14px;
+    padding: 6px 0px;
+  }
+  button.btn-default:hover {
+    background-color: transparent;
+    border-color: #ccc;
+  }
+}
+
+

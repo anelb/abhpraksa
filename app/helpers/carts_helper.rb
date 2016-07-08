@@ -17,5 +17,9 @@ module CartsHelper
     @current_cart = Cart.create!
     session[:cart_id] = @current_cart.id
   end
+
+  def has_deleted_product_variant?(cart)
+    return cart.map { |item| item.product_variant.deleted? }.include? true
+  end
   
 end

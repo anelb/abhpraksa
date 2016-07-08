@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
     @category = params[:product_details][:category_id]
 
     @product_variant = ProductVariant.find_by(size_id:  params[:product_variant][:size_id], 
-                                              color_id: params[:product_variant][:color_id],
+                                              color_id: Color.find_color_id(params[:product_variant][:color_id]),
                                               product_id: @product)
     
     @cart_item = current_cart.new_item(product_variant: @product_variant, 
