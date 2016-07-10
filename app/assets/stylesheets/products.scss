@@ -86,3 +86,14 @@
 select, option { 
   cursor: pointer; 
 }
+
+#similar-products .thumbnail {
+  border: 0px;
+  margin: 30px;
+  color: black;
+}
+
+#similar-products .img-responsive {
+  max-width: 100%;
+  max-height: 100%;
+}

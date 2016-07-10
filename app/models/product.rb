@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
   validate :category_blank
   validate :duplicate_variant
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  validates_attachment_size :image, :less_than => 2.megabytes
+  validates_attachment_size :image, :less_than => 1.megabytes
   #validates_associated :product_variants, :message => "Already Taken"
   
   def duplicate_variant
