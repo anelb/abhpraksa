@@ -55,6 +55,9 @@
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <%= link_to category_product_path(@category, product), class: 'thumbnail' do %>
                   <div style='height: 80px'>
+                    <% if product.has_discount? %>
+                      <span id='discount-category' class="label label-danger">- <%= product.discount %>%</span>
+                    <% end %>
                     <img src="<%= product.picture_link %>" class='img-responsive'>
                   </div>
                   <p style='margin-top: 15px; margin-bottom: 0px'>

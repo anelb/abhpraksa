@@ -1,8 +1,8 @@
 class WelcomeController < ApplicationController
 
   def index
-    @products = Product.all.shuffle
-    @sale_products = Product.all.shuffle
+    @products = Product.products_without_discount
+    @sale_products = Product.products_with_discount
   end
 
 end

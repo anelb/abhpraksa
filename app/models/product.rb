@@ -20,6 +20,9 @@ class Product < ActiveRecord::Base
   validate :duplicate_variant
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :image, :less_than => 1.megabytes
+
+  scope :products_with_discount, -> { where('discount > ?', 0) }
+  scope :products_without_discount, -> { where(discount: 0) }
   #validates_associated :product_variants, :message => "Already Taken"
   
   def duplicate_variant
@@ -58,6 +61,18 @@ class Product < ActiveRecord::Base
     else
       self.image.url
     end
+  end
+
+  def price
+    with_discount || super
+  end
+
+  def with_discount
+    self[:discount] > 0 ? self[:price] - (self[:price] * (self[:discount]/100)) : nil
+  end
+
+  def has_discount?
+    self.discount > 0
   end
   
 end
