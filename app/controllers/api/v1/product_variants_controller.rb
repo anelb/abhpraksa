@@ -1,4 +1,4 @@
-class Api::ProductVariantsController < AdminController
+class Api::V1::ProductVariantsController < ApiController
 
   before_action :set_product
 

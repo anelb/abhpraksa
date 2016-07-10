@@ -34,10 +34,14 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: { format: :json } do
-    resources :products do
-      resources :product_variants
+    namespace :v1 do
+      resources :categories, only: [:index, :show] do
+        resources :products, only: [:index, :show]
+      end
     end
   end
+
+  match '/api/*bullshot', to: 'api#no_endpoint', via: :all
   
   
 end
