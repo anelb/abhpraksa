@@ -98,10 +98,16 @@ select, option {
   max-height: 100%;
 }
 
-#discount-product {
+#discount-similar-product {
   position: absolute;
   font-size: 15px;  
   top: 1%;
   left: 62%;
 }
 
+#discount-product {
+  position: absolute;
+  font-size: 25px;  
+  top: 0%;
+  left: 65%;
+}

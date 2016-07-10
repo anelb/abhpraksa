@@ -4,6 +4,11 @@
         <div id='title' class='product-details'>
           <h4><%= @product.title %></h4>
         </div>
+        <% if @product.has_discount? %>
+          <span id='discount-product' class="label label-danger">
+            - <%= @product.discount %>%
+          </span>
+        <% end %>
         <img src="<%= @product.picture_link %>" class="img-responsive">
     </div>
     <div class='col-md-6 product-right'>
@@ -52,7 +57,7 @@
         <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
           <div style='height: 80px'>
             <% if product.has_discount? %>
-              <span id='discount-product' class="label label-danger">- <%= product.discount %>%</span>
+              <span id='discount-similar-product' class="label label-danger">- <%= product.discount %>%</span>
             <% end %>
             <img src="<%= product.picture_link %>" class='img-responsive'>
           </div>
