@@ -59,21 +59,5 @@ class Product < ActiveRecord::Base
       self.image.url
     end
   end
-
-  # def self.build_new_product(params)
-  #   self.new(title: params[:product][:title], 
-  #            description: params[:product][:description], 
-  #            price: params[:product][:price], 
-  #            brand_id: params[:product][:brand_id] )
-  # end
-
-  # def build_with_variant(params)
-  #   params[:product][:product_variants_attributes].each do |k, v|
-  #       ProductVariant.create!(product_id: self.id, 
-  #                              size_id: v[:size_id], 
-  #                              color_id: v[:color_id], 
-  #                              quantity: v[:quantity])
-  #   end
-  # end
   
 end

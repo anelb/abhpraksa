@@ -7,6 +7,10 @@ class Api::ProductsController < AdminController
 
   def show
     @product = Product.find(params[:id])
+
     render json: @product
+    #byebug
   end
+
+
 end

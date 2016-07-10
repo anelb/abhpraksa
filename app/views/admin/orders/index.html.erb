@@ -1,0 +1,28 @@
+<% content_for :admin_navbar, render('admin/dashboard/admin_navbar') %>
+<div class="row">
+  <table class='table table-bordered table-hover'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Korisnik</th>
+        <th>Email Adresa</th>
+        <th>Adresa</th>
+        <th>Grad</th>
+        <th>Drzava</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <% @orders.each do |order| %>
+      <tr data-link="<%= admin_order_path(order) %>">
+        <td><%= order.id %></td>
+        <td><%= order.user_full_name %></td>
+        <td><%= order.user_email_address %></td>
+        <td><%= order.stripeShippingAddressLine1 %></td>
+        <td><%= order.stripeShippingAddressCity %></td>
+        <td><%= order.stripeShippingAddressCountry %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

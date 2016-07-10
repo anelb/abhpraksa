@@ -30,10 +30,13 @@ Rails.application.routes.draw do
     post '/demote'  => 'users#demote'
     resources :categories, except: [:show]
     resources :products
+    resources :orders, only: [:index, :show]
   end
 
   namespace :api, defaults: { format: :json } do
-    resources :products
+    resources :products do
+      resources :product_variants
+    end
   end
   
   
