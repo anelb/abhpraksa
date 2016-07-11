@@ -21,13 +21,13 @@
           <div class='col-md-3'> 
             <div class="form-group">
               <%= f.label :cijena %>
-              <%= f.number_field :price, min: 1, class: 'form-control' %>
+              <%= f.number_field :price, min: 1, step: 0.1,  class: 'form-control' %>
             </div>
           </div>
           <div class='col-md-3'> 
             <div class="form-group">
-              <%= f.label :Popust %>
-              <%= f.number_field :discount, min: 0, class: 'form-control' %>
+              <%= f.label :popust %>
+              <%= f.number_field :discount, step: 0.1, class: 'form-control' %>
             </div>
           </div>
         </div>

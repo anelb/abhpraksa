@@ -17,13 +17,17 @@ class ApiController < ActionController::Base
   end
 
   # Error handling
-  rescue_from StandardError do |error|    
-    render json: Api::Response.new(status: Api::Status.from_exception(error))
+  rescue_from StandardError do |error|
+    if error.is_a?(Api::Exceptions::AbhShopException)
+      render json: Api::Response.new(status: Api::Status.from_abh_exception(error)), status: error.code
+    else
+      render json: Api::Response.new(status: Api::Status.from_exception(error)), status: 500
+    end
   end
 
 
   # No End Point
   def no_endpoint
-    raise Api::Status.routing_error
+    raise Api::Exceptions::NoRouteException
   end
 end

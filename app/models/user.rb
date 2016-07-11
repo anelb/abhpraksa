@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   
   validates :password, length: {minimum: 6}
 
-  has_one :cart
+  has_one :cart, dependent: :destroy
   has_secure_password
 
   def self.digest(string)

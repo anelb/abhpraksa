@@ -1,15 +1,11 @@
-class Api::Status < StandardError 
+class Api::Status 
 
   attr_accessor :code
-  attr_accessor :message
+  attr_accessor :messages
 
   def initialize(options = {})
     self.code    = options[:code]
-    self.message = options[:message]
-  end
-
-  def self.from_exception(exception)
-    return exception.instance_of?(Api::Status) ? exception : general_error(exception)
+    self.messages = options[:message]
   end
 
   # Factory
@@ -17,11 +13,11 @@ class Api::Status < StandardError
     return Api::Status.new(code: 200, message: 'OK')
   end
 
-  def self.general_error(msg)
-    return Api::Status.new(code: 500, message: 'Anything else')
+  def self.from_exception(e)
+    return Api::Status.new(code: 500, message: 'Unknown error')
   end
 
-  def self.routing_error
-    return Api::Status.new(code: 404, message: 'Not found' )
+  def self.from_abh_exception(e)
+    return Api::Status.new(code: e.code, message: e.messages)
   end
 end
