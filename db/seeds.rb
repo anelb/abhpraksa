@@ -107,4 +107,16 @@ products.each do |product|
   product.save!
 end
 
+30.times do |num|
+  p = Product.new(
+      title: "Test Proizvod_#{num}", 
+      brand_id: 1, 
+      price: 79,
+      description: 'The Converse Chuck Taylor All Star II retains the iconic.',
+      photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
+  p.categories.push(categories[0])
+  p.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 2)
+  p.save!
+end
+
 

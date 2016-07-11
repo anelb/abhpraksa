@@ -36,8 +36,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :categories, only: [:index, :show] do
-        resources :products, only: [:index, :show]
-        get 'products/pictures' => 'products#pictures'
+        resources :products, only: [:index, :show] do
+          resources :product_variants
+        end
       end
       get    '/sign_up'  => 'users#new'
       post   '/sign_up'  => 'users#create'
