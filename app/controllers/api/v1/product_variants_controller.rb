@@ -4,7 +4,7 @@ class Api::V1::ProductVariantsController < ApiController
 
   def index
     @product_variants = @product.product_variants
-    render json: @product_variants, status: :ok
+    render response: @product_variants
   end
 
   private
