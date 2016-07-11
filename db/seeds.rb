@@ -19,6 +19,8 @@ djecija_obuca  = Category.create!(title: 'DJEČIJA OBUĆA')
 sportska_obuca = Category.create!(title: 'SPORTSKA OBUĆA')
 dodaci         = Category.create!(title: 'DODACI')
 
+
+
 product_1 = Product.new(title: 'CONS Sumner TESTIRANJE', brand_id: 1, price: 70, style: 'casual', 
                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
@@ -83,6 +85,7 @@ size_36 = Size.create(product_size: '36')
 size_37 = Size.create(product_size: '37')
 size_38 = Size.create(product_size: '38')
 size_39 = Size.create(product_size: '39')
+
 
 products = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, 
              product_8, product_9, product_10, product_11, product_12]

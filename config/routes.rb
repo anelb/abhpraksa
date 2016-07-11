@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :categories, only: [:index, :show] do
         resources :products, only: [:index, :show]
+        get 'products/pictures' => 'products#pictures'
       end
       get    '/sign_up'  => 'users#new'
       post   '/sign_up'  => 'users#create'
