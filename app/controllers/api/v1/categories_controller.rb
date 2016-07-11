@@ -2,12 +2,12 @@ class Api::V1::CategoriesController < ApiController
 
   def index
     @categories = Category.all
-    render json: @categories
+    render response: @categories
   end
 
   def show
     @category = Category.find(params[:id])
-    render json: @category
+    render response: @category
   end
 
 end

@@ -38,10 +38,17 @@ Rails.application.routes.draw do
       resources :categories, only: [:index, :show] do
         resources :products, only: [:index, :show]
       end
+      get    '/sign_up'  => 'users#new'
+      post   '/sign_up'  => 'users#create'
+
+      get    '/sign_in'  => 'sessions#new'
+      post   '/sign_in'  => 'sessions#create'
+      delete '/logout'   => 'sessions#destroy'
+
     end
   end
 
-  match '/api/*bullshot', to: 'api#no_endpoint', via: :all
+  match '/api/v1/*path', to: 'api#no_endpoint', via: :all
   
   
 end

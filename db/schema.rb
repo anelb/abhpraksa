@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710173446) do
+ActiveRecord::Schema.define(version: 20160711053304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 20160710173446) do
     t.string   "reset_digest"
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
+    t.string   "api_token"
   end
 
   add_foreign_key "carts_product_variants", "carts"

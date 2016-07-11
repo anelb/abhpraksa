@@ -18,17 +18,9 @@ class ApiController < ActionController::Base
 
   # Error handling
   rescue_from StandardError do |error|    
-    render json: Api::Response.new(status: Api::Status.from_exception(error)), status: 500
+    render json: Api::Response.new(status: Api::Status.from_exception(error))
   end
 
-  # Utils
-  def check_required(fields)
-    fields.each do |field, _|
-      if !params.has_key?(field.to_s)
-        raise Api::Status.missing_param_error("field")
-      end
-    end
-  end
 
   # No End Point
   def no_endpoint

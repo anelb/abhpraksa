@@ -38,4 +38,8 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
+  def login_without_email(user)
+    flash[:warning] = "Email can't be empty!" if user.nil?
+  end
+
 end

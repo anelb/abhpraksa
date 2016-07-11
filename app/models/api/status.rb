@@ -1,39 +1,27 @@
-class Api::Status < StandardError
-  ERROR_OK            = 0
-  ERROR_GENERAL       = 1
-  ERROR_MISSING       = 2
-  ERROR_ROUTING       = 3
+class Api::Status < StandardError 
 
   attr_accessor :code
   attr_accessor :message
 
   def initialize(options = {})
-    super(options[:message])
-
     self.code    = options[:code]
     self.message = options[:message]
   end
 
   def self.from_exception(exception)
-    return exception.instance_of?(Api::Status) ? 
-            exception :
-            general_error(exception.message)
+    return exception.instance_of?(Api::Status) ? exception : general_error(exception)
   end
 
   # Factory
   def self.ok 
-    return Api::Status.new(code: ERROR_OK, message: 'Ok')
+    return Api::Status.new(code: 200, message: 'OK')
   end
 
   def self.general_error(msg)
-    return Api::Status.new(code: ERROR_GENERAL, message: msg)
-  end
-
-  def self.missing_param_error(param)
-    return Api::Status.new(code: ERROR_MISSING, message: "Missing param #{param}" )
+    return Api::Status.new(code: 500, message: 'Anything else')
   end
 
   def self.routing_error
-    return Api::Status.new(code: ERROR_ROUTING, message: 'Routing error' )
+    return Api::Status.new(code: 404, message: 'Not found' )
   end
 end

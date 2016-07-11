@@ -4,12 +4,12 @@ class Api::V1::ProductsController < ApiController
 
   def index
     @products = @category.products.paginate(page: params[:page], per_page: 5)
-    render json: @products, status: :ok
+    render response: @products
   end
 
   def show
     @product = Product.find(params[:id])  
-    render json: @product
+    render response: @product
   end
 
   private
