@@ -2,13 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.thumbnail {
+
+#popularno-carousel .thumbnail {
   border: 0px;
   margin: 30px;
   color: black;
-  > img {
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
-  }
+  margin-left: 25%;
+}
+
+#popularno-carousel .img-responsive {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+#sale-carousel .thumbnail {
+  border: 0px;
+  margin: 30px;
+  color: black;
+  margin-left: 25%;
+}
+
+#sale-carousel .img-responsive {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.discount-home {
+  position: absolute;
+  font-size: 15px;  
+  top: 1%;
+  left: 55%;
 }

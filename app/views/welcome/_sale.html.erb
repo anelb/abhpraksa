@@ -7,18 +7,11 @@
       <% if @products.length <= 4 %>
         <div class="item active">
           <% @products.each do |product| %>
-            <div class="col-sm-6 col-md-4 col-lg-3">
-              <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
-                <div class='pull-left col-md-10 col-md-offset-1'>
-                  <img src="<%= product.picture_link %>" class="img-responsive">
-                  
-                  <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'>
-                    <%= product.title %>
-                  </p> 
-                  <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
-                </div>
-              <% end %>
-            </div>
+            <% if product.categories.blank? %>
+              <% next %>
+            <% else %>
+              <%= render 'welcome/carousel/carousel_sale', f: product %>
+            <% end %>
           <% end %>
         </div>
       <% else %>
@@ -26,35 +19,17 @@
           <% if @sale_products.slice(0..3) == slice %>
             <div class="item active">
               <% slice.each do |product| %>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
-                    <div class='pull-left col-md-10 col-md-offset-1'>
-                      <img src="<%= product.picture_link %>" class="img-responsive">
-                      
-                      <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'>
-                        <%= product.title %>
-                      </p> 
-                      <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
-                    </div>
-                  <% end %>
-                </div>
+                <% if product.categories.blank? %>
+                  <% next %>
+                <% else %>
+                  <%= render 'welcome/carousel/carousel_sale', f: product %>
+                <% end %>
               <% end %>
             </div>
           <% else %>
             <div class="item">
               <% slice.each do |product| %>
-                  <div class="col-sm-6 col-md-4 col-lg-3">
-                    <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
-                      <div class='pull-left col-md-10 col-md-offset-1'>
-                        <img src="<%= product.picture_link %>" class="img-responsive">
-                        
-                        <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'>
-                          <%= product.title %>
-                        </p> 
-                        <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
-                      </div>
-                    <% end %>
-                  </div>
+                <%= render 'welcome/carousel/carousel_sale', f: product %>
               <% end %>
             </div>  
           <% end %>

@@ -53,6 +53,25 @@ product_8 = Product.new(title: 'Jack Purcell Signature II', brand_id: 3, price: 
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/1_.png')
 
+
+
+product_9 = Product.new(title: 'CONS CTAS Pro 9', brand_id: 2, price: 70, discount: 10, style: 'casual', 
+                        description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+                        photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/6.png')
+product_10 = Product.new(title: 'Chuck Taylor All Star 10', brand_id: 2, price: 65, discount: 5, style: 'casual', 
+                        description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+                        photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/8.jpg')
+product_11 = Product.new(title: 'Jack Purcell Signature 11', brand_id: 2, price: 20, discount: 30, style: 'casual', 
+                        description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+                        photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/1_.png')
+product_12 = Product.new(title: 'Jack Purcell Signature 12', brand_id: 3, price: 70, discount: 20, style: 'casual', 
+                        description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+              but is built for more to better meet the demands of your “on the go” lifestyle',
+                        photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
+
 green  = Color.create(product_color: 'Green', hex_value: '#008000')
 black  = Color.create(product_color: 'Black', hex_value: '#000000')
 red    = Color.create(product_color: 'Red', hex_value: '#ff0000')
@@ -65,7 +84,8 @@ size_37 = Size.create(product_size: '37')
 size_38 = Size.create(product_size: '38')
 size_39 = Size.create(product_size: '39')
 
-products = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, product_8]
+products = [ product_1, product_2, product_3, product_4, product_5, product_6, product_7, 
+             product_8, product_9, product_10, product_11, product_12]
 categories = [ zenska_obuca, muska_obuca, djecija_obuca, sportska_obuca, dodaci]
 colors = [ green, black, red, grey, yellow]
 sizes = [ size_35, size_36, size_37, size_38, size_39]

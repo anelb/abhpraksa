@@ -19,7 +19,10 @@ class Product < ActiveRecord::Base
   validate :category_blank
   validate :duplicate_variant
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  validates_attachment_size :image, :less_than => 2.megabytes
+  validates_attachment_size :image, :less_than => 1.megabytes
+
+  scope :products_with_discount, -> { where('discount > ?', 0) }
+  scope :products_without_discount, -> { where(discount: 0) }
   #validates_associated :product_variants, :message => "Already Taken"
   
   def duplicate_variant
@@ -60,20 +63,16 @@ class Product < ActiveRecord::Base
     end
   end
 
-  # def self.build_new_product(params)
-  #   self.new(title: params[:product][:title], 
-  #            description: params[:product][:description], 
-  #            price: params[:product][:price], 
-  #            brand_id: params[:product][:brand_id] )
-  # end
+  def price
+    with_discount || super
+  end
 
-  # def build_with_variant(params)
-  #   params[:product][:product_variants_attributes].each do |k, v|
-  #       ProductVariant.create!(product_id: self.id, 
-  #                              size_id: v[:size_id], 
-  #                              color_id: v[:color_id], 
-  #                              quantity: v[:quantity])
-  #   end
-  # end
+  def with_discount
+    self[:discount] > 0 ? self[:price] - (self[:price] * (self[:discount]/100)) : nil
+  end
+
+  def has_discount?
+    self.discount > 0
+  end
   
 end

@@ -4,6 +4,11 @@
         <div id='title' class='product-details'>
           <h4><%= @product.title %></h4>
         </div>
+        <% if @product.has_discount? %>
+          <span id='discount-product' class="label label-danger">
+            - <%= @product.discount %>%
+          </span>
+        <% end %>
         <img src="<%= @product.picture_link %>" class="img-responsive">
     </div>
     <div class='col-md-6 product-right'>
@@ -45,17 +50,22 @@
     </div>
   </div>
   <br>
-  <div class='row'>
+  <div id='similar-products' class='row'>
     <h4 style='text-align: center; margin: 30px 0px 50px 0px'>Slični proizvodi</h4>
     <% Product.all.sample(4).each do |product| %>
-      <div class="col-xs-6 col-md-3">
+      <div class="col-sm-6 col-md-3 col-lg-3">
         <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
-          <div class='pull-left col-md-12'>
-            <img src="<%= product.picture_link %>" class="img-responsive">
-            <p style='margin-top: 15px; margin-bottom: 0px; width: 150px'><%= product.title %></p> 
-            <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+          <div style='height: 80px'>
+            <% if product.has_discount? %>
+              <span id='discount-similar-product' class="label label-danger">- <%= product.discount %>%</span>
+            <% end %>
+            <img src="<%= product.picture_link %>" class='img-responsive'>
           </div>
-        <% end %>
+          <p style='margin-top: 15px; margin-bottom: 0px'>
+            <%= product.title %>
+          </p> 
+          <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+        <% end %>  
       </div>
     <% end %>
   </div>

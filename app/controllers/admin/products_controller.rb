@@ -52,7 +52,7 @@ class Admin::ProductsController < AdminController
   private
 
   def product_params
-    params.require(:product).permit(:title, :price, :description, :brand_id, :photo_url, :image,
+    params.require(:product).permit(:title, :price, :description, :brand_id, :photo_url, :image, :discount,
                                     product_variants_attributes: [ :id, :size_id, :color_id, :quantity, :_destroy ])
   end
 

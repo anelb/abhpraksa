@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701115447) do
+ActiveRecord::Schema.define(version: 20160711053304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,16 +92,17 @@ ActiveRecord::Schema.define(version: 20160701115447) do
     t.integer  "category_id"
     t.integer  "brand_id"
     t.string   "title"
-    t.integer  "price"
     t.string   "style"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.text     "description"
     t.text     "photo_url"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.float    "price"
+    t.float    "discount",           default: 0.0
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 20160701115447) do
     t.string   "reset_digest"
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
+    t.string   "api_token"
   end
 
   add_foreign_key "carts_product_variants", "carts"

@@ -30,11 +30,25 @@ Rails.application.routes.draw do
     post '/demote'  => 'users#demote'
     resources :categories, except: [:show]
     resources :products
+    resources :orders, only: [:index, :show]
   end
 
   namespace :api, defaults: { format: :json } do
-    resources :products
+    namespace :v1 do
+      resources :categories, only: [:index, :show] do
+        resources :products, only: [:index, :show]
+      end
+      get    '/sign_up'  => 'users#new'
+      post   '/sign_up'  => 'users#create'
+
+      get    '/sign_in'  => 'sessions#new'
+      post   '/sign_in'  => 'sessions#create'
+      delete '/logout'   => 'sessions#destroy'
+
+    end
   end
+
+  match '/api/v1/*path', to: 'api#no_endpoint', via: :all
   
   
 end

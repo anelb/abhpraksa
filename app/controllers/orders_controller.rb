@@ -15,9 +15,10 @@ class OrdersController < ApplicationController
     )
     
     begin
+      #byebug
       charge = Stripe::Charge.create(
         :customer    => customer.id,
-        :amount      => current_cart.total_with_delivery * 100,
+        :amount      => params[:amount].to_i,
         :description => 'AbhShop Customer',
         :currency    => 'usd'
       )
