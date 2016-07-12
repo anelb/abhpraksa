@@ -82,15 +82,18 @@ class Product < ActiveRecord::Base
   end
   
   def custom_json
-    { 'varints':
-    self.product_variants.map do |variant|
-      { 'size': Size.find(variant.size_id).product_size,
-        'colors':
-        ProductVariant.where(product_id: self.id, size_id: variant.id).map do |x| 
-          { 'color': Color.find(x.color_id).hex_value, 'quantity': x.quantity }
-        end
-      }
+    { 'variants':
+    Size.all.map do |size|
+      product_variant = ProductVariant.where(product_id: self.id, size_id: size.id)
+      if !product_variant.blank?
+        { 'size': size.product_size,
+          'colors':
+          product_variant.map do |x| 
+            { 'color': Color.find(x.color_id).product_color, 'quantity': x.quantity }
+          end
+        }
+      end
     end
-      }
+    }
   end
 end

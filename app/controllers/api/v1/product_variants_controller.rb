@@ -14,18 +14,6 @@ class Api::V1::ProductVariantsController < ApiController
     @product = Product.find(params[:product_id])
   end
   
-  private
-
-  def custom_json_for_product_variants(product_variantns)
-    { 'variants':
-    product_variantns.as_json.map do product_variant
-      [
-          { 'size': Size.find(product_variant['size_id']).product_size }
-        ]
-      
-    end
-    }
-  end
 end
 
 
