@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 
+  before_save :round_price
+
   has_many :product_variants, dependent: :destroy 
   has_many :sizes, through: :product_variants
   has_many :colors, through: :product_variants
@@ -25,6 +27,10 @@ class Product < ActiveRecord::Base
   scope :products_without_discount, -> { where(discount: 0) }
   #validates_associated :product_variants, :message => "Already Taken"
   
+  def round_price
+    self.price.round(1)  
+  end
+
   def duplicate_variant
     without_quantity = self.product_variants.map do |k| 
       k.attributes.except!('quantity', 
@@ -68,7 +74,7 @@ class Product < ActiveRecord::Base
   end
 
   def with_discount
-    self[:discount] > 0 ? self[:price] - (self[:price] * (self[:discount]/100)) : nil
+    self[:discount] > 0 ? (self[:price] - (self[:price] * (self[:discount]/100))).round(2) : nil
   end
 
   def has_discount?
