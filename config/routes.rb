@@ -36,10 +36,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :categories, only: [:index, :show] do
-        resources :products, only: [:index, :show] do
+        resources :products, only: [ :index ] do
           resources :product_variants
         end
       end
+      get    '/products/:product_id' => 'products#show_product'
       get    '/sign_up'  => 'users#new'
       post   '/sign_up'  => 'users#create'
 

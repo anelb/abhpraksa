@@ -26,4 +26,6 @@ class ProductVariant < ActiveRecord::Base
   def product_price
     Product.find(self.product_id).price
   end
+
+  
 end
