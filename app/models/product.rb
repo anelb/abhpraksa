@@ -93,7 +93,7 @@ class Product < ActiveRecord::Base
           end
         }
       end
-    end
+    end.compact
     }
   end
 end
