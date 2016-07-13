@@ -8,7 +8,7 @@ class Api::V1::SessionsController < ApiController
       if @user.activated?
         if @user && @user.authenticate(params[:password])
            @user.update_attributes(api_token: SecureRandom.hex) if !@user.api_token
-           render response: { api_token: @user.api_token}
+           render response: { api_token: @user.api_token, username: @user.username }
         else
           raise Api::Exceptions::WrongLoginCredentials
         end
