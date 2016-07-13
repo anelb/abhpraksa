@@ -42,8 +42,8 @@ Rails.application.routes.draw do
       end
       get    '/products/:product_id' => 'products#show_product'
       
-      get    '/cart'     => 'cart_items#index'
-      post   '/cart/add' => 'cart_items#create'
+      get    '/cart'     => 'carts#index'
+      post   '/cart/add' => 'carts#add'
 
       post   '/sign_up'  => 'users#create'
       post   '/sign_in'  => 'sessions#create'

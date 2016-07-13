@@ -1,23 +1,28 @@
-class Api::V1::CartItemsController < ApiController
+class Api::V1::CartsController < ApiController
 
   def index
-    current_cart = Cart.find(3)
+    current_cart = Cart.find(params[:cart_id])
     @cart_items = current_cart.cart_items
     render response: @cart_items
   end
 
-  def create
-    
+  def add
+   
     @product = params[:product_id]
-    current_cart = Cart.find(params[:cart_id])
+    if params[:cart_id]
+      current_cart = Cart.find(params[:cart_id])
+    else
+      current_cart = Cart.create
+    end
     begin
+
     @product_variant = ProductVariant.find_by(size_id:  params[:size_id], 
-                                              color_id: Color.find_color_id(params[:color_id]),
+                                              color_id: Color.find(params[:color_id]),
                                               product_id: @product)
     
     @cart_item = current_cart.new_item(product_variant: @product_variant, 
-                                       params: {'cart_id': params[:cart_id], 'quantity': params[:quantity] })
-    
+                                       params: {'cart_id': current_cart.id, 'quantity': params[:quantity] })
+     byebug
     rescue Exception => e 
       puts e
     end
@@ -28,6 +33,13 @@ class Api::V1::CartItemsController < ApiController
     end
   end
 
-  private
+  def destroy
+    
+  end
+
+  def count
+    
+  end
+
 
 end

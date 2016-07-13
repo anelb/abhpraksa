@@ -62,17 +62,17 @@ product_9 = Product.new(title: 'CONS CTAS Pro 9', brand_id: 2, price: 70, discou
               but is built for more to better meet the demands of your “on the go” lifestyle',
                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/6.png')
 product_10 = Product.new(title: 'Chuck Taylor All Star 10', brand_id: 2, price: 65, discount: 5, style: 'casual', 
-                        description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
-                        photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/8.jpg')
+                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/8.jpg')
 product_11 = Product.new(title: 'Jack Purcell Signature 11', brand_id: 2, price: 20, discount: 30, style: 'casual', 
-                        description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
-                        photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/1_.png')
+                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/1_.png')
 product_12 = Product.new(title: 'Jack Purcell Signature 12', brand_id: 3, price: 70, discount: 20, style: 'casual', 
-                        description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
+                         description: 'The Converse Chuck Taylor All Star II retains the iconic Chuck Taylor All Star silhouette you know and love, 
               but is built for more to better meet the demands of your “on the go” lifestyle',
-                        photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
+                         photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
 
 green  = Color.create(product_color: 'Green', hex_value: '#008000')
 black  = Color.create(product_color: 'Black', hex_value: '#000000')
@@ -109,11 +109,12 @@ end
 
 30.times do |num|
   p = Product.new(
-      title: "Test Proizvod_#{num}", 
-      brand_id: 1, 
-      price: 79,
-      description: 'The Converse Chuck Taylor All Star II retains the iconic.',
-      photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png')
+    title: "Test Proizvod_#{num}", 
+    brand_id: 1, 
+    price: 79,
+    description: 'The Converse Chuck Taylor All Star II retains the iconic.',
+    photo_url: 'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/4.png'
+  )
   p.categories.push(categories[0])
   p.product_variants.build(size_id: size_35.id, color_id: green.id, quantity: 2)
   p.save!

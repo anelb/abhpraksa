@@ -1,9 +1,9 @@
 class Api::Exceptions::AbhShopException < StandardError
   def code
-    fail
+    raise
   end
 
   def messages
-    fail
+    raise
   end
 end

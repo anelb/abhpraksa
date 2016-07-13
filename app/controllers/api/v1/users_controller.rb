@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApiController
       UserMailer.account_activation(@user).deliver_now
       render response: @user
     else
-      raise Api::Exceptions::ValidationException.new(@user.errors.full_messages)
+      raise Api::Exceptions::ValidationException, @user.errors.full_messages
     end
   end
   

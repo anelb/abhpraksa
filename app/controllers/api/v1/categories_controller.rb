@@ -6,12 +6,12 @@ class Api::V1::CategoriesController < ApiController
   end
 
   def show
-    begin
-      @category = Category.find(params[:id])
-      render response: @category
-    rescue ActiveRecord::RecordNotFound
-      raise Api::Exceptions::RecordNotFound.new('Category')
-    end
+    
+    @category = Category.find(params[:id])
+    render response: @category
+  rescue ActiveRecord::RecordNotFound
+    raise Api::Exceptions::RecordNotFound, 'Category'
+    
   end
 
 end

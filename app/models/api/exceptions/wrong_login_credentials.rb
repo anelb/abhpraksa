@@ -1,6 +1,6 @@
 class Api::Exceptions::WrongLoginCredentials < Api::Exceptions::AbhShopException
   def code
-    500
+    401
   end
 
   def messages

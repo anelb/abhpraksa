@@ -7,7 +7,5 @@ class Api::Exceptions::ValidationException < Api::Exceptions::AbhShopException
     500
   end
 
-  def messages
-    @messages
-  end
+  attr_reader :messages
 end

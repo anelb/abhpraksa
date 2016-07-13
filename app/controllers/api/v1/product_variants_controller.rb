@@ -21,4 +21,4 @@ end
 
 #{ 'variants': @product_variants.as_json.map { |x| { 'size': Size.find(x['size_id']).product_size } } }
 #{:variants=>[{:size=>35}, {:size=>35}, 
-             #{:size=>36}, {:size=>36}, {:size=>36}, {:size=>37}, {:size=>37}, {:size=>38}, {:size=>38}]}
+#{:size=>36}, {:size=>36}, {:size=>36}, {:size=>37}, {:size=>37}, {:size=>38}, {:size=>38}]}

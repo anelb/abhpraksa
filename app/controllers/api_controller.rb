@@ -2,17 +2,15 @@ class ApiController < ActionController::Base
 
   # Check API authentication token 
   def restrict_api_access
-    authenticate_or_request_with_http_token do |token, options|
+    authenticate_or_request_with_http_token do |token, _options|
       @current_user = User.find_by(api_token: token)
     end
   end
 
-  def current_user
-    @current_user
-  end
+  attr_reader :current_user
 
   # Renderer
-  ActionController::Renderers.add :response do |obj, options|
+  ActionController::Renderers.add :response do |obj, _options|
     render json: Api::Response.new(document: obj)
   end
 

@@ -4,7 +4,7 @@ class Api::Status
   attr_accessor :messages
 
   def initialize(options = {})
-    self.code    = options[:code]
+    self.code = options[:code]
     self.messages = options[:message]
   end
 
@@ -13,7 +13,7 @@ class Api::Status
     return Api::Status.new(code: 200, message: 'OK')
   end
 
-  def self.from_exception(e)
+  def self.from_exception(_e)
     return Api::Status.new(code: 500, message: 'Unknown error')
   end
 

@@ -1,6 +1,6 @@
 class Api::Exceptions::NoEmailField < Api::Exceptions::AbhShopException
   def code
-    500
+    400
   end
 
   def messages
