@@ -8,7 +8,7 @@ class Api::Status
     self.messages = options[:message]
   end
 
-  # Factory
+  
   def self.ok 
     return Api::Status.new(code: 200, message: 'OK')
   end

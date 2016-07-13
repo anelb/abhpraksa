@@ -84,7 +84,7 @@ class Product < ActiveRecord::Base
   def custom_json
     { 'variants':
     Size.all.map do |size|
-      product_variant = ProductVariant.where(product_id: self.id, size_id: size.id)
+      product_variant = self.product_variants.where(product_id: self.id, size_id: size.id)
       if !product_variant.blank?
         { 'size': size.product_size,
           'colors':

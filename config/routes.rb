@@ -41,10 +41,10 @@ Rails.application.routes.draw do
         end
       end
       get    '/products/:product_id' => 'products#show_product'
-      get    '/sign_up'  => 'users#new'
+      
       post   '/sign_up'  => 'users#create'
 
-      get    '/sign_in'  => 'sessions#new'
+    
       post   '/sign_in'  => 'sessions#create'
       delete '/logout'   => 'sessions#destroy'
 
