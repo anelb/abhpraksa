@@ -11,12 +11,26 @@ class CartItem < ActiveRecord::Base
 
   def quantity_check
     if quantity > product_variant.quantity
-      errors.add(:kolicina, "has to be less then #{product_variant.quantity}") 
+      errors.add(:kolicina, "need to be less than #{product_variant.quantity}") 
     end
   end
 
 
   def product_variant
     ProductVariant.unscoped { super }
+  end
+
+  def as_json
+    {
+      'cart_item_id': self.id,
+      'cart_id': self.cart.id,
+      'quantity': self.quantity,
+      'details': { 'title': self.product_variant.product.title,
+                    'brand': self.product_variant.product.brand.title,
+                    'size': self.product_variant.size.product_size,
+                    'color': self.product_variant.color.product_color,
+                    'price': self.product_variant.product.price,
+                    'image_url': self.product_variant.product.picture_link }
+    }
   end
 end

@@ -82,7 +82,9 @@ class Product < ActiveRecord::Base
   end
   
   def custom_json
-    { 'title': self.title, 'description': self.description.gsub("\n",''),
+    { 'title': self.title, 
+      'description': self.description.gsub("\n",''),
+      'price': self.price,
     'variants': 
     Size.all.map do |size|
       product_variant = self.product_variants.where(product_id: self.id, size_id: size.id)

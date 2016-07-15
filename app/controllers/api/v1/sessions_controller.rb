@@ -6,11 +6,14 @@ class Api::V1::SessionsController < ApiController
     @user = User.find_by(email: params[:email])
     if !@user.blank?
       if @user.activated?
+        
         if @user && @user.authenticate(params[:password])
           @user.update_attributes(api_token: SecureRandom.hex) unless @user.api_token
           if params[:cart_id]
-            Cart.find(params[:cart_id]).update_attributes(:user_id, @user.id)
+            #byebug
+            Cart.find(params[:cart_id]).update_attribute(:user_id, @user.id)
           end
+        
           render response: { api_token: @user.api_token, username: @user.username }
         else
           raise Api::Exceptions::WrongLoginCredentials
