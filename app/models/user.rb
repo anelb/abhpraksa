@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :email, length: {maximum: 255}, format: { with: VALID_EMAIL_REGEX }
   
   validates :password, length: {minimum: 6}
-
+  validates :password_confirmation, presence: true
   has_one :cart, dependent: :destroy
   has_secure_password
 

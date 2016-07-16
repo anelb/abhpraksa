@@ -69,12 +69,12 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def price
-    with_discount || super
-  end
+  # def price
+  #   with_discount || super
+  # end
 
   def with_discount
-    self[:discount] > 0 ? (self[:price] - (self[:price] * (self[:discount]/100))).round(2) : nil
+    self[:discount] > 0 ? (self[:price] - (self[:price] * (self[:discount]/100))).round(2) : price
   end
 
   def has_discount?
@@ -85,6 +85,7 @@ class Product < ActiveRecord::Base
     { 'title': self.title, 
       'description': self.description.gsub("\n",''),
       'price': self.price,
+      'photo_url': self.picture_link,
     'variants': 
     Size.all.map do |size|
       product_variant = self.product_variants.where(product_id: self.id, size_id: size.id)

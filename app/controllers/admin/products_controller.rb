@@ -9,6 +9,10 @@ class Admin::ProductsController < AdminController
   end
 
   def create
+    if params[:product][:photo_url].present?
+      file = File.open(open(params[:product][:photo_url]).path)
+      params[:product][:image] = file
+    end
     @product = Product.new(product_params)
     #@product = Product.build_new_product(params)
     @product.build_with_category(params)

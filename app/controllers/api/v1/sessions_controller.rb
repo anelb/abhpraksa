@@ -9,9 +9,9 @@ class Api::V1::SessionsController < ApiController
         
         if @user && @user.authenticate(params[:password])
           @user.update_attributes(api_token: SecureRandom.hex) unless @user.api_token
-          if params[:cart_id]
+          if session[:cart_id].present?
             #byebug
-            Cart.find(params[:cart_id]).update_attribute(:user_id, @user.id)
+            Cart.find(session[:cart_id]).update_attribute(:user_id, @user.id)
           end
         
           render response: { api_token: @user.api_token, username: @user.username }
