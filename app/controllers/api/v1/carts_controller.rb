@@ -6,12 +6,10 @@ class Api::V1::CartsController < ApiController
       current_cart = user.cart
       @cart_items = current_cart.cart_items
       render response: @cart_items.as_json
-    elsif params[:cart_id]
+    else
       current_cart = Cart.find(params[:cart_id])
       @cart_items = current_cart.cart_items
       render response: @cart_items.as_json
-    else
-      raise Api::Exceptions::EmptyCart
     end
   end
 
@@ -19,7 +17,12 @@ class Api::V1::CartsController < ApiController
     @product = params[:product_id]
     begin
     if params[:api_token]
-      current_cart = User.find_by(api_token: params[:api_token])
+      user = User.find_by(api_token: params[:api_token])
+      if user.cart
+        current_cart = user.cart
+      else
+        current_cart = user.create_cart
+      end
     elsif params[:cart_id]
       current_cart = Cart.find(params[:cart_id])
     else
@@ -43,14 +46,15 @@ class Api::V1::CartsController < ApiController
   end
 
   def destroy
-    
     if params[:api_token]
       user = User.find_by(:api_token)
       cart = user.cart
       cart.cart_items.find(params[:cart_item_id]).destroy
+      render response: Api::Response
     else
       cart = Cart.find(params[:cart_id])
       cart.cart_items.find(params[:cart_item_id]).destroy
+      render response: Api::Response
     end
   end
 
@@ -58,12 +62,10 @@ class Api::V1::CartsController < ApiController
     if params[:api_token]
       user = User.find_by(:api_token)
       cart = user.cart
-      render response: { 'count': cart.cart_items.count }
-    elsif params[:cart_id]
-      cart = Cart.find(parms[:cart_id])
-      render response: { 'count': cart.cart_items.count }
+      render response: { 'count': cart.cart_items.map { |x| x.quantity}.inject(0, :+) }
     else
-      raise Api::Exceptions::EmptyCart
+      cart = Cart.find(params[:cart_id])
+      render response: { 'count': cart.cart_items.map { |x| x.quantity}.inject(0, :+) }
     end
   end
 
