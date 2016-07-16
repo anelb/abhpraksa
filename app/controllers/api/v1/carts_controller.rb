@@ -43,7 +43,7 @@ class Api::V1::CartsController < ApiController
   end
 
   def destroy
-    byebug
+    
     if params[:api_token]
       user = User.find_by(:api_token)
       cart = user.cart

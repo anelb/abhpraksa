@@ -10,9 +10,7 @@ class Api::V1::ProductsController < ApiController
                   @category.products.select(:id, :photo_url)
                 end
     render response: @products
-  rescue
-    #byebug
-    
+  
   end
 
 

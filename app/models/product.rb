@@ -82,7 +82,7 @@ class Product < ActiveRecord::Base
   end
 
   def custom_json
-    begin
+   
     { 'title': self.title, 
       'description': self.description.gsub("\n",''),
       'price': self.price,
@@ -98,9 +98,6 @@ class Product < ActiveRecord::Base
         end
       
     }
-    rescue Exception => e
-      puts e
-    end
   end
 
 end
