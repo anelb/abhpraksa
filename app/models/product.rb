@@ -80,35 +80,46 @@ class Product < ActiveRecord::Base
   def has_discount?
     self.discount > 0
   end
-  
+
   def custom_json
+    begin
     { 'title': self.title, 
       'description': self.description.gsub("\n",''),
       'price': self.price,
       'photo_url': self.picture_link,
     'variants': 
-    Size.all.collect do |size|
-      product_variant = self.product_variants.where(product_id: self.id, size_id: size.id)
-      if !product_variant.blank?
-        product_variant.map do |x| 
-        { 'size': size.product_size,
+    
+     
+        self.product_variants.map do |x| 
+        { 'size': x.size.product_size,
           'color': Color.find(x.color_id).hex_value, 
           'quantity': x.quantity  
         }
         end
-      end
-    end.compact
+      
     }
+    rescue Exception => e
+      puts e
+    end
   end
+
 end
 
- # {
- #       size : 40,
- #       color : #hexColor,
- #       quantity : 4
- # },
- # {
- #       size : 41,
- #       color : #hexColor,
- #       quantity : 4
- # }
+# def custom_json
+#   { 'title': self.title, 
+#     'description': self.description.gsub("\n",''),
+#     'price': self.price,
+#   'variants': 
+#   Size.all.map do |size|
+#     product_variant = self.product_variants.where(product_id: self.id, size_id: size.id)
+#     if !product_variant.blank?
+#       { 'size': size.product_size,
+#         'colors':
+#         product_variant.map do |x| 
+#           { 'color': Color.find(x.color_id).hex_value, 'quantity': x.quantity }
+#         end
+#       }
+#     end
+#   end.compact
+#   }
+# end
