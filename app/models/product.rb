@@ -87,17 +87,28 @@ class Product < ActiveRecord::Base
       'price': self.price,
       'photo_url': self.picture_link,
     'variants': 
-    Size.all.map do |size|
+    Size.all.collect do |size|
       product_variant = self.product_variants.where(product_id: self.id, size_id: size.id)
       if !product_variant.blank?
+        product_variant.map do |x| 
         { 'size': size.product_size,
-          'colors':
-          product_variant.map do |x| 
-            { 'color': Color.find(x.color_id).hex_value, 'quantity': x.quantity }
-          end
+          'color': Color.find(x.color_id).hex_value, 
+          'quantity': x.quantity  
         }
+        end
       end
     end.compact
     }
   end
 end
+
+ # {
+ #       size : 40,
+ #       color : #hexColor,
+ #       quantity : 4
+ # },
+ # {
+ #       size : 41,
+ #       color : #hexColor,
+ #       quantity : 4
+ # }
