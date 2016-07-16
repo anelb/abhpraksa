@@ -18,8 +18,9 @@ class Api::V1::CartsController < ApiController
     begin
     if params[:api_token]
       user = User.find_by(api_token: params[:api_token])
-      if user.cart
-        current_cart = user.cart
+      current_cart = Cart.find_by(user_id: user.id)
+      if current_cart
+        current_cart
       else
         current_cart = user.create_cart
       end
