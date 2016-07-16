@@ -11,6 +11,8 @@ class Api::V1::CartsController < ApiController
       @cart_items = current_cart.cart_items
       render response: @cart_items.as_json
     end
+    rescue ActiveRecord::RecordNotFound
+    raise Api::Exceptions::RecordNotFound, 'Cart'
   end
 
   def add
@@ -51,11 +53,21 @@ class Api::V1::CartsController < ApiController
       user = User.find_by(:api_token)
       cart = user.cart
       cart.cart_items.find(params[:cart_item_id]).destroy
-      render response: Api::Response
+      if cart.cart_items.blank?
+        cart.destroy
+        render response: { cart_id: nil }
+      else 
+        render response: cart.cart_items.as_json 
+      end
     else
       cart = Cart.find(params[:cart_id])
       cart.cart_items.find(params[:cart_item_id]).destroy
-      render response: Api::Response
+      if cart.cart_items.blank?
+        cart.destroy
+        render response: { cart_id: nil }
+      else 
+        render response: cart.cart_items.as_json 
+      end
     end
   end
 

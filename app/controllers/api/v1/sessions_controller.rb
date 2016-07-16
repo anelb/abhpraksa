@@ -12,9 +12,11 @@ class Api::V1::SessionsController < ApiController
           #byebug
           if params[:cart_id]
             #byebug
-            Cart.find(params[:cart_id]).update_attribute(:user_id, @user.id)
+            cart = Cart.find_by(id: params[:cart_id])
+            if cart
+              cart.update_attribute(:user_id, @user.id)
+            end 
           end
-        
           render response: { api_token: @user.api_token, username: @user.username }
         else
           raise Api::Exceptions::WrongLoginCredentials
