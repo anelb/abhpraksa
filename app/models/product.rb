@@ -16,6 +16,7 @@ class Product < ActiveRecord::Base
     square: '200x200#',
     medium: '300x300>'
   }
+  
   validates :title, uniqueness: true
   validates :brand_id, :title, :price, :description, presence: true
   validate :category_blank
@@ -27,6 +28,7 @@ class Product < ActiveRecord::Base
   scope :products_without_discount, -> { where(discount: 0) }
   #validates_associated :product_variants, :message => "Already Taken"
   
+
   def round_price
     self.price.round(1)  
   end
@@ -77,7 +79,7 @@ class Product < ActiveRecord::Base
   # end
 
   def with_discount
-    self[:discount] > 0 ? (self[:price] - (self[:price] * (self[:discount]/100))).round(2) : price
+    (self.price - (self.price * (self.discount/100))).round(2)  if self.discount > 0 
   end
 
   def has_discount?

@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     if params.length == 3
-      @products = @category.products
+      @products = @category.products.uniq
     else
       @products = Filter.new(params).build
     end

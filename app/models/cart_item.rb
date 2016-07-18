@@ -13,7 +13,7 @@ class CartItem < ActiveRecord::Base
   def quantity_check
     if !quantity.nil? && quantity.is_a?(Integer)
       if quantity > product_variant.quantity
-        errors.add(:kolicina, "need to be less than #{product_variant.quantity}")
+        errors.add(:kolicina, "cant be higher than #{product_variant.quantity}")
       end
     end
   end

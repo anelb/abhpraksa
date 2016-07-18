@@ -1,5 +1,5 @@
 class AddDiscountToProducts < ActiveRecord::Migration
   def change
-    add_column :products, :discount, :float, default: 0
+    add_column :products, :discount, :decimal, default: 0
   end
 end

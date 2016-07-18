@@ -6,7 +6,12 @@ class Cart < ActiveRecord::Base
   def total
     price = []
     cart_items.each do|item|
-      price << ProductVariant.find(item.product_variant_id).product.price * item.quantity 
+      product = ProductVariant.find(item.product_variant_id).product
+      if product.has_discount?
+        price << product.with_discount * item.quantity
+      else
+        price << product.price * item.quantity 
+      end
     end
     return price.inject(:+)
   end

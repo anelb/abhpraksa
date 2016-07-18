@@ -31,6 +31,7 @@ class Admin::ProductsController < AdminController
   def update
     @product = Product.find(params[:id])
     @product.build_with_category(params)
+    byebug
     if @product.update(product_params)
       flash[:info] = 'Product updated'
       redirect_to admin_products_path
