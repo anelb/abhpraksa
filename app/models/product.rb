@@ -62,10 +62,13 @@ class Product < ActiveRecord::Base
   end
 
   def picture_link
-    if self.image.url.include? 'missing'
+    #byebug
+    if self.image.url.include?('missing') && self.photo_url.blank?
+      'https://s3.eu-central-1.amazonaws.com/abhshopdemo/products/300px-No_image_available.svg.png'
+    elsif self.image.url.include? 'missing'
       self.photo_url
     else
-      self.image.url
+      self.image_url
     end
   end
 

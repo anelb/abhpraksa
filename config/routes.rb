@@ -42,9 +42,11 @@ Rails.application.routes.draw do
       end
       get    '/products/:product_id' => 'products#show_product'
       
-      get    'cart/:cart_id/count' => 'carts#count'
-      get    '/cart/:cart_id'     => 'carts#index'
-      post   '/cart/add' => 'carts#add'
+      get    'cart/:cart_id/count'   => 'carts#count'
+      get    '/cart/:cart_id'        => 'carts#index'
+      post   '/cart/add'             => 'carts#add'
+      post   '/cart/buy'             => 'orders#create'
+
       delete   '/cart'     => 'carts#destroy'
 
       post   '/sign_up'  => 'users#create'

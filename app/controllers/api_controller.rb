@@ -1,13 +1,18 @@
 class ApiController < ActionController::Base
 
   # Check API authentication token 
-  def restrict_api_access
-    authenticate_or_request_with_http_token do |token, _options|
-      @current_user = User.find_by(api_token: token)
-    end
-  end
+  # def restrict_api_access
+  #   authenticate_or_request_with_http_token do |token, _options|
+  #     @current_user = User.find_by(api_token: token)
+  #   end
+  # end
 
-  attr_reader :current_user
+  # attr_reader :current_user
+
+  # Check API authentication token   
+  def restrict_api_access
+    raise Api::Exceptions::UnauthorizedAccess unless User.find_by(api_token: params[:api_token])
+  end
 
   # Renderer
   ActionController::Renderers.add :response do |obj, _options|
