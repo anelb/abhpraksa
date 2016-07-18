@@ -6,7 +6,7 @@ class Cart < ActiveRecord::Base
   def total
     price = []
     cart_items.each do|item|
-      product = ProductVariant.find(item.product_variant_id).product
+      product = item.product_variant.product
       if product.has_discount?
         price << product.with_discount * item.quantity
       else

@@ -18,7 +18,6 @@ class CartItem < ActiveRecord::Base
     end
   end
 
-
   def product_variant
     ProductVariant.unscoped { super }
   end

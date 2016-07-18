@@ -16,7 +16,11 @@
         <td><%= item.product_variant.product_title %></td>
         <td><%= item.product_variant.product_variant_color %></td>
         <td><%= item.product_variant.product_variant_size %></td>
-        <td><%= item.product_variant.product_price %></td>
+        <% if item.product_variant.product.has_discount? %>
+          <td><%= item.product_variant.product.with_discount %></td>
+        <% else %>
+          <td><%= item.product_variant.product_price %></td>
+        <% end %>
         <td><%= item.quantity %></td>
       </tr>
     <% end %>
