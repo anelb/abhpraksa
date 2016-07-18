@@ -15,6 +15,7 @@ class Admin::ProductsController < AdminController
     # end
     @product = Product.new(product_params)
     @product.build_with_category(params)
+    #byebug
     if @product.save
       flash[:info] = 'New product created'
       redirect_to admin_products_path

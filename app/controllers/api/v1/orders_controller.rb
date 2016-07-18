@@ -10,7 +10,7 @@ class Api::V1::OrdersController < ApiController
                               stripeShippingAddressCity: params[:stripeShippingAddressCity],
                               stripeShippingAddressCountry: params[:stripeShippingAddressCountry],
                               stripeShippingAddressCountryCode: params[:stripeShippingAddressCountryCode])
-    byebug
+    #byebug
     customer = Stripe::Customer.create(
       :email           => params[:stripeEmail],
       :source          => params[:stripeToken]
