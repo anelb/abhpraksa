@@ -16,9 +16,9 @@
         <div class='pull-right'>
           <p style='margin-bottom: 0px'>Cijena:</p>
           <% if f.product_variant.product.has_discount? %>
-            <p><strong><%= f.product_variant.product.with_discount %>KM</strong></p>
+            <p><strong><%= number_with_precision(f.product_variant.product.with_discount, precision: 2) %>KM</strong></p>
           <% else %>
-            <p><strong><%= f.product_variant.product.price %>KM</strong></p>    
+            <p><strong><%= number_with_precision(f.product_variant.product.price, precision: 2) %>KM</strong></p>    
           <% end %>      
         </div>
       </div>

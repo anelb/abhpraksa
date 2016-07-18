@@ -42,9 +42,9 @@
             <div id='price'>
               <h5>Cijena:</h5>
               <% if @product.has_discount? %>
-                <p><%= @product.with_discount %>KM</p>
+                <p><%= number_with_precision(@product.with_discount, precision: 2) %>KM</p>
               <% else %>
-                <p><%= @product.price %>KM</p>
+                <p><%= number_with_precision(@product.price, precision: 2) %>KM</p>
               <% end %>  
             </div>
             <%= f.submit 'DODAJ U KORPU', class: 'btn btn-default', :id => :cartitem  %>
@@ -65,7 +65,7 @@
               <img src="<%= product.picture_link %>" class='img-responsive'>
             </div>
             <p style='margin-top: 15px; margin-bottom: 0px'><%= product.title %></p> 
-            <p style='font-size: 15px'><strong><%= product.with_discount %>KM</strong></p>
+            <p style='font-size: 15px'><strong><%= number_with_precision(product.with_discount, precision: 2) %>KM</strong></p>
           <% else %>
             <div style='height: 80px'>
               <img src="<%= product.picture_link %>" class='img-responsive'>
@@ -73,7 +73,7 @@
             <p style='margin-top: 15px; margin-bottom: 0px'>
               <%= product.title %>
             </p> 
-            <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+            <p style='font-size: 15px'><strong><%= number_with_precision(product.price, precision: 2) %>KM</strong></p>
           <% end %>
         <% end %>  
       </div>
