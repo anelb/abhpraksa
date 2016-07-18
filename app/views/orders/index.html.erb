@@ -13,8 +13,11 @@
     <tbody>
     <% @carts.each do |cart| %>
       <tr>
-        <% byebug %>
+        <% if cart.order.nil? %>
+          <% next %>
+        <% else %>
         <td><%= cart.order.id %></td>
+        <% end %>
       </tr>
     <% end %>
     </tbody>

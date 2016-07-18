@@ -88,7 +88,9 @@ class Product < ActiveRecord::Base
 
   def custom_json
    
-    response = { 'title': self.title, 
+    response = { 
+      'product_id': self.id,
+      'title': self.title, 
       'description': self.description.gsub("\n",''),
         
       'price': nil,
@@ -108,6 +110,7 @@ class Product < ActiveRecord::Base
     #byebug
     if self.has_discount?
       response[:price] = self.with_discount.to_f
+      response[:discount_value] = self.discount.to_f
     else
       response[:price] = self.price.to_f
     end
