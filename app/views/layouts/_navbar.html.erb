@@ -23,6 +23,7 @@
                   </span>".html_safe, cart_path %>
                 </li>
               <% end %>
+              <li><%= link_to 'NARUDZBE', orders_path %></li>
               <li><%= link_to 'LOG OUT', logout_path, method: 'delete' %></li>
             <% else %>
               <% if current_cart.cart_items.empty? %>

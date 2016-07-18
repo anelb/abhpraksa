@@ -1,0 +1,38 @@
+<!-- <div class='row'>
+  <table class='table table-bordered table-hover'>
+    <thead>
+      <tr>
+        <th>Proizvod</th>
+        <th>Boja</th>
+        <th>Velicina</th>
+        <th>Cijena</th>
+        <th>Kolicina</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @order.cart_items.each do |item| %>
+      <tr>
+        <td><%= item.product_variant.product_title %></td>
+        <td><%= item.product_variant.product_variant_color %></td>
+        <td><%= item.product_variant.product_variant_size %></td>
+        <% if item.product_variant.product.has_discount? %>
+          <td><%= item.product_variant.product.with_discount %></td>
+        <% else %>
+          <td><%= item.product_variant.product_price %></td>
+        <% end %>
+        <td><%= item.quantity %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<div class='row'>
+  <div class='pull-right'>
+    <h5>Ukupno: <span class='pull-right'><strong><%= @order.total_price %></strong>KM</span>
+    <h5>Dostava: <span class='pull-right'><strong><%= @order.delivery_cost %></strong>KM</span></h5>
+    <hr style='font-siz'>
+    <h5>Ukupno za platiti: 
+      <strong><%= @order.to_pay_with_delivery %></strong>KM
+    </h5>
+  </div>
+</div> -->

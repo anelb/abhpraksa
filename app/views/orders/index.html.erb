@@ -1,0 +1,22 @@
+<div class="row">
+  <table class='table table-bordered table-hover'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Proizvod</th>
+        <th>Boja</th>
+        <th>Velicina</th>
+        <th>Kolicina</th>
+        <th>Cijena</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @carts.each do |cart| %>
+      <tr>
+        <% byebug %>
+        <td><%= cart.order.id %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

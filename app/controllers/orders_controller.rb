@@ -1,8 +1,12 @@
 class OrdersController < ApplicationController
 
-  before_action :user_has_to_be_logged_in, only: [ :create ]
+  def index
+    @carts = Cart.where(user_id: current_user.id)
+    #byebug
+  end
 
-  def new
+  def show
+    
   end
 
   def create
@@ -35,12 +39,6 @@ class OrdersController < ApplicationController
   end
 
   private
-
-  def user_has_to_be_logged_in
-    unless current_user
-      redirect_to sign_in_path
-    end
-  end
 
   def order_params
     params.permit(:stripeShippingAddressLine1,
