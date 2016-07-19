@@ -16,6 +16,6 @@ class CartsController < ApplicationController
   private
 
   def cart_exist?
-    redirect_to root_path if current_cart.cart_items.blank?
+    redirect_to root_path if current_cart.cart_items.blank? || session[:cart_id].nil?
   end
 end

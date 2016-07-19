@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 
+
   def index
     @carts = Cart.where(user_id: current_user.id)
     #byebug
@@ -26,12 +27,14 @@ class OrdersController < ApplicationController
         :description => 'AbhShop Customer',
         :currency    => 'usd'
       )
+      
       @order.save
       current_cart.remove_product_variant
       session[:cart_id] = nil
       flash[:success] = 'Thanks for ordering!'
       UserMailer.order_completed(current_user).deliver_now
       redirect_to root_path
+      
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
@@ -47,4 +50,5 @@ class OrdersController < ApplicationController
                   :stripeShippingAddressCountry,
                   :stripeShippingAddressCountryCode )
   end
+
 end
