@@ -21,13 +21,13 @@
           <div class='col-md-3'> 
             <div class="form-group">
               <%= f.label :cijena %>
-              <%= f.number_field :price, min: 1, step: 'any', value: f.object.price.round(1), class: 'form-control' %>
+              <%= f.number_field :price, min: 1, step: 'any', value: number_with_precision(f.object.price.round(2), precision: 2), class: 'form-control' %>
             </div>
           </div>
           <div class='col-md-3'> 
             <div class="form-group">
               <%= f.label :popust %>
-              <%= f.number_field :discount, min: 0, max: 99, step: 'any', value: f.object.discount.round(1), class: 'form-control' %>
+              <%= f.number_field :discount, min: 0, max: 99, step: 'any', value: number_with_precision(f.object.discount.round(2), precision: 2), class: 'form-control' %>
             </div>
           </div>
         </div>
