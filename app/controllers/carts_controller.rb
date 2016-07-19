@@ -16,6 +16,13 @@ class CartsController < ApplicationController
   private
 
   def cart_exist?
-    redirect_to root_path if current_cart.cart_items.blank? || session[:cart_id].nil?
+    redirect_to root_path if current_cart.cart_items.blank? || order_already_completed?
+  end
+
+  def order_already_completed?
+    if !current_cart.order.nil?
+      session[:cart_id] = nil
+      true
+    end
   end
 end
