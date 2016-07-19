@@ -2,7 +2,6 @@
   <table class='table table-bordered table-hover'>
     <thead>
       <tr>
-        <th>ID</th>
         <th>Proizvod</th>
         <th>Boja</th>
         <th>Velicina</th>
@@ -16,7 +15,13 @@
         <% if cart.order.nil? %>
           <% next %>
         <% else %>
-        <td><%= cart.order.id %></td>
+          <% cart.cart_items.each do |item| %>
+            <td><%= item.product_variant.product_title %></td>
+            <td><%= item.product_variant.product_variant_color %></td>
+            <td><%= item.product_variant.product_variant_size %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.product_variant.product_price %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
