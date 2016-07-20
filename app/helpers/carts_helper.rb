@@ -5,7 +5,7 @@ module CartsHelper
       begin
         @current_cart ||= Cart.find(session[:cart_id])
         if current_user
-          @current_cart.add_user_id(current_user)
+          @current_cart.update_attribute(:user_id, current_user.id)
         end
       rescue ActiveRecord::RecordNotFound => e
         create_cart

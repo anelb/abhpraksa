@@ -25,6 +25,7 @@ class Order < ActiveRecord::Base
     self.cart.total_with_delivery
   end
 
+  
   private
 
   def user

@@ -57,4 +57,9 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  def check_items_quantity
+    self.cart_items do |item|
+      return nil if item.quantity > ProductVariant.find(item.product_variant_id)
+    end
+  end
 end

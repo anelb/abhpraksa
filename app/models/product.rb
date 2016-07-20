@@ -89,7 +89,7 @@ class Product < ActiveRecord::Base
   def custom_json
    
     response = { 
-      'product_id': self.id,
+      'id': self.id,
       'title': self.title, 
       'description': self.description.gsub("\n",''),
         
