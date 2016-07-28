@@ -7,6 +7,6 @@
     <p style='margin-top: 15px; margin-bottom: 0px'>
       <%= f.title %>
     </p> 
-    <p style='font-size: 15px'><strong><%= number_with_precision(f.with_discount, precision: 2) %>KM</strong></p>
+    <p style='font-size: 15px'><strong><%= number_with_precision(f.with_discount, precision: 2) %>KM</strong> <strike style='font-size: 12px'><%= f.price %>KM</strike></p>
   <% end %>  
 </div>

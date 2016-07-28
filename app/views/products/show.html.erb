@@ -42,7 +42,7 @@
             <div id='price'>
               <h5>Cijena:</h5>
               <% if @product.has_discount? %>
-                <p><%= number_with_precision(@product.with_discount, precision: 2) %>KM</p>
+                <p><%= number_with_precision(@product.with_discount, precision: 2) %>KM <strike style='font-size: 12px'><%= @product.price %>KM</strike></p>
               <% else %>
                 <p><%= number_with_precision(@product.price, precision: 2) %>KM</p>
               <% end %>  
@@ -65,7 +65,7 @@
               <img src="<%= product.picture_link %>" class='img-responsive'>
             </div>
             <p style='margin-top: 15px; margin-bottom: 0px'><%= product.title %></p> 
-            <p style='font-size: 15px'><strong><%= number_with_precision(product.with_discount, precision: 2) %>KM</strong></p>
+            <p style='font-size: 15px'><strong><%= number_with_precision(product.with_discount, precision: 2) %>KM</strong> <strike style='font-size: 12px'><%= product.price %>KM</strike></p>
           <% else %>
             <div style='height: 80px'>
               <img src="<%= product.picture_link %>" class='img-responsive'>

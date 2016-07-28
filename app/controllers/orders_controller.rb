@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   def create
 
+    
     @order = current_cart.build_order(order_params)
     
     customer = Stripe::Customer.create(

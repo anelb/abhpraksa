@@ -86,6 +86,13 @@ class Product < ActiveRecord::Base
     self.discount > 0
   end
 
+  def with_proper_picture
+    {
+      'id': self.id,
+      'photo_url': picture_link
+    }   
+  end
+
   def custom_json
    
     response = { 

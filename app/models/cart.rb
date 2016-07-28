@@ -62,4 +62,14 @@ class Cart < ActiveRecord::Base
       return nil if item.quantity > ProductVariant.find(item.product_variant_id)
     end
   end
+
+  def has_cart_items?
+    return true if Cart.find_last(self.id).cart_items.blank?
+  end
+
+  private
+  
+  def self.find_last(id)
+    self.where(user_id: id).last
+  end
 end
