@@ -27,12 +27,12 @@ class CartItem < ActiveRecord::Base
       'cart_item_id': self.id,
       'cart_id': self.cart.id,
       'quantity': self.quantity,
-      'details': { 'title': self.product_variant.product.title,
-                    'brand': self.product_variant.product.brand.title,
-                    'size': self.product_variant.size.product_size,
-                    'color': self.product_variant.color.product_color,
-                    'price': self.product_variant.product.price,
-                    'image_url': self.product_variant.product.picture_link }
+      'title': self.product_variant.product.title,
+      'brand': self.product_variant.product.brand.title,
+      'size': self.product_variant.size.product_size,
+      'color': self.product_variant.color.product_color,
+      'price': self.product_variant.product.price,
+      'image_url': self.product_variant.product.picture_link
     }
   end
 end
