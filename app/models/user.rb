@@ -67,4 +67,18 @@ class User < ActiveRecord::Base
     self.activation_digest = User.digest(activation_token)
   end
 
+  def has_unfinished_cart?
+    if self.has_cart?
+      self.cart.finished == false
+    end
+  end
+
+  def unfinished_cart
+    Cart.find_unfinished_cart(self)
+  end
+
+  def has_cart?
+    self.cart.present?
+  end
+
 end

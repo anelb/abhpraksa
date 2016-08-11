@@ -44,9 +44,7 @@ class Cart < ActiveRecord::Base
     #byebug
   end
 
-  def add_user_id(current_user)
-    self.update_attribute(:user_id, current_user.id)
-  end
+ 
   
   def remove_product_variant
     cart_items.each do |item|
@@ -64,9 +62,26 @@ class Cart < ActiveRecord::Base
   end
 
   def has_cart_items?
-    return true if Cart.find_last(self.id).cart_items.blank?
+    return true if Cart.find_last(self.id).cart_items.present?
   end
 
+   def add_user_id(current_user)
+    self.update_attribute(:user_id, current_user.id)
+  end
+
+  def no_user?
+    self.user_id.blank?
+  end
+
+  def self.find_unfinished_cart(user)
+    self.find_by(user_id: user.id, finished: false)
+  end
+
+  def count_items
+    self.cart_items.map { |x| x.quantity}.inject(0, :+)
+  end
+
+ 
   private
   
   def self.find_last(id)

@@ -16,7 +16,8 @@ class CartsController < ApplicationController
   private
 
   def cart_exist?
-    redirect_to root_path if current_cart.cart_items.blank? || order_already_completed?
+    #byebug
+    redirect_to root_path if current_cart.nil? || order_already_completed?
   end
 
   def order_already_completed?

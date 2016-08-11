@@ -20,7 +20,6 @@
           <div class="well well-lg text-center">Trenutno ovaj proizvod nije na stanju</div>
         <% else %>
           <%= form_for @cart_item, url: { action: 'create', controller: 'cart_items' } do |f| %>
-            <%= f.hidden_field :cart_id, value: current_cart.id %>
             <%= fields_for :product_details do |details| %>
               <%= details.hidden_field :category_id, value: params[:category_id] %>
               <%= details.hidden_field :product_id, value: params[:id] %>

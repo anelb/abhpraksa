@@ -10,6 +10,10 @@ User.create(username: 'El dictator', first_name: 'Fidel',
             last_name: 'Castro', email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin', 
             role: 'admin', activated: true)
 
+User.create(username: 'anelb', first_name: 'anel', 
+            last_name: 'basic', email: 'anelbasic@gmail.com', password: 'frizider', password_confirmation: 'frizider', 
+            role: nil, activated: true)
+
 Brand.create(title: 'Converse')
 Brand.create(title: 'Nike')
 Brand.create(title: 'Adidas')
