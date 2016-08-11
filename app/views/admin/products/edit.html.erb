@@ -21,13 +21,13 @@
           <div class='col-md-3'> 
             <div class="form-group">
               <%= f.label :cijena %>
-              <%= f.number_field :price, min: 1, class: 'form-control' %>
+              <%= f.number_field :price, min: 1, step: 'any', value: f.object.price.round(1), class: 'form-control' %>
             </div>
           </div>
           <div class='col-md-3'> 
             <div class="form-group">
-              <%= f.label :Popust %>
-              <%= f.number_field :discount, min: 0, class: 'form-control' %>
+              <%= f.label :popust %>
+              <%= f.number_field :discount, min: 0, max: 99, step: 'any', value: f.object.discount.round(1), class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -35,13 +35,13 @@
           <div class='col-md-6'>
               <div class="form-group">
                 <%= f.label :brend %>
-                <%= f.select :brand_id, options_for_select( Brand.all.map { |b| [b.title, b.id ]}.unshift(['Izaberi brend',''])), {}, { class: 'selectpicker' } %>
+                <%= f.select :brand_id, options_for_select( Brand.all.map { |b| [b.title, b.id ]}, Brand.find(f.object.brand_id).id ), {}, { class: 'selectpicker' } %>
               </div>  
           </div>
           <div class='col-md-6'>
             <div class="form-group">
               <%= label_tag :kategorija %>
-              <%= select_tag :category_id, options_for_select( Category.all.map { |b| [b.title, b.id] }), { multiple: true, class: 'selectpicker'} %>
+              <%= select_tag :category_id, options_for_select( Category.all.map { |b| [b.title, b.id] }, f.object.categories.map {|category| category.id } ), { multiple: true, class: 'selectpicker'} %>
             </div>
           </div>
         </div>

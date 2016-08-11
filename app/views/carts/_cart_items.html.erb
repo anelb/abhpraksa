@@ -15,7 +15,11 @@
       <div class="row">
         <div class='pull-right'>
           <p style='margin-bottom: 0px'>Cijena:</p>
-          <p><strong><%= f.product_variant.product.price %>KM</strong></p>
+          <% if f.product_variant.product.has_discount? %>
+            <p><strong><%= f.product_variant.product.with_discount %>KM</strong></p>
+          <% else %>
+            <p><strong><%= f.product_variant.product.price %>KM</strong></p>    
+          <% end %>      
         </div>
       </div>
       <div class="row">

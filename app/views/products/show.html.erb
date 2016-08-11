@@ -41,7 +41,11 @@
             </div>
             <div id='price'>
               <h5>Cijena:</h5>
-              <p><%= @product.price %>KM</p>
+              <% if @product.has_discount? %>
+                <p><%= @product.with_discount %>KM</p>
+              <% else %>
+                <p><%= @product.price %>KM</p>
+              <% end %>  
             </div>
             <%= f.submit 'DODAJ U KORPU', class: 'btn btn-default', :id => :cartitem  %>
           <% end %>
@@ -55,16 +59,22 @@
     <% Product.all.sample(4).each do |product| %>
       <div class="col-sm-6 col-md-3 col-lg-3">
         <%= link_to category_product_path(product.categories.first.id, product.id), class: 'thumbnail' do %>
-          <div style='height: 80px'>
-            <% if product.has_discount? %>
+          <% if product.has_discount? %>
+            <div style='height: 80px'>
               <span id='discount-similar-product' class="label label-danger">- <%= product.discount %>%</span>
-            <% end %>
-            <img src="<%= product.picture_link %>" class='img-responsive'>
-          </div>
-          <p style='margin-top: 15px; margin-bottom: 0px'>
-            <%= product.title %>
-          </p> 
-          <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+              <img src="<%= product.picture_link %>" class='img-responsive'>
+            </div>
+            <p style='margin-top: 15px; margin-bottom: 0px'><%= product.title %></p> 
+            <p style='font-size: 15px'><strong><%= product.with_discount %>KM</strong></p>
+          <% else %>
+            <div style='height: 80px'>
+              <img src="<%= product.picture_link %>" class='img-responsive'>
+            </div>
+            <p style='margin-top: 15px; margin-bottom: 0px'>
+              <%= product.title %>
+            </p> 
+            <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+          <% end %>
         <% end %>  
       </div>
     <% end %>

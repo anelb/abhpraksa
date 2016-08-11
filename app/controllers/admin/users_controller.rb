@@ -11,6 +11,7 @@ class Admin::UsersController < AdminController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.update_attribute(:activated, true)
       flash[:info] = 'New user created'
       redirect_to admin_users_path
     else

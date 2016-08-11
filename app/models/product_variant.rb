@@ -8,6 +8,7 @@ class ProductVariant < ActiveRecord::Base
 
   has_many :cart_items
   
+  validates :quantity, presence: true
   #validates :color_id, uniqueness: { scope: [ :product_id, :size_id ] }
   #validates_associated :product
 
@@ -26,4 +27,6 @@ class ProductVariant < ActiveRecord::Base
   def product_price
     Product.find(self.product_id).price
   end
+
+  
 end

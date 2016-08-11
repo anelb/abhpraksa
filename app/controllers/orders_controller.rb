@@ -24,7 +24,6 @@ class OrdersController < ApplicationController
       )
       @order.save
       current_cart.remove_product_variant
-      current_cart.add_user_id(current_user)
       session[:cart_id] = nil
       flash[:success] = 'Thanks for ordering!'
       UserMailer.order_completed(current_user).deliver_now

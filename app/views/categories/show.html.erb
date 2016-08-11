@@ -37,38 +37,34 @@
   <div class="col-md-12 pull-right">
     <div class='row category-title'>
       <h5 class='pull-left'><%= @category.title %></h5>
-      <!-- <div class="col-md-4 pull-right">
-        <div class='col-md-3'>
-          <p>Cijena:</p>
-        </div>
-        <div class="col-md-9">
-          <div class="form-group">
-            <%= select_tag :sort_by_price, options_for_select([['od vece ka manjoj', 1], ['od manje ka vecoj', 2 ]]), { class: 'form-control'} %>
-          </div>
-        </div> -->
       </div>
     </div>
     <div id='products' class='row'>
       <% @products.each_slice(4) do |slice| %>
-          <div class='row' style='margin-bottom: 80px'>
-            <% slice.each do |product| %>
-              <div class="col-sm-6 col-md-3 col-lg-3">
-                <%= link_to category_product_path(@category, product), class: 'thumbnail' do %>
+        <div class='row' style='margin-bottom: 80px'>
+          <% slice.each do |product| %>
+            <div class="col-sm-6 col-md-3 col-lg-3">
+              <%= link_to category_product_path(@category, product), class: 'thumbnail' do %>
+                <% if product.has_discount? %>
                   <div style='height: 80px'>
-                    <% if product.has_discount? %>
-                      <span id='discount-category' class="label label-danger">- <%= product.discount %>%</span>
-                    <% end %>
+                    <span id='discount-category' class="label label-danger">- <%= product.discount %>%</span>
                     <img src="<%= product.picture_link %>" class='img-responsive'>
                   </div>
-                  <p style='margin-top: 15px; margin-bottom: 0px'>
-                    <%= product.title %>
-                  </p> 
+                  <p style='margin-top: 15px; margin-bottom: 0px'><%= product.title %></p> 
+                  <p style='font-size: 15px'><strong><%= product.with_discount %>KM</strong></p>
+                <% else %>
+                  <div style='height: 80px'>  
+                    <img src="<%= product.picture_link %>" class='img-responsive'>
+                  </div>  
+                  <p style='margin-top: 15px; margin-bottom: 0px'><%= product.title %></p> 
                   <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
-                <% end %>  
-              </div>
-            <% end %>
-          </div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       <% end %> 
     </div>
   </div>
 </div>
+

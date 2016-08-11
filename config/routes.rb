@@ -36,12 +36,20 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :categories, only: [:index, :show] do
-        resources :products, only: [:index, :show]
+        resources :products, only: [ :index ] do
+          resources :product_variants
+        end
       end
-      get    '/sign_up'  => 'users#new'
-      post   '/sign_up'  => 'users#create'
+      get    '/products/:product_id' => 'products#show_product'
+      
+      get    'cart/:cart_id/count'   => 'carts#count'
+      get    '/cart/:cart_id'        => 'carts#index'
+      post   '/cart/add'             => 'carts#add'
+      post   '/cart/buy'             => 'orders#create'
 
-      get    '/sign_in'  => 'sessions#new'
+      delete   '/cart'     => 'carts#destroy'
+
+      post   '/sign_up'  => 'users#create'
       post   '/sign_in'  => 'sessions#create'
       delete '/logout'   => 'sessions#destroy'
 

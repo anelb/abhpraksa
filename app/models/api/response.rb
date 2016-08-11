@@ -4,6 +4,6 @@ class Api::Response
 
   def initialize(options = {}) 
     self.document = options[:document]
-    self.status = options[:status] ||  Api::Status.ok 
+    self.status = options[:status] || Api::Status.ok 
   end
 end
