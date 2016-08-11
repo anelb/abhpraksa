@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   delete '/cart/:cart_id' => 'carts#destroy', as: :delete_cart
   
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :orders, only: [:create]
+  resources :orders, only: [:create, :show, :index ]
   resources :account_activations, only: [:edit]
 
   namespace :admin do

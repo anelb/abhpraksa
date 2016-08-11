@@ -35,20 +35,20 @@
           <div class='row'>
             <div class='col-md-5 pull-right' style='text-align: right; padding: 0px'>
               <p>Cijena:</p>
-              <p><strong><%= current_cart.total %>KM</strong></p>
+              <p><strong><%= number_with_precision(current_cart.total, precision: 2) %>KM</strong></p>
             </div>
           </div>
           <br>
           <div class='row'>
             <div class='col-md-5 pull-right' style='text-align: right; padding: 0px'>
               <p>Dostava:</p>
-              <p><strong><%= current_cart.delivery_cost %>KM</strong></p>
+              <p><strong><%= number_with_precision(current_cart.delivery_cost, precision: 2) %>KM</strong></p>
             </div>
           </div>
         </div>
         <div class='row'>
           <div class='col-md-6 pull-right' style='text-align: right; margin-bottom: 15px'>
-            <p>Ukupno: <strong><%= current_cart.total_with_delivery %>KM</strong></p>
+            <p>Ukupno: <strong><%= number_with_precision(current_cart.total_with_delivery, precision: 2) %>KM</strong></p>
           </div>
         </div>
       </div>

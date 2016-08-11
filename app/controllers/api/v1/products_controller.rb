@@ -3,13 +3,14 @@ class Api::V1::ProductsController < ApiController
   before_action :set_category, only: [:index, :show]
 
   def index
-    
-    @products = if params[:page]
-                  @category.products.select(:id, :photo_url).paginate(:page => params[:page], :per_page => 20)
-                else
-                  @category.products.select(:id, :photo_url)
-                end
-    render response: @products
+    params[:per_page] ||= 20
+    if params[:page] || params[:per_page]
+      @products = @category.products.select(:id, :photo_url).paginate(:page => params[:page], :per_page => params[:per_page])
+      #byebug
+    else
+      @products = @category.products.select(:id, :photo_url)
+    end
+    render response: @products.map { |product| product.with_proper_picture }
   
   end
 

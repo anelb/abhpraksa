@@ -2,6 +2,20 @@ class CartItemsController < ApplicationController
 
 
   def create
+    
+    if current_user
+      if current_cart.nil?
+        cart = current_user.create_cart
+        session[:cart_id] = cart.id
+      else
+        cart = current_cart
+      end
+    elsif current_cart.nil?
+      cart = Cart.create
+      session[:cart_id] = cart.id
+    else
+      cart = current_cart
+    end
     @product = params[:product_details][:product_id]
     @category = params[:product_details][:category_id]
 
@@ -9,8 +23,8 @@ class CartItemsController < ApplicationController
                                               color_id: Color.find_color_id(params[:product_variant][:color_id]),
                                               product_id: @product)
     
-    @cart_item = current_cart.new_item(product_variant: @product_variant, 
-                                       params: cart_items_params)
+    @cart_item = cart.new_item(product_variant: @product_variant, 
+                                       params: {'cart_id': cart.id, 'quantity': params[:cart_item][:quantity] })
     #byebug
     if @cart_item.save
       flash[:info] = 'Item added to basket'
@@ -35,6 +49,6 @@ class CartItemsController < ApplicationController
 
   private
   def cart_items_params
-    params.require(:cart_item).permit(:cart_id, :product_variant_id, :quantity)
+    params.require(:cart_item).permit(:product_variant_id, :quantity)
   end
 end

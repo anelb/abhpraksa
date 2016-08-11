@@ -20,7 +20,6 @@
           <div class="well well-lg text-center">Trenutno ovaj proizvod nije na stanju</div>
         <% else %>
           <%= form_for @cart_item, url: { action: 'create', controller: 'cart_items' } do |f| %>
-            <%= f.hidden_field :cart_id, value: current_cart.id %>
             <%= fields_for :product_details do |details| %>
               <%= details.hidden_field :category_id, value: params[:category_id] %>
               <%= details.hidden_field :product_id, value: params[:id] %>
@@ -42,9 +41,9 @@
             <div id='price'>
               <h5>Cijena:</h5>
               <% if @product.has_discount? %>
-                <p><%= @product.with_discount %>KM</p>
+                <p><%= number_with_precision(@product.with_discount, precision: 2) %>KM <strike style='font-size: 12px'><%= @product.price %>KM</strike></p>
               <% else %>
-                <p><%= @product.price %>KM</p>
+                <p><%= number_with_precision(@product.price, precision: 2) %>KM</p>
               <% end %>  
             </div>
             <%= f.submit 'DODAJ U KORPU', class: 'btn btn-default', :id => :cartitem  %>
@@ -65,7 +64,7 @@
               <img src="<%= product.picture_link %>" class='img-responsive'>
             </div>
             <p style='margin-top: 15px; margin-bottom: 0px'><%= product.title %></p> 
-            <p style='font-size: 15px'><strong><%= product.with_discount %>KM</strong></p>
+            <p style='font-size: 15px'><strong><%= number_with_precision(product.with_discount, precision: 2) %>KM</strong> <strike style='font-size: 12px'><%= product.price %>KM</strike></p>
           <% else %>
             <div style='height: 80px'>
               <img src="<%= product.picture_link %>" class='img-responsive'>
@@ -73,7 +72,7 @@
             <p style='margin-top: 15px; margin-bottom: 0px'>
               <%= product.title %>
             </p> 
-            <p style='font-size: 15px'><strong><%= product.price %>KM</strong></p>
+            <p style='font-size: 15px'><strong><%= number_with_precision(product.price, precision: 2) %>KM</strong></p>
           <% end %>
         <% end %>  
       </div>

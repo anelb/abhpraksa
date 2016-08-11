@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6}
   validates :password_confirmation, presence: true
   has_one :cart, dependent: :destroy
+  has_many :orders, through: :cart
   has_secure_password
 
   def self.digest(string)
@@ -34,7 +35,7 @@ class User < ActiveRecord::Base
 
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, remember_token)
+    update_attribute(:remember_digest, User.digest(remember_token))
   end
 
   def authenticated?(attribute, token)
@@ -64,6 +65,20 @@ class User < ActiveRecord::Base
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
+  end
+
+  def has_unfinished_cart?
+    if self.has_cart?
+      self.cart.finished == false
+    end
+  end
+
+  def unfinished_cart
+    Cart.find_unfinished_cart(self)
+  end
+
+  def has_cart?
+    self.cart.present?
   end
 
 end

@@ -34,7 +34,10 @@ class Api::V1::CartsController < ApiController
     rescue Exceptions => e
       puts e
     end
-    @product_variant = ProductVariant.find_by(size_id:  params[:size_id], 
+    
+    size = Size.find_by(product_size: params[:size_id])
+
+    @product_variant = ProductVariant.find_by(size_id:  size.id, 
                                               color_id: Color.find_by(hex_value: params[:color_id]),
                                               product_id: @product)
     

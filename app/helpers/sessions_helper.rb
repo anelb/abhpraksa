@@ -1,4 +1,4 @@
-module SessionsHelper
+  module SessionsHelper
 
   def current_user
     if session[:user_id]
@@ -11,6 +11,7 @@ module SessionsHelper
       end
     end
   end
+
   
   def logged_in?
     !current_user.nil?

@@ -86,13 +86,24 @@ class Product < ActiveRecord::Base
     self.discount > 0
   end
 
+  def with_proper_picture
+    {
+      'id': self.id,
+      'photo_url': picture_link
+    }   
+  end
+
   def custom_json
    
-    { 'title': self.title, 
+    response = { 
+      'id': self.id,
+      'title': self.title, 
       'description': self.description.gsub("\n",''),
-      'price': self.price,
+        
+      'price': nil,
+      
       'photo_url': self.picture_link,
-    'variants': 
+      'variants': 
     
      
         self.product_variants.map do |x| 
@@ -103,6 +114,14 @@ class Product < ActiveRecord::Base
         end
       
     }
+    #byebug
+    if self.has_discount?
+      response[:price] = self.with_discount.to_f
+      response[:discount_value] = self.discount.to_f
+    else
+      response[:price] = self.price.to_f
+    end
+    response
   end
 
 end
