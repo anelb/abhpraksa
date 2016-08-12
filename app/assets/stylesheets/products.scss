@@ -42,13 +42,22 @@
     text-align: center;
   }
 }
+#quantity h5 {
+  font-size: 15px;
+}
 
 #price {
-  margin-left: 30px;
+  margin-left: 10px;
   display: inline-block;
   >p {
     font-weight: bold;
+    margin: 0px;
   }
+}
+
+#price h5 {
+  margin-bottom: 14px;
+  font-size: 15px;
 }
 
 #color {
@@ -110,4 +119,17 @@ select, option {
   font-size: 25px;  
   top: 0%;
   left: 65%;
+}
+
+#new_cart_item #color {
+  width: 50px;
+}
+
+#product_variant_color_id {
+  outline: none !important;
+  width: 100%;
+}
+
+#product_variant_color_id option {
+  width: 30% !important;
 }

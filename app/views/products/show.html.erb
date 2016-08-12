@@ -35,11 +35,11 @@
               </div>
             <% end %>
             <div id='quantity'>
-              <h5>Količina:</h5>
+              <h5>Količina</h5>
               <%= f.number_field :quantity, value: 1, min: 1,  class: 'form-group' %>
             </div>
             <div id='price'>
-              <h5>Cijena:</h5>
+              <h5>Cijena</h5>
               <% if @product.has_discount? %>
                 <p><%= number_with_precision(@product.with_discount, precision: 2) %>KM <strike style='font-size: 12px'><%= @product.price %>KM</strike></p>
               <% else %>

@@ -28,11 +28,10 @@ module CartsHelper
   def create_cart
     if current_user
       @current_cart = current_user.create_cart
-      session[:cart_id] = @current_cart.id
     else
       @current_cart = Cart.create
-      session[:cart_id] = @current_cart.id
     end
+    session[:cart_id] = @current_cart.id
     return @current_cart
   end
 
