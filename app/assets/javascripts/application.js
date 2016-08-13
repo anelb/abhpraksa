@@ -14,5 +14,6 @@
 //= require toastr
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require admin/products.js
 //= require_tree .
 
