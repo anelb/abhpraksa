@@ -14104,6 +14104,32 @@ return jQuery;
 
 
 
+(function() {
+
+
+}).call(this);
+$(document).ready(function() {  
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  });
+});
+$(document).ready(function() {
+   $('.selectpicker').selectpicker();
+});
+
+$(document).on('click', 'form .add_fields', function(event) {
+	 var regexp, time;
+	time = new Date().getTime();
+	regexp = new RegExp($(this).data('id'), 'g');
+	$(this).before($(this).data('fields').replace(regexp, time));
+	return event.preventDefault();
+ });
+ 
+$(document).on('click', 'form .remove_fields', function(event) {
+	$(this).prev("input[type=hidden]").val('1');
+	$(this).closest('fieldset').hide();
+	return event.preventDefault();
+});
 /*!
  * Bootstrap Select v1.5.0 (https://github.com/biggora/bootstrap-select)
  * Copyright 2013-2014 Silvio Moreto
@@ -14965,16 +14991,6 @@ return jQuery;
 
 
 }).call(this);
-$(document).ready(function() {  
-  $("tr[data-link]").click(function() {
-    window.location = $(this).data("link")
-  });
-});
-
-(function() {
-
-
-}).call(this);
 (function() {
 
 
@@ -14992,11 +15008,6 @@ $(document).ready(function() {
 
 
 }).call(this);
-
-$(document).on('ready page:load', function() {
-  $('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
-}
-
 
 function remove_text() {
 	product_colors = $('#product_variant_color_id').find('option')
@@ -15089,4 +15100,11 @@ $(document).ready(function() {
 
 
 
+
+$(document).ready(function() {
+  $('#navbar-empty-cart').click(function(event){
+    alert('Your cart is currently empty.');
+    event.preventDefault(); 
+  });
+});
 

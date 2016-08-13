@@ -14104,9 +14104,6 @@ return jQuery;
 
 
 
-$(document).ready(function() {
-   $('.selectpicker').selectpicker();
-});
 (function() {
 
 
@@ -14116,6 +14113,10 @@ $(document).ready(function() {
     window.location = $(this).data("link")
   });
 });
+// $(document).ready(function() {
+
+//   $('.selectpicker').selectpicker();
+// });
 /*!
  * Bootstrap Select v1.5.0 (https://github.com/biggora/bootstrap-select)
  * Copyright 2013-2014 Silvio Moreto
@@ -14994,65 +14995,70 @@ $(document).ready(function() {
 
 
 }).call(this);
-
-function remove_text() {
-	product_colors = $('#product_variant_color_id').find('option')
-	$.each(product_colors, function(index, product_color) {
-		$(product_color).text().replace(/^[a-zA-Z]*$/, '');
-	});
-}
-
-function show_color(){
-	selected_color = $('#product_variant_color_id :selected').text()
-	$('#product_variant_color_id').css('background-color', selected_color)
-	$('#product_variant_color_id').css('color', selected_color)
-}
-
-function blend_color(){
-	product_colors = $('#product_variant_color_id').find('option')
-	$.each(product_colors, function(index, product_color) {
-		$(product_color).css('color', $(product_color).text());
-	});
-}
-
-
 $(document).ready(function() {
-	show_color();
-	blend_color();
-	colors =  [["Green", "#008000"], ["Black", "#000000"], ["Red", "#ff0000"], ["Yellow", "#ffff00"], ["Grey", "#808080"]]
-	$.each(colors, function(index, value) {
-		color = value[0]
-		hex_value = value[0]
-		product_colors = $('#product_variant_color_id').find('option')
-		$.each(product_colors, function(index, product_color) {
-			if( color == $(product_color).text()) {
-				$(product_color).css('background-color', hex_value)
-			}
-		});
-	});
-});
 
-$(document).ready(function() { 
-	colors = $('#product_variant_color_id').html(); 
-  size = $('#product_variant_size_id :selected').text();
-  options = $(colors).filter('optgroup[label=' + size + ']').html();
-  $('#product_variant_color_id').html(options);
+  $('.selectpicker').selectpicker();
 });
 
 
-$(document).ready(function() {
-  $('#product_variant_size_id').change(function() {
-		size = $('#product_variant_size_id :selected').text();
-		options = $(colors).filter('optgroup[label=' + size + ']').html();
-		$('#product_variant_color_id').html(options);
-	});
-});
+// function remove_text() {
+// 	product_colors = $('#product_variant_color_id').find('option')
+// 	$.each(product_colors, function(index, product_color) {
+// 		$(product_color).text().replace(/^[a-zA-Z]*$/, '');
+// 	});
+// }
 
-$(document).ready(function() {
-  $('#product_variant_color_id').change(function() {
-		show_color();
-	});
-});
+// function show_color(){
+// 	selected_color = $('#product_variant_color_id :selected').text()
+// 	$('#product_variant_color_id').css('background-color', selected_color)
+// 	$('#product_variant_color_id').css('color', selected_color)
+// }
+
+// function blend_color(){
+// 	product_colors = $('#product_variant_color_id').find('option')
+// 	$.each(product_colors, function(index, product_color) {
+// 		$(product_color).css('color', $(product_color).text());
+// 	});
+// }
+
+
+// $(document).ready(function() {
+// 	show_color();
+// 	blend_color();
+// 	colors =  [["Green", "#008000"], ["Black", "#000000"], ["Red", "#ff0000"], ["Yellow", "#ffff00"], ["Grey", "#808080"]]
+// 	$.each(colors, function(index, value) {
+// 		color = value[0]
+// 		hex_value = value[0]
+// 		product_colors = $('#product_variant_color_id').find('option')
+// 		$.each(product_colors, function(index, product_color) {
+// 			if( color == $(product_color).text()) {
+// 				$(product_color).css('background-color', hex_value)
+// 			}
+// 		});
+// 	});
+// });
+
+// $(document).ready(function() { 
+// 	colors = $('#product_variant_color_id').html(); 
+//   size = $('#product_variant_size_id :selected').text();
+//   options = $(colors).filter('optgroup[label=' + size + ']').html();
+//   $('#product_variant_color_id').html(options);
+// });
+
+
+// $(document).ready(function() {
+//   $('#product_variant_size_id').change(function() {
+// 		size = $('#product_variant_size_id :selected').text();
+// 		options = $(colors).filter('optgroup[label=' + size + ']').html();
+// 		$('#product_variant_color_id').html(options);
+// 	});
+// });
+
+// $(document).ready(function() {
+//   $('#product_variant_color_id').change(function() {
+// 		show_color();
+// 	});
+// });
 
 
 

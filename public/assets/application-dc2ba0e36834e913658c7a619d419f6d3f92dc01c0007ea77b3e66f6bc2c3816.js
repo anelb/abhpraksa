@@ -14104,11 +14104,6 @@ return jQuery;
 
 
 
-$(document).on('ready page:load', function() {
-	console.log('TEST')
-  $('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
-}
-;
 (function() {
 
 
@@ -14117,6 +14112,23 @@ $(document).ready(function() {
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link")
   });
+});
+$(document).ready(function() {
+   $('.selectpicker').selectpicker();
+});
+
+$(document).on('click', 'form .add_fields', function(event) {
+	 var regexp, time;
+	time = new Date().getTime();
+	regexp = new RegExp($(this).data('id'), 'g');
+	$(this).before($(this).data('fields').replace(regexp, time));
+	return event.preventDefault();
+ });
+ 
+$(document).on('click', 'form .remove_fields', function(event) {
+	$(this).prev("input[type=hidden]").val('1');
+	$(this).closest('fieldset').hide();
+	return event.preventDefault();
 });
 /*!
  * Bootstrap Select v1.5.0 (https://github.com/biggora/bootstrap-select)
@@ -14988,6 +15000,13 @@ $(document).ready(function() {
     $('#filter-form').submit();   
   });
 });
+$(document).ready(function() {
+  $('#navbar-empty-cart').click(function(event){
+  	event.preventDefault();
+    alert('Your cart is currently empty.');
+  });
+});
+
 (function() {
 
 
@@ -15088,4 +15107,10 @@ $(document).ready(function() {
 
 
 
+$(document).ready(function() {
+  $('#navbar-empty-cart').click(function(event){
+  	event.preventDefault();
+    alert('Your cart is currently empty.');
+  });
+});
 

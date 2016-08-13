@@ -16,7 +16,7 @@
                 <li><%= link_to 'ADMIN', admin_dashboard_index_path %></li>
               <% end %>
               <% if current_cart.cart_items.blank? %>
-                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', id: 'empty-cart' %></li>
+                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', id: 'navbar-empty-cart' %></li>
               <% else %> 
                 <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'>
                   <span class='number-notification'>#{current_cart.count_items}</span>
@@ -31,7 +31,7 @@
               <li><%= link_to 'LOG OUT', logout_path, method: 'delete' %></li>
             <% else %>
               <% if current_cart.cart_items.blank? %>
-                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', id: 'empty-cart' %></li>
+                <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, '#', id: 'navbar-empty-cart' %></li>
               <% else %> 
               <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart'>
                 <span class='number-notification'>#{current_cart.count_items}</span>
