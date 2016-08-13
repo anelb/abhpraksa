@@ -9010,11 +9010,22 @@ button.close {
   border-color: #ccc;
 }
 
-/* line 36, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/*div .btn-group.bootstrap-select {
+  width: 50px;
+  margin-bottom: 0px;
+  line-height: normal;
+  vertical-align: baseline;
+  button {
+    background-color: transparent;
+    width: 100%;
+  }
+}
+*/
+/* line 47, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #quantity {
   display: inline-block;
 }
-/* line 38, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 49, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #quantity > input {
   width: 55px;
   height: 25px;
@@ -9022,28 +9033,40 @@ button.close {
   text-align: center;
 }
 
-/* line 46, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
-#price {
-  margin-left: 30px;
-  display: inline-block;
-}
-/* line 49, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
-#price > p {
-  font-weight: bold;
+/* line 56, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+#quantity h5 {
+  font-size: 15px;
 }
 
-/* line 54, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 60, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+#price {
+  margin-left: 10px;
+  display: inline-block;
+}
+/* line 63, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+#price > p {
+  font-weight: bold;
+  margin: 0px;
+}
+
+/* line 69, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+#price h5 {
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+/* line 74, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #color {
   display: inline-block;
   margin-right: 8px;
 }
-/* line 57, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 77, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #color > label {
   display: block;
   font-weight: normal;
   margin-bottom: 8px;
 }
-/* line 62, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 82, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #color > select {
   height: 25px;
   background-color: transparent;
@@ -9051,42 +9074,42 @@ button.close {
   border-color: #ccc;
 }
 
-/* line 70, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 90, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #cartitem {
   background-color: transparent;
   color: black;
   font-size: 12px;
 }
 
-/* line 76, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 96, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #cartitem:hover {
   border-color: #ccc;
 }
 
-/* line 81, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 101, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 .similar > p {
   color: #909090;
 }
 
-/* line 86, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 106, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 select, option {
   cursor: pointer;
 }
 
-/* line 90, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 110, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #similar-products .thumbnail {
   border: 0px;
   margin: 30px;
   color: black;
 }
 
-/* line 96, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 116, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #similar-products .img-responsive {
   max-width: 100%;
   max-height: 100%;
 }
 
-/* line 101, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 121, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #discount-similar-product {
   position: absolute;
   font-size: 15px;
@@ -9094,12 +9117,28 @@ select, option {
   left: 62%;
 }
 
-/* line 108, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+/* line 128, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
 #discount-product {
   position: absolute;
   font-size: 25px;
   top: 0%;
   left: 65%;
+}
+
+/* line 135, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+#new_cart_item #color {
+  width: 50px;
+}
+
+/* line 139, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+#product_variant_color_id {
+  outline: none !important;
+  width: 100%;
+}
+
+/* line 144, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/products.scss */
+#product_variant_color_id option {
+  width: 30% !important;
 }
 
 /* line 5, /home/anel/Desktop/ruby on rails/abhshoes/app/assets/stylesheets/carts.scss */

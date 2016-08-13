@@ -1,11 +1,3 @@
-
-function remove_text() {
-	product_colors = $('#product_variant_color_id').find('option')
-	$.each(product_colors, function(index, product_color) {
-		$(product_color).text().replace(/^[a-zA-Z]*$/, '');
-	});
-}
-
 function show_color(){
 	selected_color = $('#product_variant_color_id :selected').text()
 	$('#product_variant_color_id').css('background-color', selected_color)
@@ -18,7 +10,6 @@ function blend_color(){
 		$(product_color).css('color', $(product_color).text());
 	});
 }
-
 
 $(document).ready(function() {
 	show_color();
@@ -49,14 +40,13 @@ $(document).ready(function() {
 		size = $('#product_variant_size_id :selected').text();
 		options = $(colors).filter('optgroup[label=' + size + ']').html();
 		$('#product_variant_color_id').html(options);
+		show_color();
 	});
 });
+
 
 $(document).ready(function() {
   $('#product_variant_color_id').change(function() {
 		show_color();
 	});
 });
-
-
-
