@@ -24,13 +24,17 @@
     font-weight: normal;
     margin-bottom: 8px;
   }
-  > select {
+  select {
     width: 100px;
     height: 25px;
     background-color: transparent;
     border-radius: 4px;
     border-color: #ccc;
   }
+  select {
+    outline-color: rgb(255,255,255);
+  }
+
 }
 
 /*div .btn-group.bootstrap-select {

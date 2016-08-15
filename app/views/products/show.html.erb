@@ -27,7 +27,7 @@
             <%= fields_for :product_variant do |variant| %>
               <div id='size'>
                 <%= variant.label 'Veličina' %>
-                <%= variant.select :size_id, options_for_select(@size.map { |size| [ size.product_size, size.id ] }, 1 ) %>
+                <%= variant.select :size_id, options_for_select(@size.map { |size| [ size.product_size, size.id ] }, 1) %>
               </div>
               <div id='color'>
                 <%= variant.label 'Boja' %>
