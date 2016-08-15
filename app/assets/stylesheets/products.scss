@@ -148,3 +148,10 @@ select, option {
 #product_variant_color_id option {
   width: 30% !important;
 }
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
