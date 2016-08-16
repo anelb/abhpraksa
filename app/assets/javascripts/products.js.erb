@@ -1,62 +1,55 @@
-function getColors() {
-	return <%= Color.all.map { |color| [ color.product_color, color.hex_value ] } %>
+
+function isEmpty( el ){
+    return $.trim(el.text())
 }
 
-function selectColors(colors, size) {
-	return $(colors).filter('optgroup[label=' + size + ']').html();
+$.fn.selected = function() {
+	return $(this).find('option:selected')
 }
 
-function showColorBackground(target, color) {
-	return $(target).css('background-color', color)
+$.fn.value = function () {
+		if( isEmpty(this) == ''){
+    	return $(this).selected().val()
+    }
+    else {
+    	return $(this).selected().text()
+    }
+};
+
+function selectTagBackgroundCOlor() {
+	$(color).css('background-color', color.value())
 }
 
-//Remove text
-$(document).ready(function() {
-  $('#product_variant_color_id').find('option').each(function() { 
-  	$(this).text(' ');
-  });
-});
-
-$(document).ready(function() {
-	var colors = getColors() 
-	$.each(colors, function(index, value) {
-		var color = value[0]
-		var hex_value = value[1]
-		var options = $('#product_variant_color_id').find('option')
-		$.each(options, function(index, option) {
-			if( color == $(option).val()) {
-				showColorBackground(option, color)
-			}
-		});
-	});
-});
-
-
-$(document).ready(function() {
-	colors = $('#product_variant_color_id').html(); 
-  var defautSize = $('#product_variant_size_id :selected').text();
-  var options = selectColors(colors, defautSize)
-  $('#product_variant_color_id').html(options);
-  var element = $('#product_variant_color_id')
-	var color = $('#product_variant_color_id').find('option:selected').val()
-	showColorBackground(element, color)
-});
-
-$(document).ready(function() {
-  $('#product_variant_size_id').change(function() {
-  	var selectedSize = $('#product_variant_size_id :selected').text();
-		var options = selectColors(colors, selectedSize)
-		$('#product_variant_color_id').html(options);
-		var element = $('#product_variant_color_id')
-		var color = $('#product_variant_color_id').find('option:selected').val()
-		showColorBackground(element, color)
-	});
-});
-
-$(document).ready(function() {
-	$('#product_variant_color_id').change(function() {
-		var element = $(this)
-		var color = $(this).find('option:selected').val()
-		showColorBackground(element, color)
+function addColorDropdown(){
+	var options = $(colors).filter('optgroup[label=' + size.value() + ']').html();
+	var new_colors = $('#product_variant_color_id').html(options)
+	$.each($(new_colors).find('option'), function(){
+		$(this).css('background-color', $(this).val())
 	})
-});
+}
+
+function removeText(){
+	$('#product_variant_color_id').find('option').each(function() { $(this).text(' ') });
+}
+
+$(function() {
+
+	color = $('#product_variant_color_id')
+	size = $('#product_variant_size_id')
+	colors = $('#product_variant_color_id').html()
+ 
+	selectTagBackgroundCOlor()
+	addColorDropdown()
+	removeText()
+
+	$('#product_variant_color_id').change(function(){ 
+		selectTagBackgroundCOlor()
+	})
+
+	$('#product_variant_size_id').change(function(){
+		addColorDropdown()
+		selectTagBackgroundCOlor()
+		removeText() 
+	})
+
+})
