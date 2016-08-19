@@ -15,3 +15,12 @@ $(document).on('click', 'form .remove_fields', function(event) {
 	$(this).closest('fieldset').hide();
 	return event.preventDefault();
 });
+
+$(function() {
+	$('#discount-button').click(function(event) {
+		event.preventDefault();
+		$(this).fadeOut(350, function() {
+			$('#discount').html('<div class="form-group"><label for="product_Popust">Popust</label><input min="1" max="99" step="any" class="form-control" type="number" name="product[discount]" id="product_discount"></div>')
+		})	
+	})
+})

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
 
   namespace :admin do
+    resources :brands, only: [:new, :create]
     resources :dashboard, only: [:index]
     resources :users, except: [:show]
     post '/promote' => 'users#promote'

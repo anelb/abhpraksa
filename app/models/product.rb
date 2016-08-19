@@ -16,11 +16,12 @@ class Product < ActiveRecord::Base
     square: '200x200#',
     medium: '300x300>'
   }
-  
+  validates :discount, :numericality => { :greater_than_or_equal_to => 0 }
   validates :title, uniqueness: true
   validates :brand_id, :title, :price, :description, presence: true
   validate :category_blank
   validate :duplicate_variant
+
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :image, :less_than => 1.megabytes
 
